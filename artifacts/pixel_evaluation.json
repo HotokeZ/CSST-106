@@ -1,0 +1,154 @@
+{
+  "dataset": {
+    "images": 3877,
+    "groups": null,
+    "source_images": 3879,
+    "segmentation_exclusions": 2,
+    "classes": {
+      "whole": 3087,
+      "broken": 790
+    }
+  },
+  "training_mode": "exploratory_source_labels",
+  "split_unit": "image",
+  "segmentation_backend": "scipy-fallback",
+  "settings": {
+    "background": "dark",
+    "min_area": 30,
+    "max_area_fraction": 0.6,
+    "morphology": 1,
+    "exclude_border": true
+  },
+  "split": {
+    "train": {
+      "instances": 2713,
+      "groups": []
+    },
+    "validation": {
+      "instances": 582,
+      "groups": []
+    },
+    "test": {
+      "instances": 582,
+      "groups": []
+    }
+  },
+  "baseline_threshold_pixels": 243.4565780525108,
+  "decision_tree_parameters": {
+    "max_depth": 3,
+    "min_samples_leaf": 1
+  },
+  "validation_broken_f1": 0.9558232931726908,
+  "test": {
+    "baseline": {
+      "accuracy": 0.9707903780068728,
+      "broken_f1": 0.9264069264069265,
+      "confusion_matrix_labels": [
+        "whole",
+        "broken"
+      ],
+      "confusion_matrix": [
+        [
+          458,
+          5
+        ],
+        [
+          12,
+          107
+        ]
+      ],
+      "classification_report": {
+        "whole": {
+          "precision": 0.9744680851063829,
+          "recall": 0.9892008639308856,
+          "f1-score": 0.9817792068595927,
+          "support": 463.0
+        },
+        "broken": {
+          "precision": 0.9553571428571429,
+          "recall": 0.8991596638655462,
+          "f1-score": 0.9264069264069265,
+          "support": 119.0
+        },
+        "accuracy": 0.9707903780068728,
+        "macro avg": {
+          "precision": 0.964912613981763,
+          "recall": 0.944180263898216,
+          "f1-score": 0.9540930666332597,
+          "support": 582.0
+        },
+        "weighted avg": {
+          "precision": 0.9705605213131536,
+          "recall": 0.9707903780068728,
+          "f1-score": 0.9704573831931541,
+          "support": 582.0
+        }
+      }
+    },
+    "decision_tree": {
+      "accuracy": 0.9621993127147767,
+      "broken_f1": 0.9105691056910569,
+      "confusion_matrix_labels": [
+        "whole",
+        "broken"
+      ],
+      "confusion_matrix": [
+        [
+          448,
+          15
+        ],
+        [
+          7,
+          112
+        ]
+      ],
+      "classification_report": {
+        "whole": {
+          "precision": 0.9846153846153847,
+          "recall": 0.9676025917926566,
+          "f1-score": 0.9760348583877996,
+          "support": 463.0
+        },
+        "broken": {
+          "precision": 0.8818897637795275,
+          "recall": 0.9411764705882353,
+          "f1-score": 0.9105691056910569,
+          "support": 119.0
+        },
+        "accuracy": 0.9621993127147767,
+        "macro avg": {
+          "precision": 0.9332525741974561,
+          "recall": 0.954389531190446,
+          "f1-score": 0.9433019820394282,
+          "support": 582.0
+        },
+        "weighted avg": {
+          "precision": 0.9636113487400118,
+          "recall": 0.9621993127147767,
+          "f1-score": 0.9626492491594278,
+          "support": 582.0
+        }
+      }
+    }
+  },
+  "feature_importance": {
+    "area": 0.005545160179788873,
+    "major_axis": 0.9641871257677322,
+    "minor_axis": 0.0,
+    "aspect_ratio": 0.01437557880852257,
+    "solidity": 0.0,
+    "extent": 0.0,
+    "mean_r": 0.0,
+    "mean_g": 0.0009044625548548035,
+    "mean_b": 0.007013596271659506,
+    "std_r": 0.0,
+    "std_g": 0.007974076417441965,
+    "std_b": 0.0
+  },
+  "limitations": [
+    "Pixel features require consistent capture scale and background.",
+    "Instance classification metrics do not measure multi-grain counting or percentage error.",
+    "Uses dataset folder labels without independent per-image manual verification.",
+    "Original capture groups are unknown. Image-level test scores may include related captures and are exploratory, not session-independent evaluation."
+  ]
+}

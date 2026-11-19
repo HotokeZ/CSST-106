@@ -1,0 +1,246 @@
+{
+  "split": "test",
+  "instances": 582,
+  "model_sha256": "744d6078dd2211e0e271e2a21042df4b95218a74ea78bc33a64c33057dfb2da3",
+  "feature_table_sha256": "7b7a5f10341e5c8165f37d54dab0c7492b48ef00741f1ed4ffd07d13b1b157b3",
+  "model_size_bytes": 7176,
+  "method": "shape",
+  "classification_scope": "Per-grain classification from saved extracted features; not detection or segmentation accuracy.",
+  "evaluation_status": "Development evidence. Source capture groups unknown and the test gallery has been exposed.",
+  "baseline": {
+    "accuracy": 0.9587628865979382,
+    "broken_f1": 0.8983050847457628,
+    "confusion_matrix_labels": [
+      "whole",
+      "broken"
+    ],
+    "confusion_matrix": [
+      [
+        452,
+        11
+      ],
+      [
+        13,
+        106
+      ]
+    ],
+    "classification_report": {
+      "whole": {
+        "precision": 0.9720430107526882,
+        "recall": 0.9762419006479481,
+        "f1-score": 0.9741379310344828,
+        "support": 463.0
+      },
+      "broken": {
+        "precision": 0.905982905982906,
+        "recall": 0.8907563025210085,
+        "f1-score": 0.8983050847457628,
+        "support": 119.0
+      },
+      "accuracy": 0.9587628865979382,
+      "macro avg": {
+        "precision": 0.9390129583677971,
+        "recall": 0.9334991015844782,
+        "f1-score": 0.9362215078901228,
+        "support": 582.0
+      },
+      "weighted avg": {
+        "precision": 0.9585358759286261,
+        "recall": 0.9587628865979382,
+        "f1-score": 0.9586325896111878,
+        "support": 582.0
+      }
+    },
+    "macro_f1": 0.9362215078901228
+  },
+  "decision_tree": {
+    "accuracy": 0.9604810996563574,
+    "broken_f1": 0.9068825910931174,
+    "confusion_matrix_labels": [
+      "whole",
+      "broken"
+    ],
+    "confusion_matrix": [
+      [
+        447,
+        16
+      ],
+      [
+        7,
+        112
+      ]
+    ],
+    "classification_report": {
+      "whole": {
+        "precision": 0.9845814977973568,
+        "recall": 0.9654427645788337,
+        "f1-score": 0.9749182115594329,
+        "support": 463.0
+      },
+      "broken": {
+        "precision": 0.875,
+        "recall": 0.9411764705882353,
+        "f1-score": 0.9068825910931174,
+        "support": 119.0
+      },
+      "accuracy": 0.9604810996563574,
+      "macro avg": {
+        "precision": 0.9297907488986784,
+        "recall": 0.9533096175835345,
+        "f1-score": 0.9409004013262752,
+        "support": 582.0
+      },
+      "weighted avg": {
+        "precision": 0.9621756589006464,
+        "recall": 0.9604810996563574,
+        "f1-score": 0.9610071482682103,
+        "support": 582.0
+      }
+    },
+    "macro_f1": 0.9409004013262752
+  },
+  "hardware": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 190 Stepping 0, GenuineIntel",
+    "logical_cpus": 8,
+    "python": "3.13.3"
+  },
+  "dependencies": {
+    "numpy": "2.3.4",
+    "scipy": "1.16.2",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "Pillow": "12.0.0",
+    "Flask": "3.1.2",
+    "joblib": "1.5.2"
+  },
+  "speed": {
+    "warmup_runs": 3,
+    "images": 20,
+    "mean_ms": 27.66087999334559,
+    "median_ms": 26.264449988957494,
+    "fps_equivalent": 36.15213978154604,
+    "scope": "Load image + segment + extract features + classify on CPU; excludes model loading, rendering, web and disk output.",
+    "settings": {
+      "background": "dark",
+      "min_area": 30,
+      "max_area_fraction": 0.6,
+      "morphology": 1,
+      "exclude_border": true,
+      "split_touching": false
+    },
+    "runs": [
+      {
+        "image": "entero_grano1000.png",
+        "ms": 24.941799929365516,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1002.png",
+        "ms": 26.434600003995,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1006.png",
+        "ms": 25.991300004534423,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1007.png",
+        "ms": 26.094299973919988,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano102.png",
+        "ms": 21.92179998382926,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1022.png",
+        "ms": 21.28749992698431,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1036.png",
+        "ms": 23.865199997089803,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1040.png",
+        "ms": 23.13980006147176,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1043.png",
+        "ms": 22.351100109517574,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1047.png",
+        "ms": 20.744299981743097,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1048.png",
+        "ms": 20.39149997290224,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1052.png",
+        "ms": 31.910899910144508,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1054.png",
+        "ms": 38.23299997020513,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1058.png",
+        "ms": 31.010099919512868,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1065.png",
+        "ms": 37.41360001731664,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1068.png",
+        "ms": 32.06230001524091,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1071.png",
+        "ms": 32.51109994016588,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1081.png",
+        "ms": 34.73620000295341,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1083.png",
+        "ms": 29.28830008022487,
+        "detected": 1
+      },
+      {
+        "image": "entero_grano1094.png",
+        "ms": 28.888900065794587,
+        "detected": 1
+      }
+    ]
+  },
+  "failure_analysis": {
+    "failures": 23,
+    "hypothesized_cause_counts": {
+      "Whole reference with a short/low-elongation silhouette": 16,
+      "Broken reference with an elongated/look-alike silhouette": 7
+    },
+    "note": "Error directions are observed. Root causes and original label correctness are not independently verified."
+  },
+  "original_feature_table_sha256": "70fc5c9e118bbca6c13a7b9d43b06d28ba923f6d3b2a14910038c04f6542a04a",
+  "publication_note": "Source image paths were made relative; numeric features and split assignments are unchanged. Timings are the original local measurement."
+}

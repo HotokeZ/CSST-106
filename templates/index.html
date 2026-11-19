@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BigasCheck · Rice grain inspection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="BigasCheck home"><span class="brand-icon">◒</span> BigasCheck<span class="tag">LAB</span></a><span class="prototype">Computer vision prototype <i></i> Local workspace</span></header>
+<main>
+  <div class="eyebrow">FROM GRAINS TO INSIGHT</div>
+  <h1>A closer look at<br>every grain.</h1>
+  <p class="intro">Inspect rice grain integrity with interpretable image analysis.<br>Upload a controlled sample to count, measure, and review.</p>
+  <div class="workspace">
+    <section class="panel input-panel" aria-labelledby="input-title">
+      <div class="panel-heading"><span class="step">01</span><h2 id="input-title">Your sample</h2><span class="small-label">IMAGE INPUT</span></div>
+      <form id="analysis-form">
+        <label class="upload" id="dropzone" for="image-input">
+          <img id="upload-preview" class="upload-preview" alt="Selected rice photograph" hidden>
+          <span class="upload-symbol upload-placeholder">&#8593;</span>
+          <strong class="upload-placeholder">Drop your rice photograph here</strong>
+          <span class="upload-placeholder">or click to choose a file</span>
+          <small class="upload-placeholder">JPG, PNG, WEBP &middot; up to 15 MB / 20 MP</small>
+          <span class="upload-replace">Click or drop a photo to replace</span>
+          <input id="image-input" name="image" type="file" aria-label="Upload or replace rice photograph" accept="image/jpeg,image/png,image/webp,image/bmp,image/tiff" required>
+        </label>
+        <div class="file-info" id="file-info" aria-live="polite">No image selected</div>
+        <details class="sample-library" id="sample-library" open>
+          <summary>Or try a test sample <span id="sample-total"></span></summary>
+          <p class="sample-help">No photo? Choose a held-out dataset image or a six-grain composite.</p>
+          <div class="sample-filters" role="group" aria-label="Filter test samples">
+            <button type="button" data-sample-filter="all" aria-pressed="true">All</button>
+            <button type="button" data-sample-filter="whole" aria-pressed="false">Whole</button>
+            <button type="button" data-sample-filter="broken" aria-pressed="false">Broken</button>
+            <button type="button" data-sample-filter="mixed" aria-pressed="false">Mixed</button>
+          </div>
+          <div id="sample-message" class="sample-message" aria-live="polite">Loading test samples...</div>
+          <div class="sample-grid" id="sample-grid" aria-label="Available test samples"></div>
+          <div class="sample-pagination"><button id="sample-prev" type="button" disabled>Previous</button><span id="sample-page"></span><button id="sample-next" type="button" disabled>Next</button></div>
+        </details>
+        <div id="sample-selection" class="sample-selection" hidden><span id="selected-sample-label"></span><button type="button" id="clear-sample">Clear sample</button></div>
+        <div class="form-grid"><label>Background<select name="background"><option value="auto" selected>Auto detect</option><option value="dark">Dark background</option><option value="pale">Pale background / white rice</option></select></label><label>Minimum area (px)<input type="number" name="min_area" min="1" max="1000000" value="{{ settings.min_area if settings else 30 }}"></label></div>
+        <label class="method-label">Touching grains<select name="split_touching"><option value="true" selected>Attempt to separate</option><option value="false">Keep connected regions</option></select></label>
+        {% if trained %}<label class="method-label">Classification method<select name="method"><option value="decision_tree">Decision Tree</option><option value="baseline">Shape baseline</option></select></label>{% endif %}
+        <button class="primary" id="analyze-button" type="submit">Analyze sample <span>↗</span></button>
+        <p id="error" class="error" role="alert" hidden></p>
+      </form>
+      <div class="capture-note"><span>◎</span><div><strong>Make the image count.</strong><p>Use even lighting and a plain background. Keep grains separate and the camera scale consistent with training.</p></div></div>
+      <div class="model-status {{ 'ready' if trained else '' }}"><i></i><div><strong>{{ 'Trained classifier loaded' if trained else 'Segmentation preview' }}</strong><p>{{ 'Shape-based predictions are experimental on crowded photos.' if trained else 'Train a model to enable whole / broken predictions.' }}</p></div></div>
+      {% if model_error %}<p class="error">Model unavailable: {{ model_error }}</p>{% endif %}
+    </section>
+    <section class="panel result-panel" aria-labelledby="result-title">
+      <div class="panel-heading"><span class="step">02</span><h2 id="result-title">Inspection results</h2><span id="result-status" class="small-label">AWAITING SAMPLE</span></div>
+      <p id="sample-reference" class="sample-reference" hidden></p>
+      <div class="metrics"><div><span>Grain candidates</span><strong id="detected">—</strong></div><div><span>Whole</span><strong id="whole">—</strong></div><div><span>Broken</span><strong id="broken">—</strong></div><div class="metric-accent"><span>Broken by count</span><strong id="percentage">—</strong></div></div>
+      <div class="preview" id="preview"><div id="empty-preview"><span class="grain-art"><i></i><i></i><i></i><i></i><i></i></span><h3>Your sample, made measurable.</h3><p>Detected grains and their measurements<br>will appear here after analysis.</p></div><img id="result-image" alt="Rice sample with detected grain regions" hidden></div>
+      <div class="result-tools"><div class="legend"><span><i class="whole-dot"></i>Whole</span><span><i class="broken-dot"></i>Broken</span><span><i class="unknown-dot"></i>Unclassified</span></div><span id="processing-time" class="processing-time" aria-live="polite"></span><button id="mask-toggle" type="button" disabled>Show mask</button></div>
+      <div id="results-detail" hidden><div id="warnings" class="warnings"></div><div class="download-row"><button id="download-json" type="button">Download report ↓</button><button id="download-csv" type="button">Grain data CSV ↓</button><button id="download-image" type="button">Annotated image ↓</button></div><details><summary>Grain measurements</summary><div class="table-wrap"><table><thead><tr><th>Grain</th><th>Prediction</th><th title="Decision-tree leaf vote; not calibrated certainty">Model score</th><th>Area (px²)</th><th>Length (px)</th><th>Aspect ratio</th></tr></thead><tbody id="grain-rows"></tbody></table></div></details></div>
+    </section>
+  </div>
+  <footer><span>BIGASCHECK <b>/</b> Experimental rice inspection</span><span>Count-based estimates · Not an official rice grade</span></footer>
+</main>
+</body></html>

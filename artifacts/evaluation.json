@@ -1,0 +1,149 @@
+{
+  "training_mode": "exploratory_source_labels",
+  "feature_mode": "shape",
+  "classification_features": [
+    "aspect_ratio",
+    "solidity",
+    "ellipse_fill"
+  ],
+  "dataset": {
+    "images": 3877,
+    "classes": {
+      "whole": 3087,
+      "broken": 790
+    }
+  },
+  "split_unit": "image",
+  "split": {
+    "train": {
+      "instances": 2713,
+      "groups": []
+    },
+    "validation": {
+      "instances": 582,
+      "groups": []
+    },
+    "test": {
+      "instances": 582,
+      "groups": []
+    }
+  },
+  "settings": {
+    "background": "dark",
+    "min_area": 30,
+    "max_area_fraction": 0.6,
+    "morphology": 1,
+    "exclude_border": true
+  },
+  "segmentation_backend": "scipy-fallback",
+  "validation_broken_f1": 0.904,
+  "decision_tree_parameters": {
+    "max_depth": 5,
+    "min_samples_leaf": 10
+  },
+  "baseline_feature": "aspect_ratio",
+  "baseline_threshold": 2.4121394648736127,
+  "test": {
+    "decision_tree": {
+      "accuracy": 0.9604810996563574,
+      "broken_f1": 0.9068825910931174,
+      "confusion_matrix_labels": [
+        "whole",
+        "broken"
+      ],
+      "confusion_matrix": [
+        [
+          447,
+          16
+        ],
+        [
+          7,
+          112
+        ]
+      ],
+      "classification_report": {
+        "whole": {
+          "precision": 0.9845814977973568,
+          "recall": 0.9654427645788337,
+          "f1-score": 0.9749182115594329,
+          "support": 463.0
+        },
+        "broken": {
+          "precision": 0.875,
+          "recall": 0.9411764705882353,
+          "f1-score": 0.9068825910931174,
+          "support": 119.0
+        },
+        "accuracy": 0.9604810996563574,
+        "macro avg": {
+          "precision": 0.9297907488986784,
+          "recall": 0.9533096175835345,
+          "f1-score": 0.9409004013262752,
+          "support": 582.0
+        },
+        "weighted avg": {
+          "precision": 0.9621756589006464,
+          "recall": 0.9604810996563574,
+          "f1-score": 0.9610071482682103,
+          "support": 582.0
+        }
+      }
+    },
+    "baseline": {
+      "accuracy": 0.9587628865979382,
+      "broken_f1": 0.8983050847457628,
+      "confusion_matrix_labels": [
+        "whole",
+        "broken"
+      ],
+      "confusion_matrix": [
+        [
+          452,
+          11
+        ],
+        [
+          13,
+          106
+        ]
+      ],
+      "classification_report": {
+        "whole": {
+          "precision": 0.9720430107526882,
+          "recall": 0.9762419006479481,
+          "f1-score": 0.9741379310344828,
+          "support": 463.0
+        },
+        "broken": {
+          "precision": 0.905982905982906,
+          "recall": 0.8907563025210085,
+          "f1-score": 0.8983050847457628,
+          "support": 119.0
+        },
+        "accuracy": 0.9587628865979382,
+        "macro avg": {
+          "precision": 0.9390129583677971,
+          "recall": 0.9334991015844782,
+          "f1-score": 0.9362215078901228,
+          "support": 582.0
+        },
+        "weighted avg": {
+          "precision": 0.9585358759286261,
+          "recall": 0.9587628865979382,
+          "f1-score": 0.9586325896111878,
+          "support": 582.0
+        }
+      }
+    }
+  },
+  "feature_importance": {
+    "aspect_ratio": 0.9826193417386512,
+    "solidity": 0.009012393803798967,
+    "ellipse_fill": 0.008368264457549839
+  },
+  "limitations": [
+    "Shape predictions are experimental on crowded or pale-background photos; silhouette errors change the features.",
+    "Naturally short whole grains can resemble broken grains. Camera-scale invariance does not resolve that ambiguity.",
+    "Source-image splits are retained; capture groups and independent local-photo accuracy remain unverified.",
+    "This development test set has been used in earlier prototype reports. Final evaluation requires fresh held-out captures."
+  ]
+}
