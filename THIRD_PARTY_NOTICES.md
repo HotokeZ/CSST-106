@@ -4,6 +4,6 @@ The team supplied the MIT text preserved verbatim in `docs/USER_PROVIDED_LICENSE
 
 Source supplied by the team and checked on 2026-11-19: https://www.mit.edu/~amini/LICENSE.md. The page matches the supplied MIT notice and names Mark Otto (2013) and Andrew Fong (2017). It does not identify the Peruvian rice dataset or BigasCheck.
 
-This notice has therefore not been represented as a verified license for the Peruvian rice photographs, the source dataset as a whole, or newly written BigasCheck code. Dataset coverage still needs confirmation from the dataset publisher's licensing information. Please retain the original attribution for any component covered by this notice.
+On 2026-11-19, the Kaggle dataset page's License field was directly inspected in a browser. It lists MIT and links to the exact notice above: https://www.kaggle.com/datasets/cristhiansempertegui/dataset-de-arroz-peruano. This records the publisher's stated dataset license; the standalone MIT-hosted notice does not itself name the dataset. Preserve the supplied notice and its original copyrights when distributing covered material, and credit dataset creator Cristhian Sempertegui. This third-party notice does not establish a license for newly written BigasCheck code.
 
 Raw dataset images, dataset ZIPs and local user photographs are not included in this repository export. The dataset source and remaining provenance checks are documented in `docs/DATA_CARD.md`.
