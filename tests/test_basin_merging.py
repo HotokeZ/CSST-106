@@ -4,6 +4,14 @@ from bigascheck.vision import _merge_unconstricted_basins
 
 
 class BasinMergingTests(unittest.TestCase):
+    def test_offset_fragments_do_not_qualify_as_side_by_side_grains(self):
+        basins = np.zeros((24, 110), dtype=np.int32)
+        basins[:12, :80] = 1
+        basins[12:, 30:] = 2
+        _, count = _merge_unconstricted_basins(
+            basins, np.ones(basins.shape), basins > 0, 2)
+        self.assertEqual(count, 1)
+
     def test_parallel_elongated_regions_survive_a_broad_contact(self):
         basins = np.ones((24, 80), dtype=np.int32)
         basins[12:] = 2
