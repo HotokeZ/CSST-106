@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "seed": 42,
+  "source_manifest_sha256": "eb95fdbac3323d438f0b7fd95df4a8f71c8dee90e58f95e81087ec07949c234c",
+  "manifest_sha256": "90dd677e65d3df61b8802f6518276970654d5c287d24e6ddb1e02c36715a2395",
+  "counts": {
+    "train": 18,
+    "sample": 5,
+    "test": 10
+  },
+  "test_condition_quotas": {
+    "difficult_background": 3,
+    "overlap": 3,
+    "separated": 4
+  },
+  "sample_condition_quotas": {
+    "difficult_background": 2,
+    "overlap": 1,
+    "separated": 2
+  },
+  "reserved_training_examples": [
+    "local_005",
+    "local_007",
+    "local_021",
+    "local_024"
+  ],
+  "unlabelled_training_photos": [
+    "local_021"
+  ],
+  "warning": "Development partition: these photographs were inspected previously. Capture/sample groups are unknown; image separation does not establish independence.",
+  "validation": "Leave-one-photo-out selection within labelled training photos only; no separate local validation folder.",
+  "kaggle": "Original Kaggle train/validation/test assignments remain available and unchanged."
+}

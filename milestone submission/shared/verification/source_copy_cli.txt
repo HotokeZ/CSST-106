@@ -1,0 +1,7 @@
+Command: C:\Python313\python.exe src/run.py --input sample_inputs --output outputs/demo --background dark --connected-regions
+{
+  "images": 6,
+  "errors": 0,
+  "output": "outputs/demo"
+}
+

@@ -1,0 +1,45 @@
+{
+  "photos": 33,
+  "labeled": 32,
+  "missing_counts": [
+    {
+      "photo_id": "local_021",
+      "image": "originals/local_021.jpg",
+      "condition": "Overlap",
+      "original_filename": "IMG_20261120_195353.jpg",
+      "actual_whole": "",
+      "actual_broken": "",
+      "sample_id": "",
+      "group_id": "",
+      "group_status": "unknown",
+      "count_source": "user filename",
+      "count_note": "count missing",
+      "sha256": "8e0408e2aedfd6032013494a3a750b3500a4789de60dc38c075235d80ca6a047",
+      "duplicate_of": "",
+      "width": 3072,
+      "height": 4096,
+      "split": "local_evaluation_only"
+    }
+  ],
+  "duplicate_photos": [],
+  "over_20_megapixels": 0,
+  "whole_only_zero_broken_assumptions": [
+    "local_005",
+    "local_020",
+    "local_023",
+    "local_025",
+    "local_026",
+    "local_027",
+    "local_028",
+    "local_029",
+    "local_030",
+    "local_032",
+    "local_033"
+  ],
+  "grouping": "Unknown. No per-photo unique capture groups invented. Do not split this cohort into training and final test without reliable physical sample/session grouping.",
+  "counts_status": "User filename counts, not independently reviewed",
+  "archive_sha256": "c0b764e0744ae93960f0b724c93680ca5387dc948b7d6004b0a71a4dd38043cd",
+  "exact_source_hash_overlap": 0,
+  "known_whole_total": 396,
+  "known_broken_total": 181
+}

@@ -25,6 +25,7 @@ class Settings:
     morphology: int = 1
     exclude_border: bool = True
     split_touching: bool = False
+    detector: str = "legacy"
 
     def __post_init__(self):
         if self.background not in {"auto", "dark", "light", "pale"}:
@@ -33,14 +34,19 @@ class Settings:
             raise ValueError("Invalid grain area limits.")
         if self.morphology not in range(4):
             raise ValueError("Morphology must be between 0 and 3.")
+        if self.detector not in {"legacy", "adaptive"}:
+            raise ValueError("Detector must be legacy or adaptive.")
 
 
-def load_rgb(source):
+def load_rgb(source, max_edge=None):
     with Image.open(source) as im:
         if im.width * im.height > 20_000_000:
             raise ValueError("Use an image with at most 20 megapixels.")
         # Apply smartphone EXIF rotation before measuring grains.
-        return np.asarray(ImageOps.exif_transpose(im).convert("RGB")).copy()
+        im = ImageOps.exif_transpose(im).convert("RGB")
+        if max_edge is not None:
+            im.thumbnail((max_edge, max_edge), Image.Resampling.LANCZOS)
+        return np.asarray(im).copy()
 
 
 def backend():
@@ -134,7 +140,58 @@ def _hull_area(local):
         return float(local.sum())
 
 
-def _separate_touching(mask, min_area):
+def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thresh=0.68):
+    if seed_count <= 1:
+        return basins, seed_count
+    basin_max = {}
+    for s in range(1, seed_count + 1):
+        b_mask = (basins == s) & local
+        basin_max[s] = float(distance[b_mask].max()) if b_mask.any() else 0.0
+
+    parent = list(range(seed_count + 1))
+    def find(i):
+        if parent[i] == i:
+            return i
+        parent[i] = find(parent[i])
+        return parent[i]
+    def union(i, j):
+        ri, rj = find(i), find(j)
+        if ri != rj:
+            parent[ri] = rj
+
+    h_adj = (basins[:, 1:] != basins[:, :-1]) & (basins[:, 1:] > 0) & (basins[:, :-1] > 0) & local[:, 1:] & local[:, :-1]
+    pairs = set(zip(basins[:, :-1][h_adj], basins[:, 1:][h_adj]))
+    v_adj = (basins[1:, :] != basins[:-1, :]) & (basins[1:, :] > 0) & (basins[:-1, :] > 0) & local[1:, :] & local[:-1, :]
+    pairs.update(zip(basins[:-1, :][v_adj], basins[1:, :][v_adj]))
+
+    for s1, s2 in pairs:
+        if s1 == s2:
+            continue
+        b1 = basins == s1
+        b2 = basins == s2
+        seam = (ndimage.binary_dilation(b1, np.ones((3, 3))) & b2 & local) | (ndimage.binary_dilation(b2, np.ones((3, 3))) & b1 & local)
+        if seam.any():
+            max_seam = float(distance[seam].max())
+            p_min = min(basin_max[s1], basin_max[s2])
+            ratio = max_seam / max(p_min, 1e-3)
+            if ratio >= ratio_thresh:
+                union(s1, s2)
+
+    label_map = {}
+    next_id = 1
+    for s in range(1, seed_count + 1):
+        root = find(s)
+        if root not in label_map:
+            label_map[root] = next_id
+            next_id += 1
+
+    new_basins = np.zeros_like(basins)
+    for s in range(1, seed_count + 1):
+        new_basins[basins == s] = label_map[find(s)]
+    return new_basins, next_id - 1
+
+
+def _separate_touching(mask, min_area, typical_area=None):
     """Distance-transform markers with prominence suppression and watershed.
 
     Reconstruction suppresses small peaks along a single long grain so those
@@ -150,14 +207,16 @@ def _separate_touching(mask, min_area):
         # A nearly convex isolated silhouette should remain one grain. This
         # prevents small intensity/edge irregularities from splitting source
         # grains that already have a clear outer boundary.
-        if local.sum() < min_area * 2 or local.sum() / max(_hull_area(local), 1) >= 0.93:
+        if (local.sum() < min_area * 2
+                or (typical_area is not None and local.sum() <= 1.2 * typical_area)
+                or local.sum() / max(_hull_area(local), 1) >= 0.93):
             labels[box][local] = next_label
             next_label += 1
             continue
         padded = np.pad(local, 1)
         distance = ndimage.distance_transform_edt(padded)
         typical_radius = float(np.percentile(distance[padded], 90))
-        prominence = max(1.0, 0.35 * typical_radius)
+        prominence = max(2.0, 0.32 * typical_radius)
         reconstruction = np.maximum(distance - prominence, 0)
         for _ in range(max(padded.shape) * 2):
             expanded = np.minimum(distance, ndimage.grey_dilation(reconstruction, size=(3, 3)))
@@ -171,6 +230,13 @@ def _separate_touching(mask, min_area):
             next_label += 1
             continue
         basins = _watershed_distance(distance, seeds, padded)[1:-1, 1:-1]
+        basins, seed_count = _merge_unconstricted_basins(
+            basins, distance[1:-1, 1:-1], local, seed_count, ratio_thresh=0.72
+        )
+        if seed_count <= 1:
+            labels[box][local] = next_label
+            next_label += 1
+            continue
         sizes = np.bincount(basins[local].clip(min=0), minlength=seed_count + 1)
         # Small basins around a rough grain edge are usually spurious peaks.
         # Compare to the largest basin, not the entire cluster, so a cluster
@@ -184,8 +250,12 @@ def _separate_touching(mask, min_area):
             next_label += 1
             continue
         if len(keep) < seed_count:
-            seeds[(seeds > 0) & ~np.isin(seeds, keep)] = 0
-            basins = _watershed_distance(distance, seeds, padded)[1:-1, 1:-1]
+            seeds = np.zeros_like(basins)
+            for new_id, k in enumerate(keep, 1):
+                seeds[basins == k] = new_id
+            padded_seeds = np.pad(seeds, 1)
+            basins = _watershed_distance(distance, padded_seeds, padded)[1:-1, 1:-1]
+            seed_count = len(keep)
         for seed in range(1, seed_count + 1):
             region = local & (basins == seed)
             if region.any():
@@ -198,7 +268,27 @@ def segment(rgb, settings=Settings()):
     if rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8:
         raise ValueError("Expected an RGB uint8 image.")
     mode = resolve_background(rgb, settings.background)
-    if mode == "pale":
+    border = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]])
+    border_gray = border @ np.array([.299, .587, .114])
+    uniform_surface = np.percentile(border_gray, 95) - np.percentile(border_gray, 5) <= 8
+    adaptive = settings.detector == "adaptive" and mode != "light" and not uniform_surface
+    if adaptive:
+        from .foreground import adaptive_foreground
+        gray = np.round(rgb @ np.array([.299, .587, .114])).astype(np.uint8)
+        mask = adaptive_foreground(rgb)
+        mask = _fill_small_holes(mask, max(9, settings.min_area))
+        labels, _ = ndimage.label(mask, np.ones((3, 3)))
+        # Reject tiny noise and frame/background components before watershed:
+        # splitting rejected background first creates hundreds of false grains.
+        sizes = np.bincount(labels.ravel())
+        keep = (sizes >= settings.min_area) & (sizes <= settings.max_area_fraction * mask.size)
+        keep[0] = False
+        if settings.exclude_border:
+            edge = max(1, settings.morphology + 1)
+            border_ids = np.unique(np.concatenate([labels[:edge].ravel(), labels[-edge:].ravel(), labels[:, :edge].ravel(), labels[:, -edge:].ravel()]))
+            keep[border_ids] = False
+        labels, _ = ndimage.label(keep[labels], np.ones((3, 3)))
+    elif mode == "pale":
         # White rice on a light surface is brighter than its immediate
         # surroundings. White top-hat removes slow illumination changes and
         # avoids classifying the entire pale background as a single object.
@@ -233,7 +323,22 @@ def segment(rgb, settings=Settings()):
             mask = ndimage.binary_closing(mask, np.ones((3, 3)), iterations=settings.morphology)
         labels, _ = ndimage.label(mask, np.ones((3, 3)))
     if settings.split_touching:
-        labels = _separate_touching(labels > 0, settings.min_area)
+        typical_area = None
+        if adaptive:
+            sizes = np.bincount(labels.ravel())[1:]
+            sizes = sizes[sizes >= settings.min_area]
+            if len(sizes) >= 5:
+                # On mostly isolated-grain scenes a small, bent fragment can
+                # have two distance maxima. It is still a single object;
+                # reserve watershed for components larger than a typical one.
+                typical_area = float(np.median(sizes))
+        labels = _separate_touching(labels > 0, settings.min_area, typical_area)
+    effective_min_area = settings.min_area
+    if adaptive:
+        region_sizes = np.bincount(labels.ravel())[1:]
+        plausible = region_sizes[region_sizes >= settings.min_area]
+        if len(plausible) >= 5:
+            effective_min_area = max(settings.min_area, .15 * float(np.median(plausible)))
     grains, rejected = [], []
     height, width = gray.shape
     for component, box in enumerate(ndimage.find_objects(labels), start=1):
@@ -243,7 +348,7 @@ def segment(rgb, settings=Settings()):
         local = labels[box] == component
         area = int(local.sum())
         reason = None
-        if area < settings.min_area:
+        if area < effective_min_area:
             reason = "below_min_area"
         elif area > settings.max_area_fraction * height * width:
             reason = "above_max_area"
@@ -251,6 +356,8 @@ def segment(rgb, settings=Settings()):
                                           or ys.stop >= height-settings.morphology or xs.stop >= width-settings.morphology):
             reason = "touches_border"
         if reason:
+            if adaptive:
+                labels[box][local] = 0
             rejected.append({"area": area, "reason": reason})
             continue
         y, x = np.nonzero(local)
@@ -259,6 +366,22 @@ def segment(rgb, settings=Settings()):
         # Equivalent-ellipse diameters from second central moments, in pixels.
         minor, major = np.maximum(4 * np.sqrt(eigen), 1)
         hull_area = _hull_area(local)
+        if adaptive and (major / minor > 12 or area / max(hull_area, 1) < .45):
+            rejected.append({"area": area, "reason": "implausible_shape"})
+            labels[box][local] = 0
+            continue
+        if mode == "dark":
+            y0 = max(0, ys.start - 6); y1 = min(height, ys.stop + 6)
+            x0 = max(0, xs.start - 6); x1 = min(width, xs.stop + 6)
+            local_p = labels[y0:y1, x0:x1] == component
+            rim_p = ndimage.binary_dilation(local_p, iterations=4) & (labels[y0:y1, x0:x1] == 0)
+            gray_p = gray[y0:y1, x0:x1]
+            g_mean = float(gray_p[local_p].mean()) if local_p.any() else 0.0
+            r_mean = float(gray_p[rim_p].mean()) if rim_p.any() else g_mean
+            if rim_p.any() and g_mean - r_mean < 25.0:
+                rejected.append({"area": area, "reason": "low_contrast_glare"})
+                labels[box][local] = 0
+                continue
         colors = rgb[box][local].astype(float)
         values = [area, major, minor, major / minor, min(area / hull_area, 1),
                   area / local.size, *colors.mean(axis=0), *colors.std(axis=0)]
@@ -273,6 +396,12 @@ def segment(rgb, settings=Settings()):
         visible[:, 1:][seam] = False
         seam = (labels[1:, :] != labels[:-1, :]) & (labels[1:, :] > 0) & (labels[:-1, :] > 0)
         visible[1:, :][seam] = False
+    # Recover dense pale scenes without reopening colored cloth backgrounds.
+    median_rgb = np.median(rgb.reshape(-1, 3), axis=0)
+    pale_neutral_surface = (median_rgb.max() - median_rgb.min()) / max(median_rgb.max(), 1) < .25
+    if adaptive and not grains and mode == "pale" and pale_neutral_surface:
+        from dataclasses import replace
+        return segment(rgb, replace(settings, detector="legacy"))
     return grains, rejected, visible.astype(np.uint8) * 255
 
 

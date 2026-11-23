@@ -52,7 +52,7 @@ The audit lists image counts by folder, metadata files and example paths without
 
 Do not treat rice variety names as whole/broken labels. Stained/chalky categories describe defects, which may coexist with either integrity class; they need independent integrity annotations. Do not silently map either category to broken or whole. If images contain several grains, annotate/crop each grain first; all crops keep their original group. Current training deliberately rejects images in which segmentation finds zero or multiple components.
 
-Confirm the dataset's original provenance and usage/license terms on Kaggle before redistribution. Keep its metadata alongside the raw files. If original capture groups are unknown, record this limitation and obtain reliable grouping before claiming leakage-free research results. An arbitrary unique group for every crop is not reliable grouping.
+Kaggle's License field was inspected on 2026-11-19: it lists MIT and links to https://www.mit.edu/~amini/LICENSE.md. Keep the notice in `docs/USER_PROVIDED_LICENSE.txt` and dataset attribution alongside redistributed covered material; see `THIRD_PARTY_NOTICES.md`. Original capture groups remain unknown: record this limitation and obtain reliable grouping before claiming leakage-free research results. An arbitrary unique group for every crop is not reliable grouping.
 
 ## Capture conditions
 

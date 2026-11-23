@@ -11,7 +11,7 @@ from .model import analyze, load_model
 from .vision import Settings, annotate, load_rgb
 
 
-def run_path(source, output, model="artifacts/model.joblib", background="auto", split_touching=True):
+def run_path(source, output, model="artifacts/model.joblib", background="auto", split_touching=True, detector="adaptive"):
     source, output = Path(source).resolve(), Path(output).resolve()
     if source.is_dir():
         if output.is_relative_to(source):
@@ -24,7 +24,7 @@ def run_path(source, output, model="artifacts/model.joblib", background="auto", 
     if not inputs:
         raise ValueError("No input images found.")
     bundle = load_model(model)
-    settings = replace(Settings(**bundle["settings"]), background=background, split_touching=split_touching)
+    settings = replace(Settings(**bundle["settings"]), background=background, split_touching=split_touching, detector=detector)
     output.mkdir(parents=True, exist_ok=True)
     rows = []
     for path in inputs:
@@ -32,7 +32,7 @@ def run_path(source, output, model="artifacts/model.joblib", background="auto", 
         target = output / key
         target.mkdir(exist_ok=True)
         try:
-            rgb = load_rgb(path)
+            rgb = load_rgb(path, max_edge=1600 if detector == "adaptive" else None)
             result, mask = analyze(rgb, bundle, settings)
             annotate(rgb, result["grains"]).save(target / "annotated.png")
             Image.fromarray(mask).save(target / "mask.png")

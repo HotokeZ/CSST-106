@@ -1,0 +1,202 @@
+{
+  "grains": [
+    {
+      "grain_id": 1,
+      "bbox": [
+        977,
+        92,
+        166,
+        240
+      ],
+      "centroid": [
+        1063.531871444547,
+        206.55341080371468
+      ],
+      "features": {
+        "area": 20567.0,
+        "major_axis": 279.5924824967742,
+        "minor_axis": 94.71606156839947,
+        "aspect_ratio": 2.951901481829095,
+        "solidity": 0.9800343085866766,
+        "extent": 0.5162399598393574,
+        "mean_r": 230.06369426751593,
+        "mean_g": 228.66480283950017,
+        "mean_b": 220.87771673068508,
+        "std_r": 13.591260037959703,
+        "std_g": 14.12638593338153,
+        "std_b": 15.28708031644466
+      },
+      "prediction": "whole",
+      "model_score": 0.9977818447948285
+    },
+    {
+      "grain_id": 2,
+      "bbox": [
+        62,
+        129,
+        299,
+        165
+      ],
+      "centroid": [
+        208.34978324818084,
+        212.74074934200343
+      ],
+      "features": {
+        "area": 25836.0,
+        "major_axis": 326.3535473085839,
+        "minor_axis": 102.33449730402909,
+        "aspect_ratio": 3.189086338490616,
+        "solidity": 0.9751089807703197,
+        "extent": 0.5236850106415324,
+        "mean_r": 229.76675956030346,
+        "mean_g": 227.56490942870414,
+        "mean_b": 219.9387289054033,
+        "std_r": 10.721470698261413,
+        "std_g": 10.616052869569,
+        "std_b": 10.390524417571383
+      },
+      "prediction": "whole",
+      "model_score": 0.9977818447948285
+    },
+    {
+      "grain_id": 3,
+      "bbox": [
+        474,
+        134,
+        323,
+        156
+      ],
+      "centroid": [
+        631.9670537960505,
+        209.7916393838095
+      ],
+      "features": {
+        "area": 29017.0,
+        "major_axis": 341.60744014449483,
+        "minor_axis": 111.80033404715287,
+        "aspect_ratio": 3.0555135908665405,
+        "solidity": 0.9709715738928206,
+        "extent": 0.5758712391839327,
+        "mean_r": 226.06117103766758,
+        "mean_g": 226.4586621635593,
+        "mean_b": 218.58872385153532,
+        "std_r": 10.374472511476393,
+        "std_g": 10.29717424363509,
+        "std_b": 10.049729590361082
+      },
+      "prediction": "whole",
+      "model_score": 0.9977818447948285
+    },
+    {
+      "grain_id": 4,
+      "bbox": [
+        555,
+        541,
+        161,
+        190
+      ],
+      "centroid": [
+        640.3436564657015,
+        635.9572414635636
+      ],
+      "features": {
+        "area": 16371.0,
+        "major_axis": 217.14715716374226,
+        "minor_axis": 98.8892743902625,
+        "aspect_ratio": 2.1958615684323846,
+        "solidity": 0.9436006801348744,
+        "extent": 0.5351748937561295,
+        "mean_r": 162.6421110500275,
+        "mean_g": 160.64693665628246,
+        "mean_b": 161.33675401624825,
+        "std_r": 15.47848240447986,
+        "std_g": 15.322432592702125,
+        "std_b": 15.10487935851959
+      },
+      "prediction": "broken",
+      "model_score": 0.9770791617838391
+    },
+    {
+      "grain_id": 5,
+      "bbox": [
+        165,
+        544,
+        94,
+        184
+      ],
+      "centroid": [
+        208.3118756936737,
+        642.6220865704772
+      ],
+      "features": {
+        "area": 14416.0,
+        "major_axis": 196.0669288255601,
+        "minor_axis": 96.54188404455303,
+        "aspect_ratio": 2.030900171112026,
+        "solidity": 0.9814146640343112,
+        "extent": 0.8334875115633672,
+        "mean_r": 204.27198945615982,
+        "mean_g": 192.48987236403997,
+        "mean_b": 177.61570477247503,
+        "std_r": 9.381388054255318,
+        "std_g": 9.410873913693958,
+        "std_b": 11.216957284335713
+      },
+      "prediction": "broken",
+      "model_score": 0.9854772512014592
+    },
+    {
+      "grain_id": 6,
+      "bbox": [
+        971,
+        567,
+        178,
+        138
+      ],
+      "centroid": [
+        1061.4339399513829,
+        641.457525786742
+      ],
+      "features": {
+        "area": 15221.0,
+        "major_axis": 191.45037244370243,
+        "minor_axis": 103.31822020620393,
+        "aspect_ratio": 1.8530165546948363,
+        "solidity": 0.9766442091754891,
+        "extent": 0.6196466373554795,
+        "mean_r": 204.7220287760331,
+        "mean_g": 199.48262269233297,
+        "mean_b": 203.3344721108994,
+        "std_r": 16.1005416864108,
+        "std_g": 16.292588395157782,
+        "std_b": 16.522356164741495
+      },
+      "prediction": "broken",
+      "model_score": 0.9990982086699394
+    }
+  ],
+  "summary": {
+    "detected": 6,
+    "broken": 3,
+    "whole": 3,
+    "broken_percentage": 50.0,
+    "classified": true,
+    "method": "decision_tree",
+    "background_used": "dark",
+    "split_touching": false,
+    "classification_basis": "shape_only",
+    "count_is_estimate": true,
+    "classification_experimental": true,
+    "processing_ms": 287.55,
+    "backend": "scipy-fallback",
+    "rejected_regions": 0
+  },
+  "warnings": [
+    "Touching grains can merge into one region; spread grains apart.",
+    "Count-based visual estimate; not a mass percentage or official grade.",
+    "Model scores are decision-tree leaf votes, not calibrated probabilities of correctness.",
+    "Whole/broken labels use a shape-only classifier. Predictions and percentages on this photo are experimental and need manual verification.",
+    "Pale-background and crowded-photo percentages have not been validated as rice quality measurements; overlapping grains and short rice varieties can be misclassified.",
+    "Exploratory classifier trained on public dataset labels; validate on local rice photographs."
+  ]
+}

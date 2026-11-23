@@ -1,0 +1,47 @@
+{
+  "format_version": 1,
+  "feature": "aspect_ratio",
+  "threshold": 2.0424703116541343,
+  "minimum_candidates": 4,
+  "detector": "adaptive",
+  "enabled": true,
+  "source_training_instances": 2730,
+  "source_loss_weight": 0.1,
+  "selected_candidate": "aspect_ratio:source_weight=0.1",
+  "objective": "Mean normalized local whole/broken count error + source weight * class-balanced labelled training error (equal domain weights when local single-grain labels are supplied).",
+  "training_photo_ids": [
+    "local_001",
+    "local_002",
+    "local_005",
+    "local_007",
+    "local_008",
+    "local_011",
+    "local_012",
+    "local_014",
+    "local_015",
+    "local_019",
+    "local_020",
+    "local_022",
+    "local_024",
+    "local_026",
+    "local_028",
+    "local_031",
+    "local_033"
+  ],
+  "training_label_unit": "photo_counts",
+  "selection_cv_normalized_count_error": {
+    "aspect_ratio:source_weight=0.1": 0.3542120676021605,
+    "aspect_ratio:source_weight=0.25": 0.38551581717216393,
+    "aspect_ratio:source_weight=0.5": 0.3914894187340008,
+    "aspect_ratio:source_weight=1.0": 0.3718815755967459
+  },
+  "source_tree_training_normalized_count_error": 0.4131639258574243,
+  "selection_note": "Family selection uses leave-one-photo-out errors on training only. These selection scores are not unbiased final performance.",
+  "limitation": "Count supervision cannot establish individual grain label accuracy or a confusion matrix.",
+  "kaggle_feature_table_sha256": "70fc5c9e118bbca6c13a7b9d43b06d28ba923f6d3b2a14910038c04f6542a04a",
+  "local_single_features_sha256": "11227bcdd5bd188a45e22ca95cb64e5fde1029b892ddd15dbf5c5ad58be9bc44",
+  "labelled_training_domains": {
+    "kaggle": 2713,
+    "local_single": 17
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "split": "validation",
+  "instances": 582,
+  "model_sha256": "744d6078dd2211e0e271e2a21042df4b95218a74ea78bc33a64c33057dfb2da3",
+  "feature_table_sha256": "70fc5c9e118bbca6c13a7b9d43b06d28ba923f6d3b2a14910038c04f6542a04a",
+  "model_size_bytes": 7176,
+  "method": "shape",
+  "classification_scope": "Per-grain classification from saved extracted features; not detection or segmentation accuracy.",
+  "evaluation_status": "Development evidence. Source capture groups unknown and the test gallery has been exposed.",
+  "baseline": {
+    "accuracy": 0.9725085910652921,
+    "broken_f1": 0.9333333333333333,
+    "confusion_matrix_labels": [
+      "whole",
+      "broken"
+    ],
+    "confusion_matrix": [
+      [
+        454,
+        9
+      ],
+      [
+        7,
+        112
+      ]
+    ],
+    "classification_report": {
+      "whole": {
+        "precision": 0.9848156182212582,
+        "recall": 0.980561555075594,
+        "f1-score": 0.9826839826839827,
+        "support": 463.0
+      },
+      "broken": {
+        "precision": 0.9256198347107438,
+        "recall": 0.9411764705882353,
+        "f1-score": 0.9333333333333333,
+        "support": 119.0
+      },
+      "accuracy": 0.9725085910652921,
+      "macro avg": {
+        "precision": 0.955217726466001,
+        "recall": 0.9608690128319146,
+        "f1-score": 0.958008658008658,
+        "support": 582.0
+      },
+      "weighted avg": {
+        "precision": 0.9727120130017544,
+        "recall": 0.9725085910652921,
+        "f1-score": 0.9725933859954479,
+        "support": 582.0
+      }
+    },
+    "macro_f1": 0.958008658008658
+  },
+  "decision_tree": {
+    "accuracy": 0.9587628865979382,
+    "broken_f1": 0.904,
+    "confusion_matrix_labels": [
+      "whole",
+      "broken"
+    ],
+    "confusion_matrix": [
+      [
+        445,
+        18
+      ],
+      [
+        6,
+        113
+      ]
+    ],
+    "classification_report": {
+      "whole": {
+        "precision": 0.9866962305986696,
+        "recall": 0.9611231101511879,
+        "f1-score": 0.973741794310722,
+        "support": 463.0
+      },
+      "broken": {
+        "precision": 0.8625954198473282,
+        "recall": 0.9495798319327731,
+        "f1-score": 0.904,
+        "support": 119.0
+      },
+      "accuracy": 0.9587628865979382,
+      "macro avg": {
+        "precision": 0.924645825222999,
+        "recall": 0.9553514710419805,
+        "f1-score": 0.938870897155361,
+        "support": 582.0
+      },
+      "weighted avg": {
+        "precision": 0.9613216662010584,
+        "recall": 0.9587628865979382,
+        "f1-score": 0.9594818741681518,
+        "support": 582.0
+      }
+    },
+    "macro_f1": 0.938870897155361
+  },
+  "hardware": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 190 Stepping 0, GenuineIntel",
+    "logical_cpus": 8,
+    "python": "3.13.3"
+  },
+  "dependencies": {
+    "numpy": "2.3.4",
+    "scipy": "1.16.2",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "Pillow": "12.0.0",
+    "Flask": "3.1.2",
+    "joblib": "1.5.2"
+  },
+  "speed": {
+    "warmup_runs": 3,
+    "images": 20,
+    "mean_ms": 46.02590998983942,
+    "median_ms": 46.97580001084134,
+    "fps_equivalent": 21.726892531201617,
+    "scope": "Load image + segment + extract features + classify on CPU; excludes model loading, rendering, web and disk output.",
+    "settings": {
+      "background": "dark",
+      "min_area": 30,
+      "max_area_fraction": 0.6,
+      "morphology": 1,
+      "exclude_border": true,
+      "split_touching": false
+    },
+    "runs": [
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1004.png",
+        "ms": 48.407900030724704,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1005.png",
+        "ms": 46.74580006394535,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1017.png",
+        "ms": 46.46759992465377,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1028.png",
+        "ms": 47.81269992236048,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1030.png",
+        "ms": 41.45140002947301,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1046.png",
+        "ms": 42.29360003955662,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1056.png",
+        "ms": 45.898100011982024,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1077.png",
+        "ms": 48.47079992759973,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1078.png",
+        "ms": 46.03620001580566,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1086.png",
+        "ms": 48.20089996792376,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano109.png",
+        "ms": 37.27000008802861,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1090.png",
+        "ms": 44.71950000151992,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1091.png",
+        "ms": 48.45889995340258,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1105.png",
+        "ms": 47.453499981202185,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1106.png",
+        "ms": 48.48809994291514,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1107.png",
+        "ms": 46.512700035236776,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1108.png",
+        "ms": 48.102199914865196,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1115.png",
+        "ms": 47.20579995773733,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1117.png",
+        "ms": 47.29679995216429,
+        "detected": 1
+      },
+      {
+        "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1121.png",
+        "ms": 43.22570003569126,
+        "detected": 1
+      }
+    ]
+  },
+  "failure_analysis": {
+    "failures": 24,
+    "hypothesized_cause_counts": {
+      "Whole reference with a short/low-elongation silhouette": 18,
+      "Broken reference with an elongated/look-alike silhouette": 6
+    },
+    "note": "Error directions are observed. Root causes and original label correctness are not independently verified."
+  }
+}

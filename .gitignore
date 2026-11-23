@@ -17,3 +17,11 @@ outputs/
 *.joblib
 !artifacts/model.joblib
 !artifacts/pixel_model.joblib
+
+# User local photo originals and working copies
+data/local_20261120/
+data/local_grains/
+
+# Incoming archives and plotting caches
+*.zip
+**/matplotlib_cache/

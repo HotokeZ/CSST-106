@@ -1,0 +1,67 @@
+photo_id,original_filename,condition,method,status,actual_whole,actual_broken,detected,predicted_whole,predicted_broken,predicted_broken_percentage,pipeline_ms,actual_count,actual_broken_percentage,count_absolute_error,whole_absolute_error,broken_absolute_error,percentage_point_error
+local_001,11 whole 7 broken white bg.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,11,7,30,8,22,73.33333333333333,1160.2840999839827,18,38.888888888888886,12,3,15,34.44444444444444
+local_001,11 whole 7 broken white bg.jpg,"Low Light, Shadow, Different BG",baseline,scored,11,7,30,11,19,63.333333333333336,,18,38.888888888888886,12,0,12,24.44444444444445
+local_002,12 whole 6 broken yellow low light.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,12,6,17,4,13,76.47058823529412,1120.2093000756577,18,33.333333333333336,1,8,7,43.13725490196078
+local_002,12 whole 6 broken yellow low light.jpg,"Low Light, Shadow, Different BG",baseline,scored,12,6,17,6,11,64.70588235294117,,18,33.333333333333336,1,6,5,31.37254901960784
+local_003,15 whole 9 broken yellow bg.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,15,9,29,10,19,65.51724137931035,1192.2167000593618,24,37.5,5,5,10,28.01724137931035
+local_003,15 whole 9 broken yellow bg.jpg,"Low Light, Shadow, Different BG",baseline,scored,15,9,29,10,19,65.51724137931035,,24,37.5,5,5,10,28.01724137931035
+local_004,18 whole 4 broken green low light.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,18,4,21,14,7,33.333333333333336,1100.6606000009924,22,18.181818181818183,1,4,3,15.151515151515152
+local_004,18 whole 4 broken green low light.jpg,"Low Light, Shadow, Different BG",baseline,scored,18,4,21,17,4,19.047619047619047,,22,18.181818181818183,1,1,0,0.865800865800864
+local_005,18 whole green bg.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,18,0,18,16,2,11.11111111111111,1147.2743999911472,18,0.0,0,2,2,11.11111111111111
+local_005,18 whole green bg.jpg,"Low Light, Shadow, Different BG",baseline,scored,18,0,18,17,1,5.555555555555555,,18,0.0,0,1,1,5.555555555555555
+local_006,22 whole 10 broken red low light.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,22,10,84,27,57,67.85714285714286,1445.4265999374911,32,31.25,52,5,47,36.60714285714286
+local_006,22 whole 10 broken red low light.jpg,"Low Light, Shadow, Different BG",baseline,scored,22,10,84,38,46,54.76190476190476,,32,31.25,52,16,36,23.51190476190476
+local_007,5 whole 5 broke blue bg.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,5,5,10,3,7,70.0,1384.3216999666765,10,50.0,0,2,2,20.0
+local_007,5 whole 5 broke blue bg.jpg,"Low Light, Shadow, Different BG",baseline,scored,5,5,10,5,5,50.0,,10,50.0,0,0,0,0.0
+local_008,5 whole 7 broken.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,5,7,12,5,7,58.333333333333336,1185.026100021787,12,58.333333333333336,0,0,0,0.0
+local_008,5 whole 7 broken.jpg,"Low Light, Shadow, Different BG",baseline,scored,5,7,12,6,6,50.0,,12,58.333333333333336,0,1,1,8.333333333333336
+local_009,6 whole 1 broken gray.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,6,1,24,6,18,75.0,1390.5894999625161,7,14.285714285714286,17,0,17,60.714285714285715
+local_009,6 whole 1 broken gray.jpg,"Low Light, Shadow, Different BG",baseline,scored,6,1,24,8,16,66.66666666666667,,7,14.285714285714286,17,2,15,52.38095238095239
+local_010,8 whole 4 broken pattern bg.jpg,"Low Light, Shadow, Different BG",decision_tree,scored,8,4,38,8,30,78.94736842105263,1293.97290002089,12,33.333333333333336,26,0,26,45.614035087719294
+local_010,8 whole 4 broken pattern bg.jpg,"Low Light, Shadow, Different BG",baseline,scored,8,4,38,9,29,76.3157894736842,,12,33.333333333333336,26,1,25,42.98245614035087
+local_011,11 whole 7 broken overlap.jpg,Overlap,decision_tree,scored,11,7,19,6,13,68.42105263157895,1354.871999938041,18,38.888888888888886,1,5,6,29.53216374269006
+local_011,11 whole 7 broken overlap.jpg,Overlap,baseline,scored,11,7,19,7,12,63.1578947368421,,18,38.888888888888886,1,4,5,24.269005847953217
+local_012,12 whole 7 broken overlap.jpg,Overlap,decision_tree,scored,12,7,21,6,15,71.42857142857143,1563.065900001675,19,36.8421052631579,2,6,8,34.58646616541353
+local_012,12 whole 7 broken overlap.jpg,Overlap,baseline,scored,12,7,21,8,13,61.904761904761905,,19,36.8421052631579,2,4,6,25.062656641604008
+local_013,13 whole 11 broken overlap.jpg,Overlap,decision_tree,scored,13,11,23,9,14,60.869565217391305,1686.5985000040382,24,45.833333333333336,1,4,3,15.036231884057969
+local_013,13 whole 11 broken overlap.jpg,Overlap,baseline,scored,13,11,23,11,12,52.17391304347826,,24,45.833333333333336,1,2,1,6.340579710144922
+local_014,13 whole 17 broken overlap.jpg,Overlap,decision_tree,scored,13,17,22,8,14,63.63636363636363,1532.7952000079677,30,56.666666666666664,8,5,3,6.969696969696969
+local_014,13 whole 17 broken overlap.jpg,Overlap,baseline,scored,13,17,22,10,12,54.54545454545455,,30,56.666666666666664,8,3,5,2.1212121212121176
+local_015,16 whole 14 broken overlap.jpg,Overlap,decision_tree,scored,16,14,26,7,19,73.07692307692308,1504.2726999381557,30,46.666666666666664,4,9,5,26.410256410256416
+local_015,16 whole 14 broken overlap.jpg,Overlap,baseline,scored,16,14,26,11,15,57.69230769230769,,30,46.666666666666664,4,5,1,11.025641025641029
+local_016,16 whole 17 broken overlap.jpg,Overlap,decision_tree,scored,16,17,31,13,18,58.064516129032256,1479.4721000362188,33,51.515151515151516,2,3,1,6.549364613880741
+local_016,16 whole 17 broken overlap.jpg,Overlap,baseline,scored,16,17,31,14,17,54.83870967741935,,33,51.515151515151516,2,2,0,3.3235581622678367
+local_017,19 whole 19 broken overlap.jpg,Overlap,decision_tree,scored,19,19,33,6,27,81.81818181818181,1250.2437999937683,38,50.0,5,13,8,31.818181818181813
+local_017,19 whole 19 broken overlap.jpg,Overlap,baseline,scored,19,19,33,9,24,72.72727272727273,,38,50.0,5,10,5,22.727272727272734
+local_018,9 whole 5 broken overlap(2).jpg,Overlap,decision_tree,scored,9,5,17,6,11,64.70588235294117,1108.877099934034,14,35.714285714285715,3,3,6,28.99159663865546
+local_018,9 whole 5 broken overlap(2).jpg,Overlap,baseline,scored,9,5,17,7,10,58.8235294117647,,14,35.714285714285715,3,2,5,23.109243697478988
+local_019,9 whole 5 broken overlap.jpg,Overlap,decision_tree,scored,9,5,12,5,7,58.333333333333336,1156.4254000550136,14,35.714285714285715,2,4,2,22.61904761904762
+local_019,9 whole 5 broken overlap.jpg,Overlap,baseline,scored,9,5,12,7,5,41.666666666666664,,14,35.714285714285715,2,2,0,5.952380952380949
+local_020,9 whole overlap.jpg,Overlap,decision_tree,scored,9,0,20,1,19,95.0,1187.0256999973208,9,0.0,11,8,19,95.0
+local_020,9 whole overlap.jpg,Overlap,baseline,scored,9,0,20,2,18,90.0,,9,0.0,11,7,18,90.0
+local_021,IMG_20261120_195353.jpg,Overlap,decision_tree,unscored_missing_counts,,,20,7,13,65.0,1264.1499999444932,,,,,,
+local_021,IMG_20261120_195353.jpg,Overlap,baseline,unscored_missing_counts,,,20,8,12,60.0,,,,,,,
+local_022,10 whole 6 broken .jpg,Separated,decision_tree,scored,10,6,16,6,10,62.5,1158.307999954559,16,37.5,0,4,4,25.0
+local_022,10 whole 6 broken .jpg,Separated,baseline,scored,10,6,16,10,6,37.5,,16,37.5,0,0,0,0.0
+local_023,10 whole.jpg,Separated,decision_tree,scored,10,0,10,8,2,20.0,1152.8655000729486,10,0.0,0,2,2,20.0
+local_023,10 whole.jpg,Separated,baseline,scored,10,0,10,10,0,0.0,,10,0.0,0,0,0,0.0
+local_024,12 whole 10 broken.jpg,Separated,decision_tree,scored,12,10,22,5,17,77.27272727272727,1185.3573000989854,22,45.45454545454545,0,7,7,31.818181818181813
+local_024,12 whole 10 broken.jpg,Separated,baseline,scored,12,10,22,9,13,59.09090909090909,,22,45.45454545454545,0,3,3,13.63636363636364
+local_025,12 whole.jpg,Separated,decision_tree,scored,12,0,12,11,1,8.333333333333334,1330.093999975361,12,0.0,0,1,1,8.333333333333334
+local_025,12 whole.jpg,Separated,baseline,scored,12,0,12,12,0,0.0,,12,0.0,0,0,0,0.0
+local_026,15 whole.jpg,Separated,decision_tree,scored,15,0,15,13,2,13.333333333333334,1434.2188000446185,15,0.0,0,2,2,13.333333333333334
+local_026,15 whole.jpg,Separated,baseline,scored,15,0,15,15,0,0.0,,15,0.0,0,0,0,0.0
+local_027,16 whole.jpg,Separated,decision_tree,scored,16,0,16,5,11,68.75,1360.9998999163508,16,0.0,0,11,11,68.75
+local_027,16 whole.jpg,Separated,baseline,scored,16,0,16,15,1,6.25,,16,0.0,0,1,1,6.25
+local_028,21 whole.jpg,Separated,decision_tree,scored,21,0,21,13,8,38.095238095238095,1262.907600030303,21,0.0,0,8,8,38.095238095238095
+local_028,21 whole.jpg,Separated,baseline,scored,21,0,21,18,3,14.285714285714286,,21,0.0,0,3,3,14.285714285714286
+local_029,22 whole.jpg,Separated,decision_tree,scored,22,0,22,8,14,63.63636363636363,1258.9504000497982,22,0.0,0,14,14,63.63636363636363
+local_029,22 whole.jpg,Separated,baseline,scored,22,0,22,19,3,13.636363636363637,,22,0.0,0,3,3,13.636363636363637
+local_030,6 whole.jpg,Separated,decision_tree,scored,6,0,6,4,2,33.333333333333336,1242.813300108537,6,0.0,0,2,2,33.333333333333336
+local_030,6 whole.jpg,Separated,baseline,scored,6,0,6,6,0,0.0,,6,0.0,0,0,0,0.0
+local_031,8 whole 10 broken.jpg,Separated,decision_tree,scored,8,10,19,6,13,68.42105263157895,1172.5562999490649,18,55.55555555555556,1,2,3,12.865497076023388
+local_031,8 whole 10 broken.jpg,Separated,baseline,scored,8,10,19,7,12,63.1578947368421,,18,55.55555555555556,1,1,2,7.6023391812865455
+local_032,8 whole.jpg,Separated,decision_tree,scored,8,0,8,7,1,12.5,1062.6280000433326,8,0.0,0,1,1,12.5
+local_032,8 whole.jpg,Separated,baseline,scored,8,0,8,8,0,0.0,,8,0.0,0,0,0,0.0
+local_033,9 whole.jpg,Separated,decision_tree,scored,9,0,9,6,3,33.333333333333336,1104.778900044039,9,0.0,0,3,3,33.333333333333336
+local_033,9 whole.jpg,Separated,baseline,scored,9,0,9,9,0,0.0,,9,0.0,0,0,0,0.0

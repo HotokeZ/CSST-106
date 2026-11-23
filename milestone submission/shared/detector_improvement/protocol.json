@@ -1,0 +1,29 @@
+{
+  "prepared": "2026-11-20",
+  "model_sha256": "744d6078dd2211e0e271e2a21042df4b95218a74ea78bc33a64c33057dfb2da3",
+  "manifest_sha256": "eb95fdbac3323d438f0b7fd95df4a8f71c8dee90e58f95e81087ec07949c234c",
+  "backend": "scipy-fallback",
+  "settings": {
+    "background": "auto",
+    "min_area": 30,
+    "max_area_fraction": 0.6,
+    "morphology": 1,
+    "exclude_border": true,
+    "split_touching": true,
+    "detector": "adaptive"
+  },
+  "max_image_edge": 1600,
+  "resize": "EXIF transpose; RGB; proportional thumbnail to max 1600 using LANCZOS; save JPEG quality 95; no crops",
+  "selection": "All supplied photos. Score only complete filename counts; no selection based on predictions. Whole-only filenames imply zero broken, pending user confirmation.",
+  "grouping": "Physical sample/capture groups unknown; descriptive pooled and condition-level scores only. No capture-level independence or group confidence intervals claimed.",
+  "training": "No training or parameter tuning on these photos. Frozen saved model. Once evaluated, these images are exposed evaluation data.",
+  "count_reference": "User filename whole/broken counts; not independently reviewed. Photo IDs identify files, not physical rice samples.",
+  "timing": "Decode working JPEG + segmentation + features + tree; first image recorded separately, mean excludes first warm-up; excludes original resizing, rendering and disk output.",
+  "evaluation_status": "Development comparison: these photo results guided adaptive detector changes; not an untouched final test.",
+  "code_sha256": {
+    "src/evaluate_local.py": "d812e497b6a6695d52b615e6d4e227c394b72f814d3ca4ab0c76ff823f431f36",
+    "bigascheck/vision.py": "b5eede29106022b88c9ca9a120835ce1eee9c1bf1ac742b6f5360a6a8cf88d03",
+    "bigascheck/foreground.py": "71178a0957d793eac26f7ee4b305e3f1458d6555020b4ae9d0b8c725569698ba",
+    "bigascheck/model.py": "91ee0ee8eac45916736a026a351fb0fe10e735bd887d68374f57a176b007dd86"
+  }
+}

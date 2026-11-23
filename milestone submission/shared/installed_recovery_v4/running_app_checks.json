@@ -1,0 +1,127 @@
+[
+  {
+    "file": "local_007.jpg",
+    "minimum_area": 30,
+    "summary": {
+      "backend": "scipy-fallback",
+      "background_used": "dark",
+      "broken": 7,
+      "broken_percentage": 70.0,
+      "classification_basis": "shape_only",
+      "classification_experimental": true,
+      "classified": true,
+      "count_is_estimate": true,
+      "detected": 10,
+      "method": "decision_tree",
+      "processing_ms": 2526.355,
+      "rejected_regions": 3,
+      "split_touching": true,
+      "whole": 3
+    },
+    "preprocessing": {
+      "detector": "adaptive",
+      "height": 1600,
+      "width": 1200
+    }
+  },
+  {
+    "file": "local_007.jpg",
+    "minimum_area": 500,
+    "summary": {
+      "backend": "scipy-fallback",
+      "background_used": "dark",
+      "broken": 6,
+      "broken_percentage": 66.66666666666667,
+      "classification_basis": "shape_only",
+      "classification_experimental": true,
+      "classified": true,
+      "count_is_estimate": true,
+      "detected": 9,
+      "method": "decision_tree",
+      "processing_ms": 1630.209,
+      "rejected_regions": 0,
+      "split_touching": true,
+      "whole": 3
+    },
+    "preprocessing": {
+      "detector": "adaptive",
+      "height": 1600,
+      "width": 1200
+    }
+  },
+  {
+    "file": "local_005.jpg",
+    "minimum_area": 30,
+    "summary": {
+      "backend": "scipy-fallback",
+      "background_used": "pale",
+      "broken": 2,
+      "broken_percentage": 11.11111111111111,
+      "classification_basis": "shape_only",
+      "classification_experimental": true,
+      "classified": true,
+      "count_is_estimate": true,
+      "detected": 18,
+      "method": "decision_tree",
+      "processing_ms": 1237.109,
+      "rejected_regions": 1,
+      "split_touching": true,
+      "whole": 16
+    },
+    "preprocessing": {
+      "detector": "adaptive",
+      "height": 1600,
+      "width": 1200
+    }
+  },
+  {
+    "file": "rice_test_2.jpg",
+    "minimum_area": 30,
+    "summary": {
+      "backend": "scipy-fallback",
+      "background_used": "pale",
+      "broken": 109,
+      "broken_percentage": 83.84615384615384,
+      "classification_basis": "shape_only",
+      "classification_experimental": true,
+      "classified": true,
+      "count_is_estimate": true,
+      "detected": 130,
+      "method": "decision_tree",
+      "processing_ms": 1272.295,
+      "rejected_regions": 68,
+      "split_touching": true,
+      "whole": 21
+    },
+    "preprocessing": {
+      "detector": "adaptive",
+      "height": 554,
+      "width": 554
+    }
+  },
+  {
+    "file": "rice test 3.webp",
+    "minimum_area": 30,
+    "summary": {
+      "backend": "scipy-fallback",
+      "background_used": "pale",
+      "broken": 172,
+      "broken_percentage": 92.47311827956989,
+      "classification_basis": "shape_only",
+      "classification_experimental": true,
+      "classified": true,
+      "count_is_estimate": true,
+      "detected": 186,
+      "method": "decision_tree",
+      "processing_ms": 8086.944,
+      "rejected_regions": 104,
+      "split_touching": true,
+      "whole": 14
+    },
+    "preprocessing": {
+      "detector": "adaptive",
+      "height": 1067,
+      "width": 1600
+    }
+  }
+]

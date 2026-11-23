@@ -10,6 +10,8 @@ from PIL import Image, UnidentifiedImageError
 from bigascheck.model import analyze, load_model
 from bigascheck.vision import Settings, annotate, backend, load_rgb, png_bytes
 from bigascheck.samples import SampleCatalog, SampleError
+from bigascheck.local_training import LocalSampleCatalog
+from bigascheck.cropping import crop_rgb
 
 
 def create_app(model_path=None, samples_root=None, feature_table=None):
@@ -19,6 +21,9 @@ def create_app(model_path=None, samples_root=None, feature_table=None):
     project = Path(__file__).resolve().parent
     samples = SampleCatalog(samples_root or project / "data/splits",
                             feature_table or project / "artifacts/features_and_splits.csv")
+    local_samples = project / "data/local_20261120/split_v1"
+    if samples_root is None and feature_table is None and (local_samples / "catalog.json").is_file():
+        samples = LocalSampleCatalog(local_samples)
     bundle, model_error = None, None
     if path.is_file():
         try:
@@ -29,7 +34,8 @@ def create_app(model_path=None, samples_root=None, feature_table=None):
     @app.get("/")
     def home():
         return render_template("index.html", trained=bundle is not None, backend=backend(),
-                               settings=bundle["settings"] if bundle else None, model_error=model_error)
+                               settings=bundle["settings"] if bundle else None, model_error=model_error,
+                               local_samples=isinstance(samples, LocalSampleCatalog))
 
     @app.get("/api/status")
     def status():
@@ -67,14 +73,26 @@ def create_app(model_path=None, samples_root=None, feature_table=None):
             return jsonify(error="Choose a photo upload or a test sample, not both."), 400
         if not has_upload and not sample_id:
             return jsonify(error="Upload a rice photograph or choose a test sample first."), 400
+        crop = request.form.get("crop", "").strip()
+        if crop and sample_id:
+            return jsonify(error="Crop an uploaded photograph; dataset sample references cover the complete sample image."), 400
         try:
             sample = samples.get(sample_id) if sample_id else None
-            rgb = load_rgb(samples.asset(sample_id) if sample_id else upload.stream)
+            image_source = samples.asset(sample_id) if sample_id else upload.stream
+            crop_metadata = None
+            if crop:
+                rgb, crop_metadata = crop_rgb(load_rgb(image_source), crop)
+            else:
+                rgb = load_rgb(image_source, max_edge=1600)
             base_settings = Settings(**bundle["settings"]) if bundle else Settings()
             settings = replace(base_settings, background=request.form.get("background", "auto"),
                                min_area=int(request.form.get("min_area", base_settings.min_area)),
-                               split_touching=request.form.get("split_touching", "true") == "true")
+                               split_touching=request.form.get("split_touching", "true") == "true",
+                               detector=request.form.get("detector", "adaptive"))
             result, mask = analyze(rgb, bundle, settings, request.form.get("method", "decision_tree"))
+            if crop_metadata:
+                result["preprocessing"].update(crop_metadata)
+                result["warnings"].insert(0, "Only the selected crop was analyzed; counts refer to that area.")
             result["annotated_png"] = base64.b64encode(png_bytes(annotate(rgb, result["grains"]))).decode()
             result["mask_png"] = base64.b64encode(png_bytes(Image.fromarray(mask))).decode()
             if sample is not None:

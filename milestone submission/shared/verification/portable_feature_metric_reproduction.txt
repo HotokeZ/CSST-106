@@ -1,0 +1,3 @@
+{"split": "validation", "accuracy": 0.9587628865979382, "broken_f1": 0.904, "confusion_matrix": [[445, 18], [6, 113]]}
+{"split": "test", "accuracy": 0.9604810996563574, "broken_f1": 0.9068825910931174, "confusion_matrix": [[447, 16], [7, 112]]}
+

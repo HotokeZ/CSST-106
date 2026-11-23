@@ -1,0 +1,33 @@
+photo_id,condition,actual_count,old_detected,new_detected,old_absolute_error,new_absolute_error
+local_001,"Low Light, Shadow, Different BG",18,562,30,544,12
+local_002,"Low Light, Shadow, Different BG",18,1,20,17,2
+local_003,"Low Light, Shadow, Different BG",24,186,30,162,6
+local_004,"Low Light, Shadow, Different BG",22,14,28,8,6
+local_005,"Low Light, Shadow, Different BG",18,821,19,803,1
+local_006,"Low Light, Shadow, Different BG",32,526,86,494,54
+local_007,"Low Light, Shadow, Different BG",10,12,70,2,60
+local_008,"Low Light, Shadow, Different BG",12,2310,14,2298,2
+local_009,"Low Light, Shadow, Different BG",7,521,26,514,19
+local_010,"Low Light, Shadow, Different BG",12,26,41,14,29
+local_011,Overlap,18,185,22,167,4
+local_012,Overlap,19,535,23,516,4
+local_013,Overlap,24,12,27,12,3
+local_014,Overlap,30,403,29,373,1
+local_015,Overlap,30,498,33,468,3
+local_016,Overlap,33,33,37,0,4
+local_017,Overlap,38,227,50,189,12
+local_018,Overlap,14,754,20,740,6
+local_019,Overlap,14,1055,18,1041,4
+local_020,Overlap,9,391,20,382,11
+local_022,Separated,16,336,17,320,1
+local_023,Separated,10,659,11,649,1
+local_024,Separated,22,661,24,639,2
+local_025,Separated,12,548,13,536,1
+local_026,Separated,15,860,16,845,1
+local_027,Separated,16,176,17,160,1
+local_028,Separated,21,272,21,251,0
+local_029,Separated,22,572,22,550,0
+local_030,Separated,6,465,7,459,1
+local_031,Separated,18,599,20,581,2
+local_032,Separated,8,597,8,589,0
+local_033,Separated,9,976,10,967,1

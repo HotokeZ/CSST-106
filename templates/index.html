@@ -4,6 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>BigasCheck · Rice grain inspection</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='crop.js') }}" defer></script>
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 </head>
 <body>
@@ -26,23 +27,28 @@
           <input id="image-input" name="image" type="file" aria-label="Upload or replace rice photograph" accept="image/jpeg,image/png,image/webp,image/bmp,image/tiff" required>
         </label>
         <div class="file-info" id="file-info" aria-live="polite">No image selected</div>
+        <div class="crop-tools" id="crop-tools" hidden>
+          <button id="crop-open" type="button">Crop image</button>
+          <button id="crop-reset" type="button" hidden>Reset crop</button>
+          <span id="crop-status" role="status">Full image will be analyzed</span>
+        </div>
         <details class="sample-library" id="sample-library" open>
-          <summary>Or try a test sample <span id="sample-total"></span></summary>
-          <p class="sample-help">No photo? Choose a held-out dataset image or a six-grain composite.</p>
-          <div class="sample-filters" role="group" aria-label="Filter test samples">
+          <summary>Or try a sample photo <span id="sample-total"></span></summary>
+          <p class="sample-help">{% if local_samples %}Choose one of five local demo photos, kept separate from training and the 10-photo test partition.{% else %}No photo? Choose a held-out dataset image or a six-grain composite.{% endif %}</p>
+          <div class="sample-filters" role="group" aria-label="Filter sample photos">
             <button type="button" data-sample-filter="all" aria-pressed="true">All</button>
             <button type="button" data-sample-filter="whole" aria-pressed="false">Whole</button>
             <button type="button" data-sample-filter="broken" aria-pressed="false">Broken</button>
             <button type="button" data-sample-filter="mixed" aria-pressed="false">Mixed</button>
           </div>
-          <div id="sample-message" class="sample-message" aria-live="polite">Loading test samples...</div>
-          <div class="sample-grid" id="sample-grid" aria-label="Available test samples"></div>
+          <div id="sample-message" class="sample-message" aria-live="polite">Loading sample photos...</div>
+          <div class="sample-grid" id="sample-grid" aria-label="Available sample photos"></div>
           <div class="sample-pagination"><button id="sample-prev" type="button" disabled>Previous</button><span id="sample-page"></span><button id="sample-next" type="button" disabled>Next</button></div>
         </details>
         <div id="sample-selection" class="sample-selection" hidden><span id="selected-sample-label"></span><button type="button" id="clear-sample">Clear sample</button></div>
-        <div class="form-grid"><label>Background<select name="background"><option value="auto" selected>Auto detect</option><option value="dark">Dark background</option><option value="pale">Pale background / white rice</option></select></label><label>Minimum area (px)<input type="number" name="min_area" min="1" max="1000000" value="{{ settings.min_area if settings else 30 }}"></label></div>
+        <div class="form-grid"><label>Background<select name="background"><option value="auto" selected>Auto detect</option><option value="dark">Dark background</option><option value="pale">Pale background / white rice</option></select></label><label>Minimum area (px²)<input type="number" name="min_area" min="1" max="1000000" value="{{ settings.min_area if settings else 30 }}"><small>Higher values can hide small broken grains. Start with 30.</small></label></div>
         <label class="method-label">Touching grains<select name="split_touching"><option value="true" selected>Attempt to separate</option><option value="false">Keep connected regions</option></select></label>
-        {% if trained %}<label class="method-label">Classification method<select name="method"><option value="decision_tree">Decision Tree</option><option value="baseline">Shape baseline</option></select></label>{% endif %}
+        {% if trained %}<label class="method-label">Classification method<select name="method"><option value="decision_tree">Trained classifier</option><option value="baseline">Shape baseline</option></select></label>{% endif %}
         <button class="primary" id="analyze-button" type="submit">Analyze sample <span>↗</span></button>
         <p id="error" class="error" role="alert" hidden></p>
       </form>
@@ -61,4 +67,18 @@
   </div>
   <footer><span>BIGASCHECK <b>/</b> Experimental rice inspection</span><span>Count-based estimates · Not an official rice grade</span></footer>
 </main>
+<dialog id="crop-dialog" class="crop-dialog" aria-labelledby="crop-title" aria-describedby="crop-help">
+  <div class="crop-heading"><h2 id="crop-title">Crop your photo</h2><button type="button" id="crop-close" aria-label="Close crop editor">×</button></div>
+  <p id="crop-help">Draw a box around the rice you want to inspect. Leave a little background around each grain.</p>
+  <div class="crop-stage"><canvas id="crop-canvas" role="img" aria-label="Image crop selection. Drag to select an area, or use the position fields below."></canvas></div>
+  <div class="crop-selection-tools"><button id="crop-redraw" type="button">Draw new selection</button><button id="crop-all" type="button">Select entire image</button><span id="crop-size" role="status"></span></div>
+  <div class="crop-fields">
+    <label>Left (%)<input id="crop-x" type="number" min="0" max="100" step="0.1" value="0"></label>
+    <label>Top (%)<input id="crop-y" type="number" min="0" max="100" step="0.1" value="0"></label>
+    <label>Width (%)<input id="crop-width" type="number" min="0.1" max="100" step="0.1" value="100"></label>
+    <label>Height (%)<input id="crop-height" type="number" min="0.1" max="100" step="0.1" value="100"></label>
+  </div>
+  <p id="crop-error" class="error" role="alert" hidden></p>
+  <div class="crop-actions"><button id="crop-cancel" type="button">Cancel</button><button id="crop-apply" type="button">Apply crop</button></div>
+</dialog>
 </body></html>

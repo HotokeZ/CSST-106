@@ -1,0 +1,203 @@
+{
+  "prepared": "2026-11-19",
+  "scope": "Portable source copy executed with already installed dependencies. This is not verification of a fresh dependency installation.",
+  "fresh_dependency_installation": "UNVERIFIED: network package download unavailable",
+  "checks": [
+    {
+      "check": "source_copy_software_tests",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "check": "source_copy_cli",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "check": "source_copy_preprocessing",
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "check": "portable_feature_classification",
+      "passed": true,
+      "measurements": [
+        {
+          "split": "validation",
+          "accuracy": 0.9587628865979382,
+          "broken_f1": 0.904,
+          "confusion_matrix": [
+            [
+              445,
+              18
+            ],
+            [
+              6,
+              113
+            ]
+          ]
+        },
+        {
+          "split": "test",
+          "accuracy": 0.9604810996563574,
+          "broken_f1": 0.9068825910931174,
+          "confusion_matrix": [
+            [
+              447,
+              16
+            ],
+            [
+              7,
+              112
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "check": "pdf_page_counts",
+      "passed": true,
+      "pdfs": [
+        {
+          "file": "02_Phase_2_50_Percent/Data_Card.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "02_Phase_2_50_Percent/Progress_Report.pdf",
+          "pages": 2,
+          "expected": 2,
+          "passed": true
+        },
+        {
+          "file": "03_Phase_3_Core/Core_Results.pdf",
+          "pages": 4,
+          "expected": 4,
+          "passed": true
+        },
+        {
+          "file": "03_Phase_3_Core/Data_Card.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "04_Phase_4_80_Percent/Application_Testing_Report.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "04_Phase_4_80_Percent/Data_Card.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "04_Phase_4_80_Percent/Draft_Presentation.pdf",
+          "pages": 12,
+          "expected": 12,
+          "passed": true
+        },
+        {
+          "file": "04_Phase_4_80_Percent/Draft_Technical_Report.pdf",
+          "pages": 12,
+          "expected": 12,
+          "passed": true
+        },
+        {
+          "file": "05_Phase_5_Final/Data_Card.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "05_Phase_5_Final/Final_Presentation.pdf",
+          "pages": 12,
+          "expected": 12,
+          "passed": true
+        },
+        {
+          "file": "05_Phase_5_Final/Final_Technical_Report.pdf",
+          "pages": 12,
+          "expected": 12,
+          "passed": true
+        },
+        {
+          "file": "06_Individual_Defense/Dela Paz - Contribution.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "06_Individual_Defense/Delos Reyes - Contribution.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "06_Individual_Defense/Lachano - Contribution.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "file": "shared/Data_Card.pdf",
+          "pages": 1,
+          "expected": 1,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "check": "avi_structure_duration",
+      "passed": true,
+      "frames": 64,
+      "seconds": 64.0,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "check": "zip_integrity",
+      "passed": true,
+      "archives": [
+        {
+          "file": "02_Phase_2_50_Percent_Complete_Package.zip",
+          "passed": true,
+          "entries": 128
+        },
+        {
+          "file": "03_Phase_3_Core_Complete_Package.zip",
+          "passed": true,
+          "entries": 128
+        },
+        {
+          "file": "04_Phase_4_80_Percent_Complete_Package.zip",
+          "passed": true,
+          "entries": 132
+        },
+        {
+          "file": "05_Phase_5_Final_Complete_Package.zip",
+          "passed": true,
+          "entries": 130
+        },
+        {
+          "file": "06_Individual_Defense_Complete_Package.zip",
+          "passed": true,
+          "entries": 7
+        },
+        {
+          "file": "BigasCheck_Source.zip",
+          "passed": true,
+          "entries": 64
+        }
+      ]
+    },
+    {
+      "check": "sample_output_count",
+      "passed": true
+    }
+  ],
+  "all_automated_checks_passed": true
+}

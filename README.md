@@ -2,11 +2,15 @@
 
 An initial local computer vision prototype following the supplied Week 11 proposal: segment rice grain regions, measure geometric/color features, compare a geometric baseline with a Decision Tree, and estimate broken grains **by count**.
 
+**Single-grain training update (20 November 2026):** Added **8 whole and 9 broken local single-grain photos**, with one visually reviewed target per photo, and refitted the Kaggle/local classifier. The local inventory now has **35 training / 10 development-test / 5 sample** photos. The supervised tree uses 2,713 Kaggle training grains plus 17 local grain labels; the multi-grain calibration also uses 17 labelled training-photo counts. Broken-percentage MAE on the existing 10-photo development-test partition is **8.58 percentage points**, compared with **11.92** for the previously installed combined classifier; detection count MAE remains **7.2 grains**. Individual errors and background false detections remain. See [single-grain training](docs/SINGLE_GRAIN_TRAINING.md). These are development results, not independent final evaluation.
+
+**Repository sync (23 November 2026):** Current application/model and prepared milestone files are included. Validation and remaining submission gates are recorded in [publication status](docs/PUBLICATION_STATUS.md). Existing reported metrics refer to their saved runs, not a new benchmark of the latest detector.
+
 ## Team
 
-Zyril Dela Paz � Axcel Andrei Delos Reyes � Jhed Aeron Lachano.
+Zyril Dela Paz · Axcel Andrei Delos Reyes · Jhed Aeron Lachano.
 
-Individual contributions are deferred. See `docs/TEAM.md`. The license notice supplied by the team is preserved with its original attribution in `docs/USER_PROVIDED_LICENSE.txt`; its source is recorded in `THIRD_PARTY_NOTICES.md`, while dataset coverage still needs confirmation.
+Individual contributions are deferred. See `docs/TEAM.md`. The Kaggle dataset page lists MIT and links to the notice preserved with its original attribution in `docs/USER_PROVIDED_LICENSE.txt`. Source verification is recorded in `THIRD_PARTY_NOTICES.md`.
 
 ## Repository quick start
 
@@ -71,7 +75,7 @@ Setup requires internet access. The pinned environment matches the tested Python
 
 Dataset source: https://www.kaggle.com/datasets/cristhiansempertegui/dataset-de-arroz-peruano
 
-The supplied ZIP was found at `C:\Users\justz\Downloads\archive.zip` and extracted to `data/raw`. Its documentation identifies `entero` as whole and `quebrado` as broken. The initial source-label workflow excludes stained/chalky classes, removes exact duplicates, and excludes images with contradictory labels. See [docs/DATASET.md](docs/DATASET.md) for provenance and evaluation limits.
+The supplied ZIP was found at `inputs/archive.zip` and extracted to `data/raw`. Its documentation identifies `entero` as whole and `quebrado` as broken. The initial source-label workflow excludes stained/chalky classes, removes exact duplicates, and excludes images with contradictory labels. See [docs/DATASET.md](docs/DATASET.md) for provenance and evaluation limits.
 
 To train the initial classifier and save the model used by the app:
 
@@ -140,7 +144,7 @@ These images are drawn ellipses, **not rice training data**. Their results are n
 
 Implemented: dataset audit/import tools, reviewed-label manifests, segmentation, features, baseline and tree training, grouped validation/testing, per-grain and multi-grain evaluation, annotated results, CSV/JSON downloads, and local upload interface.
 
-Remaining: establish original capture groups, independently review labels, verify grain masks, confirm redistribution terms, collect separate local sample photos and manual ground truth, then evaluate the proposal's F1 � 0.80, count MAE � 5 and percentage MAE � 5 percentage-point goals. Image-level source-dataset results cannot establish these goals for independent local samples.
+Remaining: establish original capture groups, independently review labels, verify grain masks, confirm redistribution terms, collect separate local sample photos and manual ground truth, then evaluate the proposal's F1 ≥ 0.80, count MAE ≤ 5 and percentage MAE ≤ 5 percentage-point goals. Image-level source-dataset results cannot establish these goals for independent local samples.
 
 The upload interface defaults to automatic background detection and distance-transform watershed separation of touching grains. Pale-background mode uses local contrast to detect white rice on a light surface. Background and minimum-area controls remain available with a loaded classifier. Connected-region mode is also available for inspecting the effect of separation. Touching or overlapping grains can still merge or split incorrectly; results need manual verification.
 

@@ -1,0 +1,113 @@
+[
+  {
+    "id": "test-718bc65cfcc89b79",
+    "title": "Whole grain 001",
+    "kind": "single",
+    "label": "whole",
+    "split": "test",
+    "image": "01_single_whole.png",
+    "thumbnail": "70fc5c9e118bbca6/thumbnails/test-718bc65cfcc89b79.jpg",
+    "sha256": "718bc65cfcc89b79603c43cc6af7d8063478f7ab3749ba07c02d2eef6cf03934",
+    "source_sha256": [
+      "718bc65cfcc89b79603c43cc6af7d8063478f7ab3749ba07c02d2eef6cf03934"
+    ],
+    "expected_whole": 1,
+    "expected_broken": 0,
+    "note": "Reference label supplied by the dataset."
+  },
+  {
+    "id": "test-ebe1a0de83d8e048",
+    "title": "Broken grain 001",
+    "kind": "single",
+    "label": "broken",
+    "split": "test",
+    "image": "02_single_broken.png",
+    "thumbnail": "70fc5c9e118bbca6/thumbnails/test-ebe1a0de83d8e048.jpg",
+    "sha256": "ebe1a0de83d8e0486899eb8e87db1c9f596fb5258fc8d32a8caaf72e3c5fad2c",
+    "source_sha256": [
+      "ebe1a0de83d8e0486899eb8e87db1c9f596fb5258fc8d32a8caaf72e3c5fad2c"
+    ],
+    "expected_whole": 0,
+    "expected_broken": 1,
+    "note": "Reference label supplied by the dataset."
+  },
+  {
+    "id": "example-1",
+    "title": "Mixed sample",
+    "kind": "composite",
+    "label": "mixed",
+    "split": "test",
+    "image": "03_composite_mixed.png",
+    "thumbnail": "70fc5c9e118bbca6/thumbnails/sample-1.jpg",
+    "sha256": "9f4b45d88f475cc38d83c74d77358b559b1bdca4f6336bb9d490f4c696d205a0",
+    "source_sha256": [
+      "718bc65cfcc89b79603c43cc6af7d8063478f7ab3749ba07c02d2eef6cf03934",
+      "452a90da7aefcb3ffe0e7b7ae6a4e9d1879c81762eb0845a5b807ed13f3216fe",
+      "83968e0a7a102ed8b3e0d70f7c3fa5b3ef32374c6960914b11442360a2bbcf0f",
+      "ebe1a0de83d8e0486899eb8e87db1c9f596fb5258fc8d32a8caaf72e3c5fad2c",
+      "28473c0905bd2dba32e22eb21b0f586f3383172512adbe021e1d593d5b029365",
+      "94ce25052814cbd057c1c8b029e55339083446778c0796929b4e5c5d1cae8295"
+    ],
+    "expected_whole": 3,
+    "expected_broken": 3,
+    "note": "Assembled from six held-out test grains. This is a composite, not a captured multi-grain photograph."
+  },
+  {
+    "id": "example-2",
+    "title": "Whole-grain sample",
+    "kind": "composite",
+    "label": "whole",
+    "split": "test",
+    "image": "04_composite_whole.png",
+    "thumbnail": "70fc5c9e118bbca6/thumbnails/sample-2.jpg",
+    "sha256": "1f2edc10d23ad0ee2d3e70ab869b3c21500fa99cde4773315e1df838d176048c",
+    "source_sha256": [
+      "718bc65cfcc89b79603c43cc6af7d8063478f7ab3749ba07c02d2eef6cf03934",
+      "452a90da7aefcb3ffe0e7b7ae6a4e9d1879c81762eb0845a5b807ed13f3216fe",
+      "83968e0a7a102ed8b3e0d70f7c3fa5b3ef32374c6960914b11442360a2bbcf0f",
+      "f2f03e504d4d5a6217fb86d5ad919d10f89236c61026c251ec1a3b13a34130a5",
+      "99792b11e155c1ac1bca7a832a91d42015f72d2335eda636ded35a96484c641d",
+      "702bfa51af794a6957bc13b184dbd59c60ad75c457cbc5fc2e9d67b91237ec5b"
+    ],
+    "expected_whole": 6,
+    "expected_broken": 0,
+    "note": "Assembled from six held-out test grains. This is a composite, not a captured multi-grain photograph."
+  },
+  {
+    "id": "example-3",
+    "title": "Broken-grain sample",
+    "kind": "composite",
+    "label": "broken",
+    "split": "test",
+    "image": "05_composite_broken.png",
+    "thumbnail": "70fc5c9e118bbca6/thumbnails/sample-3.jpg",
+    "sha256": "980d14c6aeaf0c3f91e6f5ce509cd9d4e23153ab70627e86b8c8f327ad8d879a",
+    "source_sha256": [
+      "ebe1a0de83d8e0486899eb8e87db1c9f596fb5258fc8d32a8caaf72e3c5fad2c",
+      "28473c0905bd2dba32e22eb21b0f586f3383172512adbe021e1d593d5b029365",
+      "94ce25052814cbd057c1c8b029e55339083446778c0796929b4e5c5d1cae8295",
+      "3e292349b5b3c0f71929f92475bede99c8d36ebe03b4aeddd3884456773798f5",
+      "4ae239a90c465deae8f596ca16866315908169689f20f1e96acd082998ad802b",
+      "3256013c655e94c05155baeb9001b726b81640222fcb1e1c3b5272128845df22"
+    ],
+    "expected_whole": 0,
+    "expected_broken": 6,
+    "note": "Assembled from six held-out test grains. This is a composite, not a captured multi-grain photograph."
+  },
+  {
+    "id": "test-452a90da7aefcb3f",
+    "title": "Whole grain 002",
+    "kind": "single",
+    "label": "whole",
+    "split": "test",
+    "image": "06_single_whole.png",
+    "thumbnail": "70fc5c9e118bbca6/thumbnails/test-452a90da7aefcb3f.jpg",
+    "sha256": "452a90da7aefcb3ffe0e7b7ae6a4e9d1879c81762eb0845a5b807ed13f3216fe",
+    "source_sha256": [
+      "452a90da7aefcb3ffe0e7b7ae6a4e9d1879c81762eb0845a5b807ed13f3216fe"
+    ],
+    "expected_whole": 1,
+    "expected_broken": 0,
+    "note": "Reference label supplied by the dataset."
+  }
+]

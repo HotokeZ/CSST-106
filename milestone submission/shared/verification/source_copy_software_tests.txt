@@ -1,0 +1,40 @@
+Command: C:\Python313\python.exe -m unittest discover -s tests -v
+Reading grain images: 0/84
+Reading grain images: 0/85
+Reading grain images: 0/84
+
+test_audit_does_not_invent_labels (test_pipeline.ArchiveTests.test_audit_does_not_invent_labels) ... ok
+test_cross_label_duplicates_are_excluded_from_both_classes (test_pipeline.ArchiveTests.test_cross_label_duplicates_are_excluded_from_both_classes) ... ok
+test_source_import_preserves_review_status_and_removes_duplicates (test_pipeline.ArchiveTests.test_source_import_preserves_review_status_and_removes_duplicates) ... ok
+test_unsafe_archive_is_rejected_before_write (test_pipeline.ArchiveTests.test_unsafe_archive_is_rejected_before_write) ... ok
+test_blank_is_not_zero_percent_broken (test_pipeline.VisionTests.test_blank_is_not_zero_percent_broken) ... ok
+test_border_and_noise_rejected (test_pipeline.VisionTests.test_border_and_noise_rejected) ... ok
+test_counts_and_polarity (test_pipeline.VisionTests.test_counts_and_polarity) ... ok
+test_empty_surface_inside_a_grain_ring_is_not_filled (test_pipeline.VisionTests.test_empty_surface_inside_a_grain_ring_is_not_filled) ... ok
+test_group_disjointness (test_pipeline.VisionTests.test_group_disjointness) ... ok
+test_shape_features_ignore_uniform_scale_and_rgb (test_pipeline.VisionTests.test_shape_features_ignore_uniform_scale_and_rgb) ... ok
+test_touching_grains_are_separated_without_splitting_a_single_grain (test_pipeline.VisionTests.test_touching_grains_are_separated_without_splitting_a_single_grain) ... ok
+test_white_grains_on_pale_surface (test_pipeline.VisionTests.test_white_grains_on_pale_surface) ... ok
+test_api_with_trained_model (test_pipeline.WorkflowTests.test_api_with_trained_model) ... ok
+test_api_without_model_and_invalid_upload (test_pipeline.WorkflowTests.test_api_without_model_and_invalid_upload) ... ok
+test_background_override_is_honored_with_loaded_model (test_pipeline.WorkflowTests.test_background_override_is_honored_with_loaded_model) ... ok
+test_batch_runner_and_reproducible_evaluation (test_pipeline.WorkflowTests.test_batch_runner_and_reproducible_evaluation) ... ok
+test_full_training_and_sample_evaluation (test_pipeline.WorkflowTests.test_full_training_and_sample_evaluation) ... ok
+test_local_crowded_photo_no_longer_returns_only_thirteen_regions (test_pipeline.WorkflowTests.test_local_crowded_photo_no_longer_returns_only_thirteen_regions) ... skipped 'Local regression photo is not available'
+test_manifest_duplicate_and_unverified_rejected (test_pipeline.WorkflowTests.test_manifest_duplicate_and_unverified_rejected) ... ok
+test_real_isolated_grains_are_not_split_into_extra_fragments (test_pipeline.WorkflowTests.test_real_isolated_grains_are_not_split_into_extra_fragments) ... skipped 'Six-grain source fixture is not available'
+test_scale_mismatch_does_not_label_every_small_grain_broken (test_pipeline.WorkflowTests.test_scale_mismatch_does_not_label_every_small_grain_broken) ... ok
+test_shape_classifier_returns_predictions_on_pale_background (test_pipeline.WorkflowTests.test_shape_classifier_returns_predictions_on_pale_background) ... ok
+test_source_training_is_explicitly_exploratory (test_pipeline.WorkflowTests.test_source_training_is_explicitly_exploratory) ... ok
+test_training_capture_overlap_rejected (test_pipeline.WorkflowTests.test_training_capture_overlap_rejected) ... ok
+test_assets_and_missing_library (test_samples.SampleLibraryTests.test_assets_and_missing_library) ... ok
+test_changed_split_disables_the_old_gallery (test_samples.SampleLibraryTests.test_changed_split_disables_the_old_gallery) ... ok
+test_export_preserves_exact_split_membership (test_samples.SampleLibraryTests.test_export_preserves_exact_split_membership) ... ok
+test_pagination_filters_and_reference_counts (test_samples.SampleLibraryTests.test_pagination_filters_and_reference_counts) ... ok
+test_sample_and_upload_follow_the_same_prediction_path (test_samples.SampleLibraryTests.test_sample_and_upload_follow_the_same_prediction_path) ... ok
+test_training_images_invalid_choices_and_dual_inputs_are_rejected (test_samples.SampleLibraryTests.test_training_images_invalid_choices_and_dual_inputs_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 17.612s
+
+OK (skipped=2)

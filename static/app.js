@@ -12,6 +12,33 @@ let galleryRequest = 0;
 let uploadPreviewUrl = null;
 let previewVersion = 0;
 let sourceRevision = 0;
+let appliedCrop = null;
+const cropEditor = new BigasCrop.Editor(async (selection, preview, size) => {
+  if (selectedSample || cropEditor.file !== input.files[0]) return;
+  appliedCrop = selection;
+  resetResults();
+  setUploadPreview(preview, 'Cropped photograph: '+input.files[0].name);
+  document.querySelector('#crop-open').textContent = 'Adjust crop';
+  document.querySelector('#crop-reset').hidden = false;
+  document.querySelector('#crop-status').textContent = `Crop: ${size.width} × ${size.height} px · Only this area will be analyzed`;
+});
+function clearCrop(file = null) {
+  appliedCrop = null; cropEditor.setSource(file);
+  document.querySelector('#crop-tools').hidden = !file;
+  document.querySelector('#crop-open').textContent = 'Crop image';
+  document.querySelector('#crop-reset').hidden = true;
+  document.querySelector('#crop-status').textContent = 'Full image will be analyzed';
+}
+document.querySelector('#crop-open').addEventListener('click', async () => {
+  const button = document.querySelector('#crop-open'); button.disabled = true;
+  try {await cropEditor.open(appliedCrop);}
+  catch (err) {error.textContent = err.message; error.hidden = false;}
+  finally {button.disabled = false;}
+});
+document.querySelector('#crop-reset').addEventListener('click', () => {
+  clearCrop(input.files[0]); resetResults();
+  setUploadPreview(input.files[0], 'Uploaded photograph: '+input.files[0].name);
+});
 function setUploadPreview(source, description = 'Selected rice photograph') {
   const image = document.querySelector('#upload-preview');
   const version = ++previewVersion;
@@ -54,6 +81,7 @@ function markSampleSelection() {
   }
 }
 function showFile() {
+  clearCrop(input.files[0]);
   selectedSample = null; input.required = true;
   document.querySelector('#sample-selection').hidden = true;
   markSampleSelection(); resetResults();
@@ -67,15 +95,16 @@ function showReference(sample) {
   reference.textContent = `Dataset reference: ${sample.expected_whole} whole + ${sample.expected_broken} broken. ${sample.note}`;
 }
 function selectSample(sample) {
+  clearCrop();
   selectedSample = sample; input.value = ''; input.required = false;
   resetResults(); markSampleSelection();
-  document.querySelector('#file-info').textContent = 'Test sample: '+sample.title;
+  document.querySelector('#file-info').textContent = 'Sample photo: '+sample.title;
   document.querySelector('#sample-selection').hidden = false;
   document.querySelector('#selected-sample-label').textContent = sample.title+' selected';
   setUploadPreview('/api/samples/'+encodeURIComponent(sample.id)+'/image', 'Selected test sample: '+sample.title);
   const image = document.querySelector('#result-image');
   image.src = '/api/samples/'+encodeURIComponent(sample.id)+'/image';
-  image.hidden = false; image.alt = 'Selected held-out test sample: '+sample.title;
+  image.hidden = false; image.alt = 'Selected sample photo: '+sample.title;
   document.querySelector('#empty-preview').hidden = true;
   document.querySelector('#result-status').textContent = 'READY TO ANALYZE';
   showReference(sample);
@@ -83,7 +112,7 @@ function selectSample(sample) {
 async function loadSamples() {
   const version = ++galleryRequest;
   const message = document.querySelector('#sample-message');
-  message.textContent = 'Loading test samples...';
+  message.textContent = 'Loading sample photos...';
   document.querySelector('#sample-prev').disabled = true;
   document.querySelector('#sample-next').disabled = true;
   try {
@@ -102,7 +131,7 @@ async function loadSamples() {
       image.src = '/api/samples/'+encodeURIComponent(sample.id)+'/image?thumbnail=1';
       const title = document.createElement('strong'); title.textContent = sample.title;
       const detail = document.createElement('span');
-      detail.textContent = sample.kind === 'composite' ? '6 grains · composite' : '1 grain · test image';
+      detail.textContent = sample.kind === 'photograph' ? `${sample.expected_whole + sample.expected_broken} grains · local demo photo` : sample.kind === 'composite' ? '6 grains · composite' : '1 grain · test image';
       card.append(image, title, detail); card.addEventListener('click', () => selectSample(sample)); grid.append(card);
     }
     const pages = Math.max(1, Math.ceil(data.total/data.page_size));
@@ -140,6 +169,7 @@ form.addEventListener('submit', async e => {
     if (input.files[0]?.size > 15 * 1024 * 1024) throw new Error('Choose an image smaller than 15 MB.');
     const body = new FormData(form);
     if (selectedSample) {body.delete('image'); body.set('sample_id', selectedSample.id);}
+    else if (appliedCrop) body.set('crop', JSON.stringify(appliedCrop));
     const response = await fetch('/api/analyze', {method:'POST', body});
     const data = await response.json(); if(!response.ok) throw new Error(data.error || 'Analysis failed.');
     if (revision !== sourceRevision) return;

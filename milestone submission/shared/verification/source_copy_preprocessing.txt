@@ -1,0 +1,2 @@
+Command: C:\Python313\python.exe src/preprocess.py --input sample_inputs/01_single_whole.png --output outputs/preprocess_mask.png --background dark
+

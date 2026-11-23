@@ -13,6 +13,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 from .dataset import load_manifest
 from .vision import FEATURES, Settings, backend, load_rgb, segment, resolve_background
+from .local_training import calibrated_predictions, FEATURE_NAMES
 
 SHAPE_FEATURES = ["aspect_ratio", "solidity", "ellipse_fill"]
 
@@ -206,6 +207,11 @@ def load_model(path):
         raise ValueError("Unsupported model format or feature schema.")
     if bundle["backend"] != backend():
         raise ValueError("Segmentation backend differs from training. Retrain with the current backend before prediction.")
+    calibration = bundle.get("local_count_calibration")
+    if calibration and (calibration.get("format_version") != 1 or calibration.get("feature") not in FEATURE_NAMES or
+                        not np.isfinite(calibration.get("threshold", float("nan"))) or
+                        calibration.get("minimum_candidates", 0) < 4 or calibration.get("detector") != "adaptive"):
+        raise ValueError("Invalid local count calibration.")
     return bundle
 
 
@@ -230,6 +236,7 @@ def analyze(rgb, bundle=None, settings=None, method="decision_tree"):
         if median_length < typical_whole * 0.3 or median_length > typical_whole * 2.5:
             classification_reason = "Grains are at a substantially different pixel scale from training. Whole/broken predictions are withheld; use a matching camera scale."
     classification_enabled = bundle is not None and classification_reason is None
+    local_predictions = None
     if classification_enabled and grains:
         x = np.array([[g["features"][f] for f in FEATURES] for g in grains])
         model_x = shape_matrix(x) if shape_model else x
@@ -239,9 +246,12 @@ def analyze(rgb, bundle=None, settings=None, method="decision_tree"):
         else:
             predictions = bundle["tree"].predict(model_x)
             model_scores = bundle["tree"].predict_proba(model_x).max(axis=1)
+            local_predictions = calibrated_predictions(grains, bundle.get("local_count_calibration"), settings.detector, method)
+            if local_predictions is not None:
+                predictions = local_predictions
         for grain, prediction in zip(grains, predictions):
             grain["prediction"] = str(prediction)
-        if method == "decision_tree":
+        if method == "decision_tree" and local_predictions is None:
             for grain, score in zip(grains, model_scores):
                 grain["model_score"] = float(score)
     broken = sum(g.get("prediction") == "broken" for g in grains) if classification_enabled else None
@@ -250,17 +260,21 @@ def analyze(rgb, bundle=None, settings=None, method="decision_tree"):
              "broken_percentage": 100 * broken / len(grains) if broken is not None and grains else None,
              "classified": classification_enabled, "method": method if classification_enabled else None,
              "background_used": mode, "split_touching": settings.split_touching,
-             "classification_basis": "shape_only" if shape_model else "pixel_features",
+             "classification_basis": "local_count_supervised" if local_predictions is not None else "shape_only" if shape_model else "pixel_features",
+             "classifier_used": "local_count_calibration" if local_predictions is not None else method if classification_enabled else None,
              "count_is_estimate": True, "classification_experimental": shape_model,
              "processing_ms": round((perf_counter() - started) * 1000, 3),
              "backend": backend(), "rejected_regions": len(rejected)},
+            "preprocessing": {"detector": settings.detector, "width": int(rgb.shape[1]), "height": int(rgb.shape[0])},
             "warnings": ["Touching grains can merge into one region; spread grains apart.",
                          "Count-based visual estimate; not a mass percentage or official grade."] +
                         (["Model scores are decision-tree leaf votes, not calibrated probabilities of correctness."]
-                         if classification_enabled and method == "decision_tree" else []) +
+                         if classification_enabled and method == "decision_tree" and local_predictions is None else []) +
+                        (["Whole/broken labels use a local threshold trained from photo totals. Individual grain labels remain unverified; predictions are experimental."]
+                         if local_predictions is not None else []) +
                         ([classification_reason] if classification_reason else []) +
                         (["Whole/broken labels use a shape-only classifier. Predictions and percentages on this photo are experimental and need manual verification.",
-                          "Pale-background and crowded-photo percentages have not been validated as rice quality measurements; overlapping grains and short rice varieties can be misclassified."] if shape_model else []) +
+                          "Pale-background and crowded-photo percentages have not been validated as rice quality measurements; overlapping grains and short rice varieties can be misclassified."] if shape_model and local_predictions is None else []) +
                         ([f'{sum(r["reason"] == "touches_border" for r in rejected)} regions touching the image edge were excluded; counts cover accepted visible grain regions.']
                          if any(r["reason"] == "touches_border" for r in rejected) else []) +
                         (["Exploratory classifier trained on public dataset labels; validate on local rice photographs."]

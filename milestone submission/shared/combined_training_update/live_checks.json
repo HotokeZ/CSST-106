@@ -1,0 +1,173 @@
+{
+  "gallery_total": 5,
+  "split_counts": {
+    "sample": 5,
+    "test": 10,
+    "train": 18
+  },
+  "training_test_gallery_access": "blocked",
+  "sample_upload_predictions": "identical",
+  "checks": [
+    {
+      "photo_id": "local_003",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "pale",
+        "broken": 17,
+        "broken_percentage": 58.62068965517241,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 29,
+        "method": "decision_tree",
+        "processing_ms": 1493.685,
+        "rejected_regions": 0,
+        "split_touching": true,
+        "whole": 12
+      }
+    },
+    {
+      "photo_id": "local_010",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 26,
+        "broken_percentage": 70.27027027027027,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 37,
+        "method": "decision_tree",
+        "processing_ms": 1715.185,
+        "rejected_regions": 0,
+        "split_touching": true,
+        "whole": 11
+      }
+    },
+    {
+      "photo_id": "local_017",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 25,
+        "broken_percentage": 73.52941176470588,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 34,
+        "method": "decision_tree",
+        "processing_ms": 2053.579,
+        "rejected_regions": 14,
+        "split_touching": true,
+        "whole": 9
+      }
+    },
+    {
+      "photo_id": "local_027",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 0,
+        "broken_percentage": 0.0,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 16,
+        "method": "decision_tree",
+        "processing_ms": 1675.862,
+        "rejected_regions": 0,
+        "split_touching": true,
+        "whole": 16
+      }
+    },
+    {
+      "photo_id": "local_029",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 1,
+        "broken_percentage": 4.545454545454546,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 22,
+        "method": "decision_tree",
+        "processing_ms": 1713.099,
+        "rejected_regions": 0,
+        "split_touching": true,
+        "whole": 21
+      }
+    },
+    {
+      "photo_id": "local_024",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 10,
+        "broken_percentage": 45.45454545454545,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 22,
+        "method": "decision_tree",
+        "processing_ms": 1412.592,
+        "rejected_regions": 2,
+        "split_touching": true,
+        "whole": 12
+      }
+    },
+    {
+      "photo_id": "local_007",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 4,
+        "broken_percentage": 40.0,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 10,
+        "method": "decision_tree",
+        "processing_ms": 2364.239,
+        "rejected_regions": 3,
+        "split_touching": true,
+        "whole": 6
+      }
+    },
+    {
+      "photo_id": "local_005",
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "pale",
+        "broken": 1,
+        "broken_percentage": 5.555555555555555,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 18,
+        "method": "decision_tree",
+        "processing_ms": 1329.994,
+        "rejected_regions": 1,
+        "split_touching": true,
+        "whole": 17
+      }
+    }
+  ],
+  "status": "PASS"
+}

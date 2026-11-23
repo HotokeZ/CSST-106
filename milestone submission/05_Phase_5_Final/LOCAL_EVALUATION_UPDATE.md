@@ -1,0 +1,1 @@
+Local photo evaluation added 20 November 2026. Read Local_Evaluation_Addendum.pdf and ../shared/local_evaluation. This supersedes statements in the earlier dated report that no local counts were available. Physical sample/capture grouping and independent final evaluation remain unresolved. Original checkpoint documents and dates are preserved.

@@ -1,0 +1,153 @@
+{
+  "protocol": {
+    "prepared": "2026-11-20",
+    "model_sha256": "744d6078dd2211e0e271e2a21042df4b95218a74ea78bc33a64c33057dfb2da3",
+    "manifest_sha256": "eb95fdbac3323d438f0b7fd95df4a8f71c8dee90e58f95e81087ec07949c234c",
+    "backend": "scipy-fallback",
+    "settings": {
+      "background": "auto",
+      "min_area": 30,
+      "max_area_fraction": 0.6,
+      "morphology": 1,
+      "exclude_border": true,
+      "split_touching": true,
+      "detector": "adaptive"
+    },
+    "max_image_edge": 1600,
+    "resize": "EXIF transpose; RGB; proportional thumbnail to max 1600 using LANCZOS; save JPEG quality 95; no crops",
+    "selection": "All supplied photos. Score only complete filename counts; no selection based on predictions. Whole-only filenames imply zero broken, pending user confirmation.",
+    "grouping": "Physical sample/capture groups unknown; descriptive pooled and condition-level scores only. No capture-level independence or group confidence intervals claimed.",
+    "training": "No training or parameter tuning on these photos. Frozen saved model. Once evaluated, these images are exposed evaluation data.",
+    "count_reference": "User filename whole/broken counts; not independently reviewed. Photo IDs identify files, not physical rice samples.",
+    "timing": "Decode working JPEG + segmentation + features + tree; first image recorded separately, mean excludes first warm-up; excludes original resizing, rendering and disk output.",
+    "evaluation_status": "Development comparison: these photo results guided adaptive detector changes; not an untouched final test.",
+    "code_sha256": {
+      "src/evaluate_local.py": "d812e497b6a6695d52b615e6d4e227c394b72f814d3ca4ab0c76ff823f431f36",
+      "bigascheck/vision.py": "9567ef107325809de7ff04e9602b0fc7602187c8c691c8615763bd3909d958d9",
+      "bigascheck/foreground.py": "5028ddfe572237ed80968570d13effe218199798e716a4d921ab312557e3a4fb",
+      "bigascheck/model.py": "91ee0ee8eac45916736a026a351fb0fe10e735bd887d68374f57a176b007dd86"
+    }
+  },
+  "imported_photos": 33,
+  "execution_errors": [],
+  "missing_count_photos": [
+    "local_021"
+  ],
+  "conditions": {
+    "Low Light, Shadow, Different BG": 10,
+    "Overlap": 11,
+    "Separated": 12
+  },
+  "methods": {
+    "baseline": {
+      "photos": 32,
+      "count_mae": 4.8125,
+      "whole_count_mae": 2.65625,
+      "broken_count_mae": 5.09375,
+      "percentage_point_mae": 15.212705297092011,
+      "conditional_percentage_point_mae": 15.212705297092011,
+      "percentage_evaluable_photos": 32,
+      "zero_detection_photos": 0,
+      "within_5_grains": 26,
+      "within_5_percentage_points": 11
+    },
+    "decision_tree": {
+      "photos": 32,
+      "count_mae": 4.8125,
+      "whole_count_mae": 4.5625,
+      "broken_count_mae": 7.75,
+      "percentage_point_mae": 29.790895327140955,
+      "conditional_percentage_point_mae": 29.790895327140955,
+      "percentage_evaluable_photos": 32,
+      "zero_detection_photos": 0,
+      "within_5_grains": 26,
+      "within_5_percentage_points": 1
+    }
+  },
+  "by_condition": {
+    "Low Light, Shadow, Different BG": {
+      "baseline": {
+        "photos": 10,
+        "count_mae": 11.4,
+        "whole_count_mae": 3.3,
+        "broken_count_mae": 10.5,
+        "percentage_point_mae": 21.74642378812604,
+        "conditional_percentage_point_mae": 21.74642378812604,
+        "percentage_evaluable_photos": 10,
+        "zero_detection_photos": 0,
+        "within_5_grains": 6,
+        "within_5_percentage_points": 2
+      },
+      "decision_tree": {
+        "photos": 10,
+        "count_mae": 11.4,
+        "whole_count_mae": 2.9,
+        "broken_count_mae": 12.9,
+        "percentage_point_mae": 29.479703064748975,
+        "conditional_percentage_point_mae": 29.479703064748975,
+        "percentage_evaluable_photos": 10,
+        "zero_detection_photos": 0,
+        "within_5_grains": 6,
+        "within_5_percentage_points": 1
+      }
+    },
+    "Overlap": {
+      "baseline": {
+        "photos": 10,
+        "count_mae": 3.9,
+        "whole_count_mae": 4.1,
+        "broken_count_mae": 4.6,
+        "percentage_point_mae": 21.39315508859558,
+        "conditional_percentage_point_mae": 21.39315508859558,
+        "percentage_evaluable_photos": 10,
+        "zero_detection_photos": 0,
+        "within_5_grains": 8,
+        "within_5_percentage_points": 2
+      },
+      "decision_tree": {
+        "photos": 10,
+        "count_mae": 3.9,
+        "whole_count_mae": 6.0,
+        "broken_count_mae": 6.1,
+        "percentage_point_mae": 29.751300586188062,
+        "conditional_percentage_point_mae": 29.751300586188062,
+        "percentage_evaluable_photos": 10,
+        "zero_detection_photos": 0,
+        "within_5_grains": 8,
+        "within_5_percentage_points": 0
+      }
+    },
+    "Separated": {
+      "baseline": {
+        "photos": 12,
+        "count_mae": 0.08333333333333333,
+        "whole_count_mae": 0.9166666666666666,
+        "broken_count_mae": 1.0,
+        "percentage_point_mae": 4.617565061644009,
+        "conditional_percentage_point_mae": 4.617565061644009,
+        "percentage_evaluable_photos": 12,
+        "zero_detection_photos": 0,
+        "within_5_grains": 12,
+        "within_5_percentage_points": 7
+      },
+      "decision_tree": {
+        "photos": 12,
+        "count_mae": 0.08333333333333333,
+        "whole_count_mae": 4.75,
+        "broken_count_mae": 4.833333333333333,
+        "percentage_point_mae": 30.083217829928348,
+        "conditional_percentage_point_mae": 30.083217829928348,
+        "percentage_evaluable_photos": 12,
+        "zero_detection_photos": 0,
+        "within_5_grains": 12,
+        "within_5_percentage_points": 0
+      }
+    }
+  },
+  "pipeline_mean_ms_excluding_first": 1283.5616937554732,
+  "limitations": [
+    "Counts alone do not identify per-grain predictions: no classification F1, confusion matrix, detection precision/recall, mAP or IoU is derived.",
+    "Percentage MAE is withheld when any scored photo has no detections; conditional percentage MAE has a smaller denominator.",
+    "No model improvement or independence claim is based on unknown capture/sample groups."
+  ]
+}

@@ -15,8 +15,9 @@ def main():
     parser.add_argument("--weights", default="artifacts/model.joblib")
     parser.add_argument("--background", choices=["auto", "dark", "pale", "light"], default="auto")
     parser.add_argument("--connected-regions", action="store_true")
+    parser.add_argument("--detector", choices=["adaptive", "legacy"], default="adaptive")
     args = parser.parse_args()
-    rows = run_path(args.input, args.output, args.weights, args.background, not args.connected_regions)
+    rows = run_path(args.input, args.output, args.weights, args.background, not args.connected_regions, args.detector)
     print(json.dumps({"images": len(rows), "errors": sum(r["status"] == "error" for r in rows), "output": args.output}, indent=2))
     return int(any(row["status"] == "error" for row in rows))
 

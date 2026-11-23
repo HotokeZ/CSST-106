@@ -1,0 +1,3 @@
+image,label,group_id,verified
+raw/session01/grain001.png,whole,session01,false
+raw/session01/grain002.png,broken,session01,false

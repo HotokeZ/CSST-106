@@ -1,0 +1,13 @@
+ID,input,condition,expected,actual,pass_fail
+TC01,test-718bc65cfcc89b79,Whole source image,"HTTP 200; count 1, whole 1, broken 0","HTTP 200; count 1, whole 1, broken 0",PASS
+TC02,test-ebe1a0de83d8e048,Broken source image,"HTTP 200; count 1, whole 0, broken 1","HTTP 200; count 1, whole 0, broken 1",PASS
+TC03,example-1,Mixed six-grain composite,"HTTP 200; count 6, whole 3, broken 3","HTTP 200; count 6, whole 3, broken 3",PASS
+TC04,example-2,All-whole six-grain composite,"HTTP 200; count 6, whole 6, broken 0","HTTP 200; count 6, whole 5, broken 1",FAIL
+TC05,example-3,All-broken six-grain composite,"HTTP 200; count 6, whole 0, broken 6","HTTP 200; count 6, whole 1, broken 5",FAIL
+TC06,outputs\checkpoints\test_cases\inputs\TC06.png,Blank dark image (edge case),"HTTP 200; count 0, whole n/a, broken n/a","HTTP 200; count 0, whole 0, broken 0",PASS
+TC07,outputs\checkpoints\test_cases\inputs\TC07.png,Half-resolution whole image (scale hard case),"HTTP 200; count 1, whole 1, broken 0","HTTP 200; count 1, whole 1, broken 0",PASS
+TC08,outputs\checkpoints\test_cases\inputs\TC08.png,Dim whole image (lighting hard case),"HTTP 200; count 1, whole 1, broken 0","HTTP 200; count 1, whole 1, broken 0",PASS
+TC09,outputs\checkpoints\test_cases\inputs\TC09.png,Grain cut by frame (edge case),"HTTP 200; count 0, whole n/a, broken n/a","HTTP 200; count 0, whole 0, broken 0",PASS
+TC10,invalid image bytes,Invalid image upload (edge case),"HTTP 400; count n/a, whole n/a, broken n/a","HTTP 400; count , whole , broken ",PASS
+TC11,outputs\checkpoints\test_cases\inputs\TC11.png,Pale-background composite (background hard case),"HTTP 200; count 6, whole 6, broken 0","HTTP 200; count 37, whole 31, broken 6",FAIL
+TC12,outputs\checkpoints\test_cases\inputs\TC12.png,Touching ellipses (synthetic separation hard case),"HTTP 200; count 3, whole n/a, broken n/a","HTTP 200; count 3, whole 3, broken 0",PASS

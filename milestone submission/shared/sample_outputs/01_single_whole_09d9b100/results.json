@@ -1,0 +1,57 @@
+{
+  "grains": [
+    {
+      "grain_id": 1,
+      "bbox": [
+        50,
+        117,
+        299,
+        165
+      ],
+      "centroid": [
+        196.34978324818084,
+        200.74074934200343
+      ],
+      "features": {
+        "area": 25836.0,
+        "major_axis": 326.3535473085839,
+        "minor_axis": 102.33449730402909,
+        "aspect_ratio": 3.189086338490616,
+        "solidity": 0.9751089807703197,
+        "extent": 0.5236850106415324,
+        "mean_r": 229.76675956030346,
+        "mean_g": 227.56490942870414,
+        "mean_b": 219.9387289054033,
+        "std_r": 10.721470698261413,
+        "std_g": 10.616052869569,
+        "std_b": 10.390524417571383
+      },
+      "prediction": "whole",
+      "model_score": 0.9977818447948285
+    }
+  ],
+  "summary": {
+    "detected": 1,
+    "broken": 0,
+    "whole": 1,
+    "broken_percentage": 0.0,
+    "classified": true,
+    "method": "decision_tree",
+    "background_used": "dark",
+    "split_touching": false,
+    "classification_basis": "shape_only",
+    "count_is_estimate": true,
+    "classification_experimental": true,
+    "processing_ms": 55.434,
+    "backend": "scipy-fallback",
+    "rejected_regions": 0
+  },
+  "warnings": [
+    "Touching grains can merge into one region; spread grains apart.",
+    "Count-based visual estimate; not a mass percentage or official grade.",
+    "Model scores are decision-tree leaf votes, not calibrated probabilities of correctness.",
+    "Whole/broken labels use a shape-only classifier. Predictions and percentages on this photo are experimental and need manual verification.",
+    "Pale-background and crowded-photo percentages have not been validated as rice quality measurements; overlapping grains and short rice varieties can be misclassified.",
+    "Exploratory classifier trained on public dataset labels; validate on local rice photographs."
+  ]
+}

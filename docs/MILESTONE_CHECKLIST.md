@@ -1,3 +1,5 @@
+> Historical checkpoint assessment. Later reports, rendered slides and evidence are now published; see [current publication status](PUBLICATION_STATUS.md). Older statements about absent local files are preserved as history.
+
 # BigasCheck milestone checkpoint review
 
 Reviewed 12 November 2026 against the supplied Milestone 2, 3, 4, 5 and 6 guides. The two Milestone 3 PDFs contain the same requirements. Status describes available evidence, not an instructor's verdict or a completion grade.
@@ -9,7 +11,7 @@ Reviewed 12 November 2026 against the supplied Milestone 2, 3, 4, 5 and 6 guides
 | Rebuildable CPU environment and README | Partial | Direct dependencies pinned in `requirements.txt`; `setup.ps1`, `start.ps1`, `src/predict.py` available. Fresh-machine/fresh-clone installation still needs a real run. |
 | Clean, organized dataset | Implemented with limitations | Exact duplicates/conflicts excluded; physical train/validation/test folders and manifests exported by `prepare-samples`. |
 | Split by source; lock untouched test set | Not satisfied | Original capture groups are unknown. Current image-level test set has already been evaluated and exposed in the gallery. Collect a fresh group-labeled local evaluation set; do not relabel the current set as unseen. |
-| One-page data card, license and label checks | Partial | `docs/DATA_CARD.md` records counts, provenance and gaps. Original license and independent per-image label review remain unverified. |
+| One-page data card, license and label checks | Partial | `docs/DATA_CARD.md` records counts, provenance and gaps. Kaggle's MIT license field and linked notice were verified on 2026-11-19; independent per-image label review remains incomplete. |
 | Shared preprocessing and before/after evidence | Implemented | `bigascheck/vision.py`, `model.py`; `outputs/checkpoints/validation/preprocessing_strip.png`. |
 | Reproducible validation baseline number | Implemented | `python src/evaluate.py --split validation --output outputs/checkpoints/validation`. |
 | End-to-end prototype | Implemented | Flask interface, `src/predict.py`, `src/run.py`; masks, annotated output, counts and exports. |
