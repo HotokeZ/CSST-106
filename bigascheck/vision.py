@@ -175,33 +175,6 @@ def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thres
             p_min = min(basin_max[s1], basin_max[s2])
             ratio = max_seam / max(p_min, 1e-3)
             if ratio >= ratio_thresh:
-                # A broad contact between parallel grains can have a shallow
-                # distance saddle. Preserve two elongated basins when their
-                # union becomes substantially wider; merging on saddle height
-                # alone incorrectly turns side-by-side grains into one.
-                def elongation(region):
-                    points = np.column_stack(np.nonzero(region))
-                    if len(points) < 3:
-                        return 1.0
-                    eigen = np.linalg.eigvalsh(np.cov(points, rowvar=False, bias=True))
-                    return float(np.sqrt(max(eigen[-1], 1) / max(eigen[0], 1)))
-                a1, a2 = elongation(b1 & local), elongation(b2 & local)
-                combined = elongation((b1 | b2) & local)
-                points1 = np.column_stack(np.nonzero(b1 & local))
-                points2 = np.column_stack(np.nonzero(b2 & local))
-                _, axes1 = np.linalg.eigh(np.cov(points1, rowvar=False, bias=True))
-                _, axes2 = np.linalg.eigh(np.cov(points2, rowvar=False, bias=True))
-                axis = axes1[:, -1]
-                delta = points2.mean(axis=0) - points1.mean(axis=0)
-                along = abs(float(delta @ axis))
-                across = abs(float(delta @ np.array([-axis[1], axis[0]])))
-                parallel = abs(float(axis @ axes2[:, -1])) >= .94
-                # Adjacent pieces along one silhouette must merge even if
-                # an irregular outline made each watershed basin elongated.
-                side_by_side = parallel and across > 1.5 * along
-                if (min(a1, a2) >= 2.0 and combined < .8 * min(a1, a2)
-                        and side_by_side):
-                    continue
                 union(s1, s2)
 
     label_map = {}
