@@ -140,7 +140,7 @@ def _hull_area(local):
         return float(local.sum())
 
 
-def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thresh=0.68):
+def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thresh=0.68, intensity=None):
     if seed_count <= 1:
         return basins, seed_count
     basin_max = {}
@@ -174,7 +174,16 @@ def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thres
             max_seam = float(distance[seam].max())
             p_min = min(basin_max[s1], basin_max[s2])
             ratio = max_seam / max(p_min, 1e-3)
-            if ratio >= ratio_thresh:
+            smooth_single = False
+            if intensity is not None:
+                joined = (b1 | b2) & local
+                reference = min(float(np.median(intensity[b1 & local])),
+                                float(np.median(intensity[b2 & local])))
+                # Geometric peaks caused by a clipped/rough mask do not
+                # justify cutting an otherwise convex, evenly lit grain.
+                smooth_single = (float(np.median(intensity[seam])) >= .9 * reference
+                                 and joined.sum() / max(_hull_area(joined), 1) >= .84)
+            if ratio >= ratio_thresh or smooth_single:
                 union(s1, s2)
 
     label_map = {}
@@ -228,7 +237,10 @@ def _separate_touching(mask, min_area, typical_area=None, intensity=None):
                 padded = np.pad(local, 1)
                 distance = ndimage.distance_transform_edt(padded)
                 divided = _watershed_distance(distance, np.pad(markers, 1), padded)[1:-1, 1:-1]
-                for index in range(1, len(large) + 1):
+                divided, region_count = _merge_unconstricted_basins(
+                    divided, distance[1:-1, 1:-1], local, len(large),
+                    ratio_thresh=1.01, intensity=intensity[box])
+                for index in range(1, region_count + 1):
                     labels[box][local & (divided == index)] = next_label
                     next_label += 1
                 continue
@@ -259,7 +271,8 @@ def _separate_touching(mask, min_area, typical_area=None, intensity=None):
             continue
         basins = _watershed_distance(distance, seeds, padded)[1:-1, 1:-1]
         basins, seed_count = _merge_unconstricted_basins(
-            basins, distance[1:-1, 1:-1], local, seed_count, ratio_thresh=0.72
+            basins, distance[1:-1, 1:-1], local, seed_count, ratio_thresh=0.72,
+            intensity=intensity[box] if intensity is not None else None
         )
         if seed_count <= 1:
             labels[box][local] = next_label
