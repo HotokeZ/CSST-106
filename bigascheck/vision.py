@@ -163,6 +163,13 @@ def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thres
     pairs = set(zip(basins[:, :-1][h_adj], basins[:, 1:][h_adj]))
     v_adj = (basins[1:, :] != basins[:-1, :]) & (basins[1:, :] > 0) & (basins[:-1, :] > 0) & local[1:, :] & local[:-1, :]
     pairs.update(zip(basins[:-1, :][v_adj], basins[1:, :][v_adj]))
+    # Components use 8-connectivity; include diagonal basin contacts too.
+    # Otherwise a one-pixel diagonal connection can never be reconsidered.
+    for left, right, valid in [
+        (basins[:-1, :-1], basins[1:, 1:], local[:-1, :-1] & local[1:, 1:]),
+        (basins[:-1, 1:], basins[1:, :-1], local[:-1, 1:] & local[1:, :-1])]:
+        adjacent = valid & (left > 0) & (right > 0) & (left != right)
+        pairs.update(zip(left[adjacent], right[adjacent]))
 
     for s1, s2 in pairs:
         if s1 == s2:
@@ -177,12 +184,16 @@ def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thres
             smooth_single = False
             if intensity is not None:
                 joined = (b1 | b2) & local
+                inner_seam = seam & (distance >= np.median(distance[seam]))
                 reference = min(float(np.median(intensity[b1 & local])),
                                 float(np.median(intensity[b2 & local])))
+                points = np.column_stack(np.nonzero(joined))
+                eigen = np.linalg.eigvalsh(np.cov(points, rowvar=False, bias=True))
                 # Geometric peaks caused by a clipped/rough mask do not
                 # justify cutting an otherwise convex, evenly lit grain.
-                smooth_single = (float(np.median(intensity[seam])) >= .9 * reference
-                                 and joined.sum() / max(_hull_area(joined), 1) >= .84)
+                smooth_single = (float(np.median(intensity[inner_seam])) >= .9 * reference
+                                 and eigen[-1] >= 4 * max(eigen[0], 1)
+                                 and joined.sum() / max(_hull_area(joined), 1) >= .80)
             if ratio >= ratio_thresh or smooth_single:
                 union(s1, s2)
 
@@ -197,6 +208,12 @@ def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thres
     new_basins = np.zeros_like(basins)
     for s in range(1, seed_count + 1):
         new_basins[basins == s] = label_map[find(s)]
+    if intensity is not None and 1 < next_id - 1 < seed_count:
+        # Reconsider contacts against merged silhouettes, not stale fragments.
+        # A two-piece merge can expose that its neighboring sliver belongs to
+        # the same grain as well. Each pass strictly reduces the label count.
+        return _merge_unconstricted_basins(new_basins, distance, local, next_id - 1,
+                                           ratio_thresh, intensity)
     return new_basins, next_id - 1
 
 
@@ -305,7 +322,7 @@ def _separate_touching(mask, min_area, typical_area=None, intensity=None):
     return labels
 
 
-def segment(rgb, settings=Settings(), *, _texture_recovery=False):
+def segment(rgb, settings=Settings(), *, _texture_recovery=False, foreground_mask=None):
     if rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8:
         raise ValueError("Expected an RGB uint8 image.")
     mode = resolve_background(rgb, settings.background)
@@ -316,7 +333,8 @@ def segment(rgb, settings=Settings(), *, _texture_recovery=False):
     if adaptive:
         from .foreground import adaptive_foreground, texture_foreground
         gray = np.round(rgb @ np.array([.299, .587, .114])).astype(np.uint8)
-        mask = texture_foreground(rgb) if _texture_recovery else adaptive_foreground(rgb)
+        mask = (texture_foreground(rgb) if _texture_recovery else
+                np.asarray(foreground_mask, dtype=bool).copy() if foreground_mask is not None else adaptive_foreground(rgb))
         mask = _fill_small_holes(mask, max(9, settings.min_area))
         labels, _ = ndimage.label(mask, np.ones((3, 3)))
         # Reject tiny noise and frame/background components before watershed:

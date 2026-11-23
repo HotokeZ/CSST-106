@@ -215,7 +215,7 @@ def load_model(path):
     return bundle
 
 
-def analyze(rgb, bundle=None, settings=None, method="decision_tree"):
+def analyze(rgb, bundle=None, settings=None, method="decision_tree", foreground_mask=None):
     started = perf_counter()
     if method not in {"decision_tree", "baseline"}:
         raise ValueError("Unknown classification method.")
@@ -223,7 +223,8 @@ def analyze(rgb, bundle=None, settings=None, method="decision_tree"):
         trained_settings = Settings(**bundle["settings"])
         settings = settings or trained_settings
     settings = settings or Settings()
-    grains, rejected, mask = segment(rgb, settings)
+    grains, rejected, mask = (segment(rgb, settings) if foreground_mask is None else
+                              segment(rgb, settings, foreground_mask=foreground_mask))
     mode = resolve_background(rgb, settings.background)
     classification_reason = None
     shape_model = bundle is not None and bundle.get("feature_mode") == "shape"

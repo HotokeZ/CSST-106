@@ -6,6 +6,29 @@ from pathlib import Path
 
 class IntensitySeparationTests(unittest.TestCase):
     @unittest.skipUnless((Path(__file__).resolve().parents[1] / 'inputs/separation_case/IMG_20261121_005008.jpg').is_file(), 'Private regression photo is not distributed')
+    def test_both_report_crops_keep_three_middle_grains_through_api(self):
+        import io
+        import json
+        from app import create_app
+        path = Path(__file__).resolve().parents[1] / 'inputs/separation_case/IMG_20261121_005008.jpg'
+        client = create_app().test_client()
+        crops = [dict(height=.552334197323211, width=.25535048593894144, x=.38118087937471173, y=.30012287261737947),
+                 dict(height=.6230958380921761, width=.42066420664206644, x=.30885613360528136, y=.2627764052782363)]
+        for crop in crops:
+            with self.subTest(crop=crop):
+                response = client.post('/api/analyze', data={'image': (io.BytesIO(path.read_bytes()), 'regression.jpg'), 'crop': json.dumps(crop)})
+                self.assertEqual(response.status_code, 200)
+                data = response.json
+                self.assertEqual(data['summary']['detected'], 21)
+                self.assertEqual(data['preprocessing']['foreground_context'], 'original_image')
+                x, y, _, _ = data['preprocessing']['crop_box']
+                points = [np.array(g['centroid']) + [x, y] for g in data['grains']]
+                middle = [p for p in points if 860 < p[0] < 940 and 630 < p[1] < 725]
+                self.assertEqual(len(middle), 3)
+                for expected in [(886, 657), (897, 678), (909, 697)]:
+                    self.assertEqual(sum(np.linalg.norm(p - expected) < 12 for p in middle), 1)
+
+    @unittest.skipUnless((Path(__file__).resolve().parents[1] / 'inputs/separation_case/IMG_20261121_005008.jpg').is_file(), 'Private regression photo is not distributed')
     def test_reported_crop_has_three_middle_grains_without_extra_fragment(self):
         from bigascheck.vision import load_rgb, Settings, segment
         from bigascheck.cropping import crop_rgb

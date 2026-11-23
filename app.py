@@ -83,8 +83,10 @@ def create_app(model_path=None, samples_root=None, feature_table=None, gallery_r
             sample = samples.get(sample_id) if sample_id else None
             image_source = samples.asset(sample_id) if sample_id else upload.stream
             crop_metadata = None
+            original_rgb = None
             if crop:
-                rgb, crop_metadata = crop_rgb(load_rgb(image_source), crop)
+                original_rgb = load_rgb(image_source)
+                rgb, crop_metadata = crop_rgb(original_rgb, crop)
             else:
                 rgb = load_rgb(image_source, max_edge=1600)
             base_settings = Settings(**bundle["settings"]) if bundle else Settings()
@@ -92,9 +94,19 @@ def create_app(model_path=None, samples_root=None, feature_table=None, gallery_r
                                min_area=int(request.form.get("min_area", base_settings.min_area)),
                                split_touching=request.form.get("split_touching", "true") == "true",
                                detector=request.form.get("detector", "adaptive"))
-            result, mask = analyze(rgb, bundle, settings, request.form.get("method", "decision_tree"))
+            foreground_mask = None
+            if crop_metadata and settings.detector == 'adaptive' and settings.background != 'light':
+                import numpy as np
+                from bigascheck.foreground import adaptive_foreground
+                full_mask = adaptive_foreground(original_rgb)
+                x, y, w, h = crop_metadata['crop_box']
+                foreground_mask = np.asarray(Image.fromarray(full_mask[y:y+h, x:x+w]).resize(
+                    (rgb.shape[1], rgb.shape[0]), Image.Resampling.NEAREST))
+            result, mask = analyze(rgb, bundle, settings, request.form.get("method", "decision_tree"),
+                                   foreground_mask=foreground_mask)
             if crop_metadata:
                 result["preprocessing"].update(crop_metadata)
+                result["preprocessing"]["foreground_context"] = 'original_image' if foreground_mask is not None else 'crop'
                 result["warnings"].insert(0, "Only the selected crop was analyzed; counts refer to that area.")
             result["annotated_png"] = base64.b64encode(png_bytes(annotate(rgb, result["grains"]))).decode()
             result["mask_png"] = base64.b64encode(png_bytes(Image.fromarray(mask))).decode()
