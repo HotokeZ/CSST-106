@@ -2,9 +2,7 @@
 
 An initial local computer vision prototype following the supplied Week 11 proposal: segment rice grain regions, measure geometric/color features, compare a geometric baseline with a Decision Tree, and estimate broken grains **by count**.
 
-**Single-grain training update (20 November 2026):** Added **8 whole and 9 broken local single-grain photos**, with one visually reviewed target per photo, and refitted the Kaggle/local classifier. The local inventory now has **35 training / 10 development-test / 5 sample** photos. The supervised tree uses 2,713 Kaggle training grains plus 17 local grain labels; the multi-grain calibration also uses 17 labelled training-photo counts. Broken-percentage MAE on the existing 10-photo development-test partition is **8.58 percentage points**, compared with **11.92** for the previously installed combined classifier; detection count MAE remains **7.2 grains**. Individual errors and background false detections remain. See [single-grain training](docs/SINGLE_GRAIN_TRAINING.md). These are development results, not independent final evaluation.
-
-**Repository sync (23 November 2026):** Current application/model and prepared milestone files are included. Validation and remaining submission gates are recorded in [publication status](docs/PUBLICATION_STATUS.md). Existing reported metrics refer to their saved runs, not a new benchmark of the latest detector.
+**Application update (23 November 2026):** The sample picker now ships with **27 Kaggle items and 4 Local Dataset 2 training crops**, with no Local Dataset 1 entries. Patterned-cloth recovery finds all 12 reviewed grains; whole/broken remains 9/3 against the 8/4 reference. Current software tests: 51 pass; an isolated fresh install and portable export also passed (47 tests plus 4 private-data skips). See [current changes and measured limits](docs/REQUESTED_UPDATES_20261123.md) and [milestone audit](docs/MILESTONE_CHECKLIST.md). The milestones still have pending hand-in requirements.
 
 ## Team
 
@@ -23,7 +21,7 @@ cd CSST-106
 
 The repository includes the small trained CPU model and the extracted feature/split table. Raw dataset images and personal uploads are excluded. You can upload your own photo immediately after setup.
 
-To enable the dataset sample picker, download the dataset ZIP from the Kaggle source below, save it as `inputs/archive.zip`, then run:
+The curated sample picker is included in a fresh clone. To rebuild the full Kaggle partitions for source-image benchmarks, download the original Kaggle ZIP, save it as `inputs/archive.zip`, then run:
 
 ```powershell
 python -m bigascheck extract inputs/archive.zip data/raw
@@ -48,19 +46,19 @@ The upload box previews the original selected image immediately. Click it again 
 
 ## Try a dataset sample
 
-The **Or try a test sample** gallery lets users analyze a photo without uploading a file. Filter by Whole, Broken or Mixed, select a card, then click **Analyze sample**. The reference labels/counts are shown separately from model predictions. Choosing a file upload clears the selected sample.
+The **Or try a test sample** gallery lets users analyze a photo without uploading a file. Filter by Whole, Broken or Mixed, and by Kaggle or Local Dataset 2. Reference labels/counts appear separately from predictions. Uploading a file clears the selected sample. Local Dataset 2 cards explicitly identify training demonstrations.
 
-The existing model assignments are preserved: 2,713 training images, 582 validation images and 582 test images. The gallery exposes only the 582 held-out test images, plus three six-grain composites assembled exclusively from those test images. The composites are software demonstrations, not independent multi-grain photographs.
+The original Kaggle assignments remain 2,713 training, 582 validation and 582 reused development-test grains. The default curated picker contains 24 original test grains, three declared six-grain composites made from those grains, and four reviewed Local Dataset 2 training crops. There are no Local Dataset 1 gallery entries. Composites are software demonstrations, not captured multi-grain photographs.
 
 The separated image folders and per-split CSVs are under `data/splits/<dataset-version>/train`, `validation` and `test`. A versioned catalog prevents an old gallery from silently being reused after training assignments change. Exact hashes are checked against the saved feature table, and known capture groups must not cross partitions. The original public dataset still lacks verified capture-session IDs; the split remains exploratory at image level.
 
-To rebuild these folders, thumbnails and gallery after training:
+To rebuild full Kaggle split folders and thumbnails, use `python -m bigascheck prepare-samples`. To rebuild the default curated picker after acquiring the source images and reviewed Local Dataset 2 inputs, use:
 
 ```powershell
-python -m bigascheck prepare-samples
+python src/prepare_gallery.py
 ```
 
-`train.ps1` runs this step automatically. The gallery makes the test images available for interactive demonstration, so final research evaluation should use fresh, independently held-out local captures and avoid tuning against gallery examples.
+`train.ps1` still prepares the full source partitions. Run `python src/prepare_gallery.py` separately to rebuild the curated picker. The existing curated assets work without raw data. These demonstrated images are exposed development/training material; use new independently held-out local captures for final evaluation.
 
 For a clean environment with all proposed dependencies, run:
 
@@ -69,7 +67,7 @@ For a clean environment with all proposed dependencies, run:
 .\start.ps1
 ```
 
-Setup requires internet access. The pinned environment matches the tested Python 3.13 CPU/SciPy configuration and saved model. `requirements.txt` pins the imported packages, including the evaluation plotting dependency. OpenCV is optional in `requirements-opencv.txt`; installing it changes the segmentation backend and requires retraining. It is deliberately excluded from the default install so the supplied SciPy model remains compatible. A fresh-clone installation on another machine has not yet been verified.
+Setup requires internet access. The pinned Python 3.13 CPU/SciPy environment was installed in a new isolated venv on 23 November 2026; the exported app/model/gallery and software tests ran with user site disabled and raw/private datasets absent. This verifies the same Windows laptop, not a second machine. OpenCV is optional and excluded from the default environment because changing the backend requires compatible training and evaluation.
 
 ## Real dataset workflow
 
@@ -120,11 +118,11 @@ python src/evaluate.py --split test --output outputs/checkpoints/development_tes
 python src/test_cases.py
 ```
 
-The evaluator writes per-class precision/recall/F1, macro-F1, baseline/current confusion matrices, weights/data hashes, a failure gallery, preprocessing evidence, and CPU timing after three warm-ups. Classification uses saved extracted per-grain features; speed separately executes image loading and the core pipeline. Neither measures detector mAP or mask IoU. The 12-case demo log records failures honestly; current results are 9 pass / 3 fail. Remaining failures include whole/broken mistakes in composites and substantial pale-background false detections. The earlier crop-border failure was fixed, with the pre-fix logs retained.
+The evaluator writes per-class precision/recall/F1, macro-F1, baseline/tree confusion matrices, weights/data hashes, a failure gallery, preprocessing evidence and CPU timing after three warm-ups. It measures classification from saved per-grain features; speed separately runs the image pipeline. Multi-grain inference also uses count calibration, so tree F1 is not full-pipeline counting accuracy. Current twelve-case demo results are 9 pass / 3 fail. See the dated update for current full-photo count/percentage errors.
 
 The UI exposes core processing milliseconds and per-grain Decision Tree leaf votes. Leaf votes are not calibrated certainty. There is no fabricated probability for the geometric baseline.
 
-Milestone 5/6 still require a complete report PDF, rendered slides/PDF, backup video, fresh local evaluation, actual Git tags/contribution history and each member's real contribution statement. Draft source documents in `docs/` are not completed submissions.
+Current milestone PDFs and slide PDFs exist, but the main report and slides contain older methods/results and require revision. Independent final evaluation, actual release tags, updated demo/rehearsal and truthful member contributions are still pending. Read [the current requirement-by-requirement audit](docs/MILESTONE_CHECKLIST.md).
 
 ```powershell
 python -m unittest discover -s tests -v
@@ -144,7 +142,7 @@ These images are drawn ellipses, **not rice training data**. Their results are n
 
 Implemented: dataset audit/import tools, reviewed-label manifests, segmentation, features, baseline and tree training, grouped validation/testing, per-grain and multi-grain evaluation, annotated results, CSV/JSON downloads, and local upload interface.
 
-Remaining: establish original capture groups, independently review labels, verify grain masks, confirm redistribution terms, collect separate local sample photos and manual ground truth, then evaluate the proposal's F1 ≥ 0.80, count MAE ≤ 5 and percentage MAE ≤ 5 percentage-point goals. Image-level source-dataset results cannot establish these goals for independent local samples.
+Remaining: collect independent capture-grouped final photos and manual ground truth, improve remaining background/classification errors, and evaluate the proposal goals on that frozen set. Dataset MIT attribution is preserved; user photos have separate provenance. Existing local development scores and source classifier F1 do not establish independent final-photo performance.
 
 The upload interface defaults to automatic background detection and distance-transform watershed separation of touching grains. Pale-background mode uses local contrast to detect white rice on a light surface. Background and minimum-area controls remain available with a loaded classifier. Connected-region mode is also available for inspecting the effect of separation. Touching or overlapping grains can still merge or split incorrectly; results need manual verification.
 

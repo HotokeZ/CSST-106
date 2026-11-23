@@ -265,7 +265,8 @@ def analyze(rgb, bundle=None, settings=None, method="decision_tree"):
              "count_is_estimate": True, "classification_experimental": shape_model,
              "processing_ms": round((perf_counter() - started) * 1000, 3),
              "backend": backend(), "rejected_regions": len(rejected)},
-            "preprocessing": {"detector": settings.detector, "width": int(rgb.shape[1]), "height": int(rgb.shape[0])},
+            "preprocessing": {"detector": settings.detector, "width": int(rgb.shape[1]), "height": int(rgb.shape[0]),
+                              "texture_recovery_used": any(g.get("detection_method") == "texture_recovery" for g in grains)},
             "warnings": ["Touching grains can merge into one region; spread grains apart.",
                          "Count-based visual estimate; not a mass percentage or official grade."] +
                         (["Model scores are decision-tree leaf votes, not calibrated probabilities of correctness."]

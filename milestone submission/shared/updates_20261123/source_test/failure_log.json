@@ -1,0 +1,222 @@
+[
+  {
+    "id": "F01",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1007.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.460194000801531,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_01.jpg"
+  },
+  {
+    "id": "F02",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano102.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.2816482117844763,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_02.jpg"
+  },
+  {
+    "id": "F03",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1047.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.0816434340571863,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_03.jpg"
+  },
+  {
+    "id": "F04",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1058.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.299412280321755,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_04.jpg"
+  },
+  {
+    "id": "F05",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1114.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.3422009112043347,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_05.jpg"
+  },
+  {
+    "id": "F06",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano1116.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.464575774870835,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_06.jpg"
+  },
+  {
+    "id": "F07",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano118.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.3094963903350987,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_07.jpg"
+  },
+  {
+    "id": "F08",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano17.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.040476216889552,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_08.jpg"
+  },
+  {
+    "id": "F09",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano20.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 1.952250601561958,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_09.jpg"
+  },
+  {
+    "id": "F10",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano286.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.4380382609823594,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_10.jpg"
+  },
+  {
+    "id": "F11",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano3275.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.4591994524371064,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_11.jpg"
+  },
+  {
+    "id": "F12",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano3319.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.0545945238205667,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_12.jpg"
+  },
+  {
+    "id": "F13",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano57.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.210886376263944,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_13.jpg"
+  },
+  {
+    "id": "F14",
+    "image": "<project-root>\\data\\raw\\dataset\\entero\\entero_grano826.png",
+    "reference": "whole",
+    "prediction": "broken",
+    "aspect_ratio": 2.048935699451434,
+    "hypothesized_cause": "Whole reference with a short/low-elongation silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_14.jpg"
+  },
+  {
+    "id": "F15",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano218.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 2.3716318378087933,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_15.jpg"
+  },
+  {
+    "id": "F16",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano289.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 2.723958344658913,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_16.jpg"
+  },
+  {
+    "id": "F17",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano377.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 2.671011432516168,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_17.jpg"
+  },
+  {
+    "id": "F18",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano409.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 4.002223391311991,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_18.jpg"
+  },
+  {
+    "id": "F19",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano553.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 2.538186340997058,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_19.jpg"
+  },
+  {
+    "id": "F20",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano598.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 2.684041795902575,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_20.jpg"
+  },
+  {
+    "id": "F21",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano601.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 2.797133754938688,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_21.jpg"
+  },
+  {
+    "id": "F22",
+    "image": "<project-root>\\data\\raw\\dataset\\quebrado\\quebrado_grano853.png",
+    "reference": "broken",
+    "prediction": "whole",
+    "aspect_ratio": 3.17797110938362,
+    "hypothesized_cause": "Broken reference with an elongated/look-alike silhouette",
+    "cause_review": "Needs manual label and contour review",
+    "evidence": "outputs\\updates_20261123\\source_test\\failures\\failure_22.jpg"
+  }
+]

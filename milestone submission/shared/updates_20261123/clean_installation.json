@@ -1,0 +1,43 @@
+{
+  "python": "3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]",
+  "user_site_enabled": false,
+  "dependencies": {
+    "numpy": "2.3.4",
+    "scipy": "1.16.2",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "Pillow": "12.0.0",
+    "Flask": "3.1.2",
+    "joblib": "1.5.2",
+    "matplotlib": "3.10.7"
+  },
+  "status": {
+    "backend": "scipy-fallback",
+    "model_error": null,
+    "trained": true
+  },
+  "gallery_total": 31,
+  "sample_prediction": {
+    "backend": "scipy-fallback",
+    "background_used": "dark",
+    "broken": 3,
+    "broken_percentage": 50.0,
+    "classification_basis": "local_count_supervised",
+    "classification_experimental": true,
+    "classified": true,
+    "classifier_used": "local_count_calibration",
+    "count_is_estimate": true,
+    "detected": 6,
+    "method": "decision_tree",
+    "processing_ms": 321.337,
+    "rejected_regions": 0,
+    "split_touching": true,
+    "whole": 3
+  },
+  "raw_data_present": false,
+  "software_tests_discovered": 51,
+  "software_tests_passed": 47,
+  "private_data_tests_skipped": 4,
+  "installation": "New isolated venv; pip install -r requirements.txt; portable export without raw/private datasets; user site disabled.",
+  "limitation": "Same Windows laptop, not a second machine or operating system."
+}

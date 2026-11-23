@@ -1,3 +1,11 @@
+# Current review - 23 November 2026
+
+Latest evidence: [milestone audit](shared/updates_20261123/Milestone_Audit.md), [audit PDF](shared/updates_20261123/Milestone_Audit.pdf), [four-page results](shared/updates_20261123/Results_Addendum.pdf), [two-page progress report](shared/updates_20261123/Progress_Report.pdf), [one-page data card](shared/updates_20261123/Data_Card.pdf). Current gallery and patterned-cloth fix are installed. Milestones remain incomplete; read the audit for remaining requirements.
+
+Older complete-package ZIPs and nested source snapshots preserve previous versions. Do not submit them as the current application without rebuilding and reviewing their contents. The repository root is current source.
+
+---
+
 # BigasCheck milestone submission
 Prepared 19 November 2026 from the current project. Separate checkpoint folders map each hand-in item to its evidence.
 
@@ -12,7 +20,7 @@ Each *_Complete_Package.zip contains the phase folder and the shared evidence ne
 
 Outstanding: untouched representative local evaluation and manual labels/counts; actual member contributions/commit links; fresh dependency installation; release tags; confirm whether a live UI screen recording is required instead of the automated actual-output walkthrough.
 The current reports do not establish past checkpoint dates, historical improvement, or a teacher mark. No past work, authorship, metric, or Git tag is fabricated.
-The per-phase files and shared evidence are published in this repository snapshot. Duplicate archive bundles and older nested source copies are omitted; see PUBLICATION.md.
+Repository publication of these new packages must still be verified; existing project repository: https://github.com/HotokeZ/CSST-106.
 
 ## Local evaluation update - 20 November 2026
 33 photos imported; 32 filename-count references scored using the frozen model on 1600-pixel working copies. See shared/local_evaluation and the Phase 3/4/5 Local_Evaluation_Addendum.pdf. Unknown physical sample/capture groups are not invented. One missing-count photo remains unscored. This addendum supersedes earlier statements that no local count references existed.
@@ -25,6 +33,3 @@ The Windows app has been patched and restarted. Read shared/installed_recovery_v
 
 
 Latest combined-training evidence (20 November 2026): see `shared/combined_training_update/README.md`, `report.json`, frozen split `manifest.csv`, and live checks. Local partitions are development data, not an untouched final evaluation. Earlier phase PDFs and ZIPs preserve their earlier reported runs; this addendum records the current trained model.
-
-
-The later single-grain training update is recorded in `shared/single_grain_training_update/README.md`. The current application source and active model are at the repository root. Historical phase reports must be checked against the final current evaluation before submission.

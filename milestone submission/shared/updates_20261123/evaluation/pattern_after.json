@@ -1,0 +1,380 @@
+{
+  "grains": [
+    {
+      "grain_id": 1,
+      "bbox": [
+        503,
+        542,
+        27,
+        34
+      ],
+      "centroid": [
+        515.2761578044597,
+        557.7238421955403
+      ],
+      "features": {
+        "area": 583.0,
+        "major_axis": 36.86676315907232,
+        "minor_axis": 20.719642462254196,
+        "aspect_ratio": 1.7793146395375297,
+        "solidity": 0.9024767801857585,
+        "extent": 0.6350762527233116,
+        "mean_r": 105.08576329331046,
+        "mean_g": 100.05660377358491,
+        "mean_b": 83.69811320754717,
+        "std_r": 9.7255399154612,
+        "std_g": 9.135452220057863,
+        "std_b": 9.02358905260382
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "broken"
+    },
+    {
+      "grain_id": 2,
+      "bbox": [
+        395,
+        585,
+        78,
+        42
+      ],
+      "centroid": [
+        431.9638625592417,
+        604.8536729857819
+      ],
+      "features": {
+        "area": 1688.0,
+        "major_axis": 85.25726750399286,
+        "minor_axis": 25.95495139943311,
+        "aspect_ratio": 3.2848170737031315,
+        "solidity": 0.8964418481147107,
+        "extent": 0.5152625152625152,
+        "mean_r": 106.86018957345972,
+        "mean_g": 100.38684834123222,
+        "mean_b": 83.47037914691943,
+        "std_r": 4.828516984269524,
+        "std_g": 5.099042054883793,
+        "std_b": 5.473574981581655
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 3,
+      "bbox": [
+        473,
+        609,
+        46,
+        51
+      ],
+      "centroid": [
+        494.66101694915255,
+        632.8564971751413
+      ],
+      "features": {
+        "area": 885.0,
+        "major_axis": 69.73743824859845,
+        "minor_axis": 17.71958837850087,
+        "aspect_ratio": 3.935612767010474,
+        "solidity": 0.815668202764977,
+        "extent": 0.3772378516624041,
+        "mean_r": 103.9774011299435,
+        "mean_g": 96.14463276836157,
+        "mean_b": 75.29491525423728,
+        "std_r": 7.355657956997297,
+        "std_g": 7.938712059202454,
+        "std_b": 9.135639969273386
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 4,
+      "bbox": [
+        541,
+        669,
+        77,
+        43
+      ],
+      "centroid": [
+        580.2495250158328,
+        686.9670677644078
+      ],
+      "features": {
+        "area": 1579.0,
+        "major_axis": 84.09369954775264,
+        "minor_axis": 25.023280677010284,
+        "aspect_ratio": 3.360618482971831,
+        "solidity": 0.8850896860986546,
+        "extent": 0.4768951978254304,
+        "mean_r": 97.97593413552882,
+        "mean_g": 91.6307789740342,
+        "mean_b": 75.3153894870171,
+        "std_r": 8.95252008622891,
+        "std_g": 8.887579628567275,
+        "std_b": 8.382214351741833
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 5,
+      "bbox": [
+        224,
+        771,
+        53,
+        41
+      ],
+      "centroid": [
+        252.13693901035674,
+        793.1530494821634
+      ],
+      "features": {
+        "area": 869.0,
+        "major_axis": 64.80152357071636,
+        "minor_axis": 17.95032874929054,
+        "aspect_ratio": 3.6100466167382885,
+        "solidity": 0.8853795211411107,
+        "extent": 0.3999079613437644,
+        "mean_r": 79.38434982738781,
+        "mean_g": 73.14614499424626,
+        "mean_b": 56.95512082853855,
+        "std_r": 6.13218669360039,
+        "std_g": 5.686723640228598,
+        "std_b": 4.772288837722196
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 6,
+      "bbox": [
+        119,
+        902,
+        20,
+        17
+      ],
+      "centroid": [
+        128.2517006802721,
+        910.3095238095239
+      ],
+      "features": {
+        "area": 294.0,
+        "major_axis": 21.91709108375601,
+        "minor_axis": 17.381846866601933,
+        "aspect_ratio": 1.2609184312783384,
+        "solidity": 0.9514563106796117,
+        "extent": 0.8647058823529412,
+        "mean_r": 90.39115646258503,
+        "mean_g": 84.05102040816327,
+        "mean_b": 70.18367346938776,
+        "std_r": 5.047400154778517,
+        "std_g": 5.2625731186859035,
+        "std_b": 5.100380682288543
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "broken"
+    },
+    {
+      "grain_id": 7,
+      "bbox": [
+        392,
+        916,
+        82,
+        55
+      ],
+      "centroid": [
+        429.1694402420575,
+        944.4896621280888
+      ],
+      "features": {
+        "area": 1983.0,
+        "major_axis": 93.10113961860067,
+        "minor_axis": 28.185452047682354,
+        "aspect_ratio": 3.3031629033693726,
+        "solidity": 0.8948555956678702,
+        "extent": 0.43968957871396896,
+        "mean_r": 76.94805849722643,
+        "mean_g": 68.68028240040343,
+        "mean_b": 52.13968734241049,
+        "std_r": 3.820060779577244,
+        "std_g": 3.4663790447997433,
+        "std_b": 3.0277175276447794
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 8,
+      "bbox": [
+        526,
+        952,
+        41,
+        59
+      ],
+      "centroid": [
+        545.4139668826493,
+        980.8704103671706
+      ],
+      "features": {
+        "area": 1389.0,
+        "major_axis": 65.97152082006464,
+        "minor_axis": 27.349782939167586,
+        "aspect_ratio": 2.412140563118946,
+        "solidity": 0.9385135135135136,
+        "extent": 0.5742042166184373,
+        "mean_r": 74.5190784737221,
+        "mean_g": 68.1598272138229,
+        "mean_b": 50.80849532037437,
+        "std_r": 6.380921460888407,
+        "std_g": 6.315129670016484,
+        "std_b": 5.953083897202092
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 9,
+      "bbox": [
+        616,
+        958,
+        62,
+        56
+      ],
+      "centroid": [
+        649.2621641249092,
+        983.5577342047931
+      ],
+      "features": {
+        "area": 1377.0,
+        "major_axis": 83.47512452217947,
+        "minor_axis": 22.269289045564282,
+        "aspect_ratio": 3.748441378230999,
+        "solidity": 0.8652214891611688,
+        "extent": 0.39660138248847926,
+        "mean_r": 79.8721859114016,
+        "mean_g": 76.07843137254902,
+        "mean_b": 64.45679012345678,
+        "std_r": 6.002874203881843,
+        "std_g": 6.2786614805034295,
+        "std_b": 6.022571861901613
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 10,
+      "bbox": [
+        457,
+        1003,
+        29,
+        29
+      ],
+      "centroid": [
+        471.1829855537721,
+        1016.7239165329053
+      ],
+      "features": {
+        "area": 623.0,
+        "major_axis": 30.202889965792355,
+        "minor_axis": 26.928023089695518,
+        "aspect_ratio": 1.1216155699654766,
+        "solidity": 0.9048656499636893,
+        "extent": 0.7407847800237812,
+        "mean_r": 77.65329052969503,
+        "mean_g": 68.5505617977528,
+        "mean_b": 52.69502407704655,
+        "std_r": 5.608281933985318,
+        "std_g": 5.126671094015413,
+        "std_b": 4.157040591111172
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "broken"
+    },
+    {
+      "grain_id": 11,
+      "bbox": [
+        399,
+        1056,
+        87,
+        35
+      ],
+      "centroid": [
+        442.2293828509012,
+        1074.5379574003277
+      ],
+      "features": {
+        "area": 1831.0,
+        "major_axis": 89.72320832239681,
+        "minor_axis": 27.23890561919279,
+        "aspect_ratio": 3.293935871607742,
+        "solidity": 0.8982094677458916,
+        "extent": 0.6013136288998358,
+        "mean_r": 68.01092299290005,
+        "mean_g": 59.69470234844347,
+        "mean_b": 45.8399781540142,
+        "std_r": 4.975844520760193,
+        "std_g": 4.245750830678781,
+        "std_b": 3.5068874730013664
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    },
+    {
+      "grain_id": 12,
+      "bbox": [
+        746,
+        1059,
+        31,
+        38
+      ],
+      "centroid": [
+        760.5199386503067,
+        1076.7254601226994
+      ],
+      "features": {
+        "area": 652.0,
+        "major_axis": 44.915411327973494,
+        "minor_axis": 19.50415122590207,
+        "aspect_ratio": 2.3028641855649963,
+        "solidity": 0.8429217840982546,
+        "extent": 0.5534804753820034,
+        "mean_r": 90.55061349693251,
+        "mean_g": 88.30981595092024,
+        "mean_b": 76.78067484662577,
+        "std_r": 9.624971496619516,
+        "std_g": 9.48888736373811,
+        "std_b": 9.317971660377617
+      },
+      "detection_method": "texture_recovery",
+      "prediction": "whole"
+    }
+  ],
+  "summary": {
+    "detected": 12,
+    "broken": 3,
+    "whole": 9,
+    "broken_percentage": 25.0,
+    "classified": true,
+    "method": "decision_tree",
+    "background_used": "dark",
+    "split_touching": true,
+    "classification_basis": "local_count_supervised",
+    "classifier_used": "local_count_calibration",
+    "count_is_estimate": true,
+    "classification_experimental": true,
+    "processing_ms": 2761.514,
+    "backend": "scipy-fallback",
+    "rejected_regions": 3
+  },
+  "preprocessing": {
+    "detector": "adaptive",
+    "width": 1200,
+    "height": 1600,
+    "texture_recovery_used": true
+  },
+  "warnings": [
+    "Touching grains can merge into one region; spread grains apart.",
+    "Count-based visual estimate; not a mass percentage or official grade.",
+    "Whole/broken labels use a local threshold trained from photo totals. Individual grain labels remain unverified; predictions are experimental."
+  ]
+}

@@ -264,7 +264,7 @@ def _separate_touching(mask, min_area, typical_area=None):
     return labels
 
 
-def segment(rgb, settings=Settings()):
+def segment(rgb, settings=Settings(), *, _texture_recovery=False):
     if rgb.ndim != 3 or rgb.shape[2] != 3 or rgb.dtype != np.uint8:
         raise ValueError("Expected an RGB uint8 image.")
     mode = resolve_background(rgb, settings.background)
@@ -273,9 +273,9 @@ def segment(rgb, settings=Settings()):
     uniform_surface = np.percentile(border_gray, 95) - np.percentile(border_gray, 5) <= 8
     adaptive = settings.detector == "adaptive" and mode != "light" and not uniform_surface
     if adaptive:
-        from .foreground import adaptive_foreground
+        from .foreground import adaptive_foreground, texture_foreground
         gray = np.round(rgb @ np.array([.299, .587, .114])).astype(np.uint8)
-        mask = adaptive_foreground(rgb)
+        mask = texture_foreground(rgb) if _texture_recovery else adaptive_foreground(rgb)
         mask = _fill_small_holes(mask, max(9, settings.min_area))
         labels, _ = ndimage.label(mask, np.ones((3, 3)))
         # Reject tiny noise and frame/background components before watershed:
@@ -285,6 +285,10 @@ def segment(rgb, settings=Settings()):
         keep[0] = False
         if settings.exclude_border:
             edge = max(1, settings.morphology + 1)
+            if _texture_recovery:
+                # Woven frame edges can leave thin floating strips after
+                # smoothing; exclude components connected to this edge band.
+                edge = max(edge, int(np.ceil(.02 * min(mask.shape))))
             border_ids = np.unique(np.concatenate([labels[:edge].ravel(), labels[-edge:].ravel(), labels[:, :edge].ravel(), labels[:, -edge:].ravel()]))
             keep[border_ids] = False
         labels, _ = ndimage.label(keep[labels], np.ones((3, 3)))
@@ -339,7 +343,7 @@ def segment(rgb, settings=Settings()):
         plausible = region_sizes[region_sizes >= settings.min_area]
         if len(plausible) >= 5:
             effective_min_area = max(settings.min_area, .15 * float(np.median(plausible)))
-    grains, rejected = [], []
+    grains, rejected, grain_components = [], [], []
     height, width = gray.shape
     for component, box in enumerate(ndimage.find_objects(labels), start=1):
         if box is None:
@@ -370,7 +374,7 @@ def segment(rgb, settings=Settings()):
             rejected.append({"area": area, "reason": "implausible_shape"})
             labels[box][local] = 0
             continue
-        if mode == "dark":
+        if mode == "dark" and not _texture_recovery:
             y0 = max(0, ys.start - 6); y1 = min(height, ys.stop + 6)
             x0 = max(0, xs.start - 6); x1 = min(width, xs.stop + 6)
             local_p = labels[y0:y1, x0:x1] == component
@@ -389,6 +393,21 @@ def segment(rgb, settings=Settings()):
                        "bbox": [xs.start, ys.start, xs.stop - xs.start, ys.stop - ys.start],
                        "centroid": [float(x.mean() + xs.start), float(y.mean() + ys.start)],
                        "features": dict(zip(FEATURES, map(float, values)))})
+        grain_components.append(component)
+    if _texture_recovery and len(grains) >= 5:
+        # Estimate scale from accepted smooth silhouettes rather than tiny
+        # pre-filter fabric regions. Respect any larger user minimum area.
+        recovery_floor = max(settings.min_area, .15 * float(np.median([g["features"]["area"] for g in grains])))
+        kept = []
+        for grain, component in zip(grains, grain_components):
+            if grain["features"]["area"] < recovery_floor:
+                labels[labels == component] = 0
+                rejected.append({"area": grain["features"]["area"], "reason": "below_recovery_scale"})
+            else:
+                grain["grain_id"] = len(kept) + 1
+                grain["detection_method"] = "texture_recovery"
+                kept.append(grain)
+        grains = kept
     # Keep watershed seams visible in the preview mask.
     visible = labels > 0
     if settings.split_touching:
@@ -396,6 +415,12 @@ def segment(rgb, settings=Settings()):
         visible[:, 1:][seam] = False
         seam = (labels[1:, :] != labels[:-1, :]) & (labels[1:, :] > 0) & (labels[:-1, :] > 0)
         visible[1:, :][seam] = False
+    low_contrast = sum(r["reason"] == "low_contrast_glare" for r in rejected)
+    if (adaptive and mode == "dark" and not _texture_recovery and len(grains) < 5
+            and low_contrast >= 5 and low_contrast >= .75 * (len(grains) + len(rejected))):
+        recovered, recovery_rejected, recovery_mask = segment(rgb, settings, _texture_recovery=True)
+        if len(recovered) >= 5 and len(recovered) > len(grains):
+            return recovered, recovery_rejected, recovery_mask
     # Recover dense pale scenes without reopening colored cloth backgrounds.
     median_rgb = np.median(rgb.reshape(-1, 3), axis=0)
     pale_neutral_surface = (median_rgb.max() - median_rgb.min()) / max(median_rgb.max(), 1) < .25

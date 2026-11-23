@@ -1,0 +1,76 @@
+{
+  "status": {
+    "backend": "scipy-fallback",
+    "model_error": null,
+    "trained": true
+  },
+  "gallery_sources": {
+    "kaggle": 27,
+    "local2": 4
+  },
+  "verified_image_and_thumbnail_routes": 62,
+  "gallery_and_uploaded_bytes_match": true,
+  "photo_checks": {
+    "local_010": {
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 3,
+        "broken_percentage": 25.0,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 12,
+        "method": "decision_tree",
+        "processing_ms": 2329.009,
+        "rejected_regions": 3,
+        "split_touching": true,
+        "whole": 9
+      },
+      "texture_recovery_used": true
+    },
+    "local_007": {
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "dark",
+        "broken": 4,
+        "broken_percentage": 40.0,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 10,
+        "method": "decision_tree",
+        "processing_ms": 1167.062,
+        "rejected_regions": 3,
+        "split_touching": true,
+        "whole": 6
+      },
+      "texture_recovery_used": false
+    },
+    "local_005": {
+      "summary": {
+        "backend": "scipy-fallback",
+        "background_used": "pale",
+        "broken": 1,
+        "broken_percentage": 5.555555555555555,
+        "classification_basis": "local_count_supervised",
+        "classification_experimental": true,
+        "classified": true,
+        "classifier_used": "local_count_calibration",
+        "count_is_estimate": true,
+        "detected": 18,
+        "method": "decision_tree",
+        "processing_ms": 977.306,
+        "rejected_regions": 1,
+        "split_touching": true,
+        "whole": 17
+      },
+      "texture_recovery_used": false
+    }
+  },
+  "limitations": "These are live software/regression checks on known development images, not an independent accuracy study."
+}

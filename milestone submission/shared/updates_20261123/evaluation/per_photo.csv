@@ -1,0 +1,201 @@
+photo_id,dataset,condition,split,variant,method,reference_whole,reference_broken,detected,whole,broken,processing_ms,count_error,whole_error,broken_error,percentage_error_pp,texture_recovery_used
+local_001,local1,"Low Light, Shadow, Different BG",train,before,main,11,7,31,18,13,1452.681,13,7,6,3.046594982078858,False
+local_001,local1,"Low Light, Shadow, Different BG",train,before,baseline,11,7,31,11,20,1452.681,13,0,13,25.62724014336918,False
+local_001,local1,"Low Light, Shadow, Different BG",train,after,main,11,7,31,18,13,1508.005,13,7,6,3.046594982078858,False
+local_001,local1,"Low Light, Shadow, Different BG",train,after,baseline,11,7,31,11,20,1508.005,13,0,13,25.62724014336918,False
+local_002,local1,"Low Light, Shadow, Different BG",train,before,main,12,6,3,0,3,1176.047,15,12,3,66.66666666666666,False
+local_002,local1,"Low Light, Shadow, Different BG",train,before,baseline,12,6,3,0,3,1176.047,15,12,3,66.66666666666666,False
+local_002,local1,"Low Light, Shadow, Different BG",train,after,main,12,6,3,0,3,2391.412,15,12,3,66.66666666666666,False
+local_002,local1,"Low Light, Shadow, Different BG",train,after,baseline,12,6,3,0,3,2391.412,15,12,3,66.66666666666666,False
+local_003,local1,"Low Light, Shadow, Different BG",sample,before,main,15,9,26,15,11,1072.792,2,0,2,4.807692307692307,False
+local_003,local1,"Low Light, Shadow, Different BG",sample,before,baseline,15,9,26,12,14,1072.792,2,3,5,16.346153846153847,False
+local_003,local1,"Low Light, Shadow, Different BG",sample,after,main,15,9,26,15,11,1034.894,2,0,2,4.807692307692307,False
+local_003,local1,"Low Light, Shadow, Different BG",sample,after,baseline,15,9,26,12,14,1034.894,2,3,5,16.346153846153847,False
+local_004,local1,"Low Light, Shadow, Different BG",test,before,main,18,4,21,17,4,1039.117,1,1,0,0.865800865800864,False
+local_004,local1,"Low Light, Shadow, Different BG",test,before,baseline,18,4,21,17,4,1039.117,1,1,0,0.865800865800864,False
+local_004,local1,"Low Light, Shadow, Different BG",test,after,main,18,4,21,17,4,1018.747,1,1,0,0.865800865800864,False
+local_004,local1,"Low Light, Shadow, Different BG",test,after,baseline,18,4,21,17,4,1018.747,1,1,0,0.865800865800864,False
+local_005,local1,"Low Light, Shadow, Different BG",train,before,main,18,0,18,17,1,1106.073,0,1,1,5.555555555555555,False
+local_005,local1,"Low Light, Shadow, Different BG",train,before,baseline,18,0,18,17,1,1106.073,0,1,1,5.555555555555555,False
+local_005,local1,"Low Light, Shadow, Different BG",train,after,main,18,0,18,17,1,1073.744,0,1,1,5.555555555555555,False
+local_005,local1,"Low Light, Shadow, Different BG",train,after,baseline,18,0,18,17,1,1073.744,0,1,1,5.555555555555555,False
+local_006,local1,"Low Light, Shadow, Different BG",test,before,main,22,10,49,32,17,1319.038,17,10,7,3.4438775510204067,False
+local_006,local1,"Low Light, Shadow, Different BG",test,before,baseline,22,10,49,29,20,1319.038,17,7,10,9.566326530612244,False
+local_006,local1,"Low Light, Shadow, Different BG",test,after,main,22,10,49,32,17,1239.477,17,10,7,3.4438775510204067,False
+local_006,local1,"Low Light, Shadow, Different BG",test,after,baseline,22,10,49,29,20,1239.477,17,7,10,9.566326530612244,False
+local_007,local1,"Low Light, Shadow, Different BG",train,before,main,5,5,10,6,4,1194.58,0,1,1,10.0,False
+local_007,local1,"Low Light, Shadow, Different BG",train,before,baseline,5,5,10,5,5,1194.58,0,0,0,0.0,False
+local_007,local1,"Low Light, Shadow, Different BG",train,after,main,5,5,10,6,4,1183.371,0,1,1,10.0,False
+local_007,local1,"Low Light, Shadow, Different BG",train,after,baseline,5,5,10,5,5,1183.371,0,0,0,0.0,False
+local_008,local1,"Low Light, Shadow, Different BG",train,before,main,5,7,12,8,4,919.154,0,3,3,25.0,False
+local_008,local1,"Low Light, Shadow, Different BG",train,before,baseline,5,7,12,6,6,919.154,0,1,1,8.333333333333336,False
+local_008,local1,"Low Light, Shadow, Different BG",train,after,main,5,7,12,8,4,954.89,0,3,3,25.0,False
+local_008,local1,"Low Light, Shadow, Different BG",train,after,baseline,5,7,12,6,6,954.89,0,1,1,8.333333333333336,False
+local_009,local1,"Low Light, Shadow, Different BG",test,before,main,6,1,11,9,2,1145.396,4,3,1,3.896103896103897,False
+local_009,local1,"Low Light, Shadow, Different BG",test,before,baseline,6,1,11,8,3,1145.396,4,2,2,12.987012987012987,False
+local_009,local1,"Low Light, Shadow, Different BG",test,after,main,6,1,11,9,2,1081.672,4,3,1,3.896103896103897,False
+local_009,local1,"Low Light, Shadow, Different BG",test,after,baseline,6,1,11,8,3,1081.672,4,2,2,12.987012987012987,False
+local_010,local1,"Low Light, Shadow, Different BG",sample,before,main,8,4,4,1,3,1170.005,8,7,1,41.666666666666664,False
+local_010,local1,"Low Light, Shadow, Different BG",sample,before,baseline,8,4,4,0,4,1170.005,8,8,0,66.66666666666666,False
+local_010,local1,"Low Light, Shadow, Different BG",sample,after,main,8,4,12,9,3,2761.514,0,1,1,8.333333333333336,True
+local_010,local1,"Low Light, Shadow, Different BG",sample,after,baseline,8,4,12,8,4,2761.514,0,0,0,0.0,True
+local_011,local1,Overlap,train,before,main,11,7,16,12,4,1416.116,2,1,3,13.888888888888886,False
+local_011,local1,Overlap,train,before,baseline,11,7,16,9,7,1416.116,2,2,0,4.861111111111114,False
+local_011,local1,Overlap,train,after,main,11,7,16,12,4,1443.889,2,1,3,13.888888888888886,False
+local_011,local1,Overlap,train,after,baseline,11,7,16,9,7,1443.889,2,2,0,4.861111111111114,False
+local_012,local1,Overlap,train,before,main,12,7,18,12,6,1231.881,1,0,1,3.5087719298245617,False
+local_012,local1,Overlap,train,before,baseline,12,7,18,10,8,1231.881,1,2,1,7.6023391812865455,False
+local_012,local1,Overlap,train,after,main,12,7,18,12,6,1356.414,1,0,1,3.5087719298245617,False
+local_012,local1,Overlap,train,after,baseline,12,7,18,10,8,1356.414,1,2,1,7.6023391812865455,False
+local_013,local1,Overlap,test,before,main,13,11,20,13,7,1519.04,4,0,4,10.833333333333336,False
+local_013,local1,Overlap,test,before,baseline,13,11,20,11,9,1519.04,4,2,2,0.8333333333333357,False
+local_013,local1,Overlap,test,after,main,13,11,20,13,7,1607.807,4,0,4,10.833333333333336,False
+local_013,local1,Overlap,test,after,baseline,13,11,20,11,9,1607.807,4,2,2,0.8333333333333357,False
+local_014,local1,Overlap,train,before,main,13,17,20,13,7,1862.254,10,0,10,21.666666666666664,False
+local_014,local1,Overlap,train,before,baseline,13,17,20,10,10,1862.254,10,3,7,6.666666666666664,False
+local_014,local1,Overlap,train,after,main,13,17,20,13,7,1513.179,10,0,10,21.666666666666664,False
+local_014,local1,Overlap,train,after,baseline,13,17,20,10,10,1513.179,10,3,7,6.666666666666664,False
+local_015,local1,Overlap,train,before,main,16,14,14,12,2,1152.884,16,4,12,32.38095238095238,False
+local_015,local1,Overlap,train,before,baseline,16,14,14,11,3,1152.884,16,5,11,25.238095238095237,False
+local_015,local1,Overlap,train,after,main,16,14,14,12,2,1364.066,16,4,12,32.38095238095238,False
+local_015,local1,Overlap,train,after,baseline,16,14,14,11,3,1364.066,16,5,11,25.238095238095237,False
+local_016,local1,Overlap,test,before,main,16,17,29,17,12,1405.692,4,1,5,10.135841170323928,False
+local_016,local1,Overlap,test,before,baseline,16,17,29,15,14,1405.692,4,1,3,3.2392894461859996,False
+local_016,local1,Overlap,test,after,main,16,17,29,17,12,1559.24,4,1,5,10.135841170323928,False
+local_016,local1,Overlap,test,after,baseline,16,17,29,15,14,1559.24,4,1,3,3.2392894461859996,False
+local_017,local1,Overlap,sample,before,main,19,19,30,14,16,1541.505,8,5,3,3.3333333333333357,False
+local_017,local1,Overlap,sample,before,baseline,19,19,30,11,19,1541.505,8,8,0,13.333333333333336,False
+local_017,local1,Overlap,sample,after,main,19,19,30,14,16,1473.75,8,5,3,3.3333333333333357,False
+local_017,local1,Overlap,sample,after,baseline,19,19,30,11,19,1473.75,8,8,0,13.333333333333336,False
+local_018,local1,Overlap,test,before,main,9,5,14,9,5,1336.803,0,0,0,0.0,False
+local_018,local1,Overlap,test,before,baseline,9,5,14,7,7,1336.803,0,2,2,14.285714285714285,False
+local_018,local1,Overlap,test,after,main,9,5,14,9,5,1333.314,0,0,0,0.0,False
+local_018,local1,Overlap,test,after,baseline,9,5,14,7,7,1333.314,0,2,2,14.285714285714285,False
+local_019,local1,Overlap,train,before,main,9,5,11,9,2,1416.753,3,0,3,17.532467532467532,False
+local_019,local1,Overlap,train,before,baseline,9,5,11,8,3,1416.753,3,1,2,8.441558441558442,False
+local_019,local1,Overlap,train,after,main,9,5,11,9,2,1348.461,3,0,3,17.532467532467532,False
+local_019,local1,Overlap,train,after,baseline,9,5,11,8,3,1348.461,3,1,2,8.441558441558442,False
+local_020,local1,Overlap,train,before,main,9,0,16,3,13,1285.635,7,6,13,81.25,False
+local_020,local1,Overlap,train,before,baseline,9,0,16,2,14,1285.635,7,7,14,87.5,False
+local_020,local1,Overlap,train,after,main,9,0,16,3,13,1149.038,7,6,13,81.25,False
+local_020,local1,Overlap,train,after,baseline,9,0,16,2,14,1149.038,7,7,14,87.5,False
+local_021,local1,Overlap,train,before,main,,,12,9,3,1109.905,,,,,False
+local_021,local1,Overlap,train,before,baseline,,,12,7,5,1109.905,,,,,False
+local_021,local1,Overlap,train,after,main,,,12,9,3,1054.7,,,,,False
+local_021,local1,Overlap,train,after,baseline,,,12,7,5,1054.7,,,,,False
+local_022,local1,Separated,train,before,main,10,6,16,10,6,1033.844,0,0,0,0.0,False
+local_022,local1,Separated,train,before,baseline,10,6,16,10,6,1033.844,0,0,0,0.0,False
+local_022,local1,Separated,train,after,main,10,6,16,10,6,982.191,0,0,0,0.0,False
+local_022,local1,Separated,train,after,baseline,10,6,16,10,6,982.191,0,0,0,0.0,False
+local_023,local1,Separated,test,before,main,10,0,10,10,0,1024.486,0,0,0,0.0,False
+local_023,local1,Separated,test,before,baseline,10,0,10,10,0,1024.486,0,0,0,0.0,False
+local_023,local1,Separated,test,after,main,10,0,10,10,0,1091.876,0,0,0,0.0,False
+local_023,local1,Separated,test,after,baseline,10,0,10,10,0,1091.876,0,0,0,0.0,False
+local_024,local1,Separated,train,before,main,12,10,22,14,8,1111.051,0,2,2,9.090909090909086,False
+local_024,local1,Separated,train,before,baseline,12,10,22,9,13,1111.051,0,3,3,13.63636363636364,False
+local_024,local1,Separated,train,after,main,12,10,22,14,8,1067.223,0,2,2,9.090909090909086,False
+local_024,local1,Separated,train,after,baseline,12,10,22,9,13,1067.223,0,3,3,13.63636363636364,False
+local_025,local1,Separated,test,before,main,12,0,12,12,0,1123.839,0,0,0,0.0,False
+local_025,local1,Separated,test,before,baseline,12,0,12,12,0,1123.839,0,0,0,0.0,False
+local_025,local1,Separated,test,after,main,12,0,12,12,0,1013.032,0,0,0,0.0,False
+local_025,local1,Separated,test,after,baseline,12,0,12,12,0,1013.032,0,0,0,0.0,False
+local_026,local1,Separated,train,before,main,15,0,15,15,0,1009.091,0,0,0,0.0,False
+local_026,local1,Separated,train,before,baseline,15,0,15,15,0,1009.091,0,0,0,0.0,False
+local_026,local1,Separated,train,after,main,15,0,15,15,0,997.861,0,0,0,0.0,False
+local_026,local1,Separated,train,after,baseline,15,0,15,15,0,997.861,0,0,0,0.0,False
+local_027,local1,Separated,sample,before,main,16,0,16,16,0,1081.602,0,0,0,0.0,False
+local_027,local1,Separated,sample,before,baseline,16,0,16,15,1,1081.602,0,1,1,6.25,False
+local_027,local1,Separated,sample,after,main,16,0,16,16,0,1215.818,0,0,0,0.0,False
+local_027,local1,Separated,sample,after,baseline,16,0,16,15,1,1215.818,0,1,1,6.25,False
+local_028,local1,Separated,train,before,main,21,0,21,21,0,1307.1,0,0,0,0.0,False
+local_028,local1,Separated,train,before,baseline,21,0,21,18,3,1307.1,0,3,3,14.285714285714286,False
+local_028,local1,Separated,train,after,main,21,0,21,21,0,1143.763,0,0,0,0.0,False
+local_028,local1,Separated,train,after,baseline,21,0,21,18,3,1143.763,0,3,3,14.285714285714286,False
+local_029,local1,Separated,sample,before,main,22,0,22,22,0,1377.586,0,0,0,0.0,False
+local_029,local1,Separated,sample,before,baseline,22,0,22,19,3,1377.586,0,3,3,13.636363636363637,False
+local_029,local1,Separated,sample,after,main,22,0,22,22,0,1118.034,0,0,0,0.0,False
+local_029,local1,Separated,sample,after,baseline,22,0,22,19,3,1118.034,0,3,3,13.636363636363637,False
+local_030,local1,Separated,test,before,main,6,0,6,6,0,1028.981,0,0,0,0.0,False
+local_030,local1,Separated,test,before,baseline,6,0,6,6,0,1028.981,0,0,0,0.0,False
+local_030,local1,Separated,test,after,main,6,0,6,6,0,1168.58,0,0,0,0.0,False
+local_030,local1,Separated,test,after,baseline,6,0,6,6,0,1168.58,0,0,0,0.0,False
+local_031,local1,Separated,train,before,main,8,10,18,9,9,1205.242,0,1,1,5.555555555555557,False
+local_031,local1,Separated,train,before,baseline,8,10,18,8,10,1205.242,0,0,0,0.0,False
+local_031,local1,Separated,train,after,main,8,10,18,9,9,999.678,0,1,1,5.555555555555557,False
+local_031,local1,Separated,train,after,baseline,8,10,18,8,10,999.678,0,0,0,0.0,False
+local_032,local1,Separated,test,before,main,8,0,8,8,0,919.154,0,0,0,0.0,False
+local_032,local1,Separated,test,before,baseline,8,0,8,8,0,919.154,0,0,0,0.0,False
+local_032,local1,Separated,test,after,main,8,0,8,8,0,929.989,0,0,0,0.0,False
+local_032,local1,Separated,test,after,baseline,8,0,8,8,0,929.989,0,0,0,0.0,False
+local_033,local1,Separated,train,before,main,9,0,9,9,0,948.932,0,0,0,0.0,False
+local_033,local1,Separated,train,before,baseline,9,0,9,9,0,948.932,0,0,0,0.0,False
+local_033,local1,Separated,train,after,main,9,0,9,9,0,917.648,0,0,0,0.0,False
+local_033,local1,Separated,train,after,baseline,9,0,9,9,0,917.648,0,0,0,0.0,False
+single_IMG_20261120_224020,local2,single_grain_training,train,before,main,0,1,21,1,20,914.881,20,1,19,4.761904761904759,False
+single_IMG_20261120_224020,local2,single_grain_training,train,before,baseline,0,1,21,0,21,914.881,20,0,20,0.0,False
+single_IMG_20261120_224020,local2,single_grain_training,train,after,main,0,1,21,1,20,976.229,20,1,19,4.761904761904759,False
+single_IMG_20261120_224020,local2,single_grain_training,train,after,baseline,0,1,21,0,21,976.229,20,0,20,0.0,False
+single_IMG_20261120_224035,local2,single_grain_training,train,before,main,0,1,14,2,12,920.971,13,2,11,14.285714285714292,False
+single_IMG_20261120_224035,local2,single_grain_training,train,before,baseline,0,1,14,1,13,920.971,13,1,12,7.142857142857139,False
+single_IMG_20261120_224035,local2,single_grain_training,train,after,main,0,1,14,2,12,891.325,13,2,11,14.285714285714292,False
+single_IMG_20261120_224035,local2,single_grain_training,train,after,baseline,0,1,14,1,13,891.325,13,1,12,7.142857142857139,False
+single_IMG_20261120_224047,local2,single_grain_training,train,before,main,0,1,9,1,8,979.696,8,1,7,11.111111111111114,False
+single_IMG_20261120_224047,local2,single_grain_training,train,before,baseline,0,1,9,0,9,979.696,8,0,8,0.0,False
+single_IMG_20261120_224047,local2,single_grain_training,train,after,main,0,1,9,1,8,944.068,8,1,7,11.111111111111114,False
+single_IMG_20261120_224047,local2,single_grain_training,train,after,baseline,0,1,9,0,9,944.068,8,0,8,0.0,False
+single_IMG_20261120_224104,local2,single_grain_training,train,before,main,0,1,16,0,16,913.621,15,0,15,0.0,False
+single_IMG_20261120_224104,local2,single_grain_training,train,before,baseline,0,1,16,0,16,913.621,15,0,15,0.0,False
+single_IMG_20261120_224104,local2,single_grain_training,train,after,main,0,1,16,0,16,912.664,15,0,15,0.0,False
+single_IMG_20261120_224104,local2,single_grain_training,train,after,baseline,0,1,16,0,16,912.664,15,0,15,0.0,False
+single_IMG_20261120_224113,local2,single_grain_training,train,before,main,0,1,29,0,29,952.449,28,0,28,0.0,False
+single_IMG_20261120_224113,local2,single_grain_training,train,before,baseline,0,1,29,0,29,952.449,28,0,28,0.0,False
+single_IMG_20261120_224113,local2,single_grain_training,train,after,main,0,1,29,0,29,901.312,28,0,28,0.0,False
+single_IMG_20261120_224113,local2,single_grain_training,train,after,baseline,0,1,29,0,29,901.312,28,0,28,0.0,False
+single_IMG_20261120_224127,local2,single_grain_training,train,before,main,0,1,27,2,25,906.107,26,2,24,7.407407407407405,False
+single_IMG_20261120_224127,local2,single_grain_training,train,before,baseline,0,1,27,0,27,906.107,26,0,26,0.0,False
+single_IMG_20261120_224127,local2,single_grain_training,train,after,main,0,1,27,2,25,909.019,26,2,24,7.407407407407405,False
+single_IMG_20261120_224127,local2,single_grain_training,train,after,baseline,0,1,27,0,27,909.019,26,0,26,0.0,False
+single_IMG_20261120_224139,local2,single_grain_training,train,before,main,0,1,24,2,22,993.612,23,2,21,8.333333333333329,False
+single_IMG_20261120_224139,local2,single_grain_training,train,before,baseline,0,1,24,2,22,993.612,23,2,21,8.333333333333329,False
+single_IMG_20261120_224139,local2,single_grain_training,train,after,main,0,1,24,2,22,917.295,23,2,21,8.333333333333329,False
+single_IMG_20261120_224139,local2,single_grain_training,train,after,baseline,0,1,24,2,22,917.295,23,2,21,8.333333333333329,False
+single_IMG_20261120_224152,local2,single_grain_training,train,before,main,0,1,27,1,26,921.779,26,1,25,3.7037037037037095,False
+single_IMG_20261120_224152,local2,single_grain_training,train,before,baseline,0,1,27,1,26,921.779,26,1,25,3.7037037037037095,False
+single_IMG_20261120_224152,local2,single_grain_training,train,after,main,0,1,27,1,26,899.75,26,1,25,3.7037037037037095,False
+single_IMG_20261120_224152,local2,single_grain_training,train,after,baseline,0,1,27,1,26,899.75,26,1,25,3.7037037037037095,False
+single_IMG_20261120_224204,local2,single_grain_training,train,before,main,0,1,19,0,19,1020.622,18,0,18,0.0,False
+single_IMG_20261120_224204,local2,single_grain_training,train,before,baseline,0,1,19,0,19,1020.622,18,0,18,0.0,False
+single_IMG_20261120_224204,local2,single_grain_training,train,after,main,0,1,19,0,19,1078.703,18,0,18,0.0,False
+single_IMG_20261120_224204,local2,single_grain_training,train,after,baseline,0,1,19,0,19,1078.703,18,0,18,0.0,False
+single_IMG_20261120_222707,local2,single_grain_training,train,before,main,1,0,58,18,40,1330.78,57,17,40,68.96551724137932,False
+single_IMG_20261120_222707,local2,single_grain_training,train,before,baseline,1,0,58,11,47,1330.78,57,10,47,81.03448275862068,False
+single_IMG_20261120_222707,local2,single_grain_training,train,after,main,1,0,58,18,40,1254.428,57,17,40,68.96551724137932,False
+single_IMG_20261120_222707,local2,single_grain_training,train,after,baseline,1,0,58,11,47,1254.428,57,10,47,81.03448275862068,False
+single_IMG_20261120_222720,local2,single_grain_training,train,before,main,1,0,15,6,9,1667.867,14,5,9,60.0,False
+single_IMG_20261120_222720,local2,single_grain_training,train,before,baseline,1,0,15,3,12,1667.867,14,2,12,80.0,False
+single_IMG_20261120_222720,local2,single_grain_training,train,after,main,1,0,15,6,9,1291.063,14,5,9,60.0,False
+single_IMG_20261120_222720,local2,single_grain_training,train,after,baseline,1,0,15,3,12,1291.063,14,2,12,80.0,False
+single_IMG_20261120_222738,local2,single_grain_training,train,before,main,1,0,74,25,49,1165.263,73,24,49,66.21621621621621,False
+single_IMG_20261120_222738,local2,single_grain_training,train,before,baseline,1,0,74,14,60,1165.263,73,13,60,81.08108108108108,False
+single_IMG_20261120_222738,local2,single_grain_training,train,after,main,1,0,74,25,49,1181.379,73,24,49,66.21621621621621,False
+single_IMG_20261120_222738,local2,single_grain_training,train,after,baseline,1,0,74,14,60,1181.379,73,13,60,81.08108108108108,False
+single_IMG_20261120_222805,local2,single_grain_training,train,before,main,1,0,101,35,66,1271.298,100,34,66,65.34653465346534,False
+single_IMG_20261120_222805,local2,single_grain_training,train,before,baseline,1,0,101,20,81,1271.298,100,19,81,80.1980198019802,False
+single_IMG_20261120_222805,local2,single_grain_training,train,after,main,1,0,101,35,66,1318.133,100,34,66,65.34653465346534,False
+single_IMG_20261120_222805,local2,single_grain_training,train,after,baseline,1,0,101,20,81,1318.133,100,19,81,80.1980198019802,False
+single_IMG_20261120_223644,local2,single_grain_training,train,before,main,1,0,8,1,7,857.339,7,0,7,87.5,False
+single_IMG_20261120_223644,local2,single_grain_training,train,before,baseline,1,0,8,1,7,857.339,7,0,7,87.5,False
+single_IMG_20261120_223644,local2,single_grain_training,train,after,main,1,0,8,1,7,848.614,7,0,7,87.5,False
+single_IMG_20261120_223644,local2,single_grain_training,train,after,baseline,1,0,8,1,7,848.614,7,0,7,87.5,False
+single_IMG_20261120_223721,local2,single_grain_training,train,before,main,1,0,30,1,29,910.359,29,0,29,96.66666666666667,False
+single_IMG_20261120_223721,local2,single_grain_training,train,before,baseline,1,0,30,1,29,910.359,29,0,29,96.66666666666667,False
+single_IMG_20261120_223721,local2,single_grain_training,train,after,main,1,0,30,1,29,904.709,29,0,29,96.66666666666667,False
+single_IMG_20261120_223721,local2,single_grain_training,train,after,baseline,1,0,30,1,29,904.709,29,0,29,96.66666666666667,False
+single_IMG_20261120_223738,local2,single_grain_training,train,before,main,1,0,25,1,24,886.518,24,0,24,96.0,False
+single_IMG_20261120_223738,local2,single_grain_training,train,before,baseline,1,0,25,1,24,886.518,24,0,24,96.0,False
+single_IMG_20261120_223738,local2,single_grain_training,train,after,main,1,0,25,1,24,901.82,24,0,24,96.0,False
+single_IMG_20261120_223738,local2,single_grain_training,train,after,baseline,1,0,25,1,24,901.82,24,0,24,96.0,False
+single_IMG_20261120_223754,local2,single_grain_training,train,before,main,1,0,17,1,16,880.021,16,0,16,94.11764705882354,False
+single_IMG_20261120_223754,local2,single_grain_training,train,before,baseline,1,0,17,1,16,880.021,16,0,16,94.11764705882354,False
+single_IMG_20261120_223754,local2,single_grain_training,train,after,main,1,0,17,1,16,900.919,16,0,16,94.11764705882354,False
+single_IMG_20261120_223754,local2,single_grain_training,train,after,baseline,1,0,17,1,16,900.919,16,0,16,94.11764705882354,False

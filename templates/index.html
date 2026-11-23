@@ -34,7 +34,12 @@
         </div>
         <details class="sample-library" id="sample-library" open>
           <summary>Or try a sample photo <span id="sample-total"></span></summary>
-          <p class="sample-help">{% if local_samples %}Choose one of five local demo photos, kept separate from training and the 10-photo test partition.{% else %}No photo? Choose a held-out dataset image or a six-grain composite.{% endif %}</p>
+          <p class="sample-help">{% if gallery_curated %}Mostly Kaggle reference images. Local 2 crops are labelled training demonstrations; Local 1 photos are reserved for development checks.{% else %}No photo? Choose a Kaggle reference image or a six-grain composite.{% endif %}</p>
+          {% if gallery_curated %}<div class="sample-sources" role="group" aria-label="Sample image source">
+            <button type="button" data-sample-source="all" aria-pressed="true">All sources</button>
+            <button type="button" data-sample-source="kaggle" aria-pressed="false">Kaggle</button>
+            <button type="button" data-sample-source="local2" aria-pressed="false">Local 2 · training demos</button>
+          </div>{% endif %}
           <div class="sample-filters" role="group" aria-label="Filter sample photos">
             <button type="button" data-sample-filter="all" aria-pressed="true">All</button>
             <button type="button" data-sample-filter="whole" aria-pressed="false">Whole</button>

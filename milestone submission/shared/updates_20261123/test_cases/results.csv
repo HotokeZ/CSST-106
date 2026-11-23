@@ -1,0 +1,13 @@
+id,condition,count,whole,broken,actual_status,actual_detected,actual_whole,actual_broken,request_ms,pass
+TC01,Whole source image,1,1,0,200,1,1,0,1251.2300000234973,True
+TC02,Broken source image,1,0,1,200,1,0,1,71.67299999855459,True
+TC03,Mixed six-grain composite,6,3,3,200,6,4,2,507.7525999804493,False
+TC04,All-whole six-grain composite,6,6,0,200,6,6,0,518.3303999947384,True
+TC05,All-broken six-grain composite,6,0,6,200,6,3,3,572.3057999857701,False
+TC06,Blank dark image (edge case),0,,,200,0,0,0,245.55960000725463,True
+TC07,Half-resolution whole image (scale hard case),1,1,0,200,1,1,0,64.95050000376068,True
+TC08,Dim whole image (lighting hard case),1,1,0,200,1,1,0,101.76859999774024,True
+TC09,Grain cut by frame (edge case),0,,,200,0,0,0,101.42789999372326,True
+TC10,Invalid image upload (edge case),,,,400,,,,182.03510000603274,True
+TC11,Pale-background composite (background hard case),6,6,0,200,31,29,2,1207.1021999872755,False
+TC12,Touching ellipses (synthetic separation hard case),3,,,200,3,3,0,116.20270001003519,True

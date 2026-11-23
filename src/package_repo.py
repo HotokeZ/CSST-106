@@ -18,6 +18,7 @@ def prepare(destination):
     top = ["app.py", "README.md", "requirements.txt", "requirements-opencv.txt", "setup.ps1", "start.ps1",
            "train.ps1", ".gitignore", "THIRD_PARTY_NOTICES.md"]
     files = [root / name for name in top]
+    files += [root / "data" / name for name in ["manifest.example.csv", "samples.example.csv"]]
     files += [path for folder in ["bigascheck", "src", "static", "templates", "tests", "docs"]
               for path in (root / folder).rglob("*") if path.is_file() and "__pycache__" not in path.parts]
     for source in files:
@@ -38,6 +39,17 @@ def prepare(destination):
             dest.parent.mkdir(exist_ok=True)
             shutil.copy2(source, dest)
             published.append("artifacts/" + name)
+    # Small curated gallery assets are deliberate demo inputs, not a copy of
+    # the raw dataset. Include them so a fresh clone has a working picker.
+    gallery = root / "data/gallery"
+    if gallery.is_dir():
+        for source in gallery.rglob("*"):
+            if source.is_file() and source.suffix.lower() in {".json", ".csv", ".png", ".jpg", ".md", ".txt"}:
+                relative = source.relative_to(root)
+                dest = target / relative
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(source, dest)
+                published.append(relative.as_posix())
     table = root / "artifacts/features_and_splits.csv"
     with table.open(newline="", encoding="utf-8") as stream:
         reader = csv.DictReader(stream)

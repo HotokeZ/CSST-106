@@ -10,6 +10,26 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 class LocalRegressionTests(unittest.TestCase):
+    @unittest.skipUnless((ROOT/'data/local_20261120/originals/local_010.jpg').exists(),'Private local photo is not included')
+    def test_shadowed_patterned_cloth_finds_each_reviewed_grain_once(self):
+        rgb=load_rgb(ROOT/'data/local_20261120/originals/local_010.jpg',max_edge=1600)
+        settings=Settings(background='auto',detector='adaptive',split_touching=True,max_area_fraction=.6)
+        grains,_,_=segment(rgb,settings)
+        # Spatially reviewed targets; a matching total alone could conceal
+        # missed grains compensated by false fabric detections.
+        boxes=[(497,540,539,580),(391,580,476,631),(465,599,529,668),
+               (534,663,626,716),(218,756,296,826),(112,894,145,928),
+               (383,906,477,979),(519,945,582,1020),(604,950,694,1029),
+               (451,998,490,1040),(395,1050,495,1103),(737,1052,790,1110)]
+        matched=[]
+        for grain in grains:
+            x,y=grain['centroid']
+            found=[i for i,(x0,y0,x1,y1) in enumerate(boxes) if x0<=x<=x1 and y0<=y<=y1]
+            self.assertEqual(len(found),1,'Recovery must find rice, not fabric edges')
+            matched.extend(found)
+            self.assertEqual(grain.get('detection_method'),'texture_recovery')
+        self.assertEqual(sorted(matched),list(range(12)))
+
     @unittest.skipUnless((ROOT/'data/local_20261120/originals/local_007.jpg').exists(),'Private local photo is not included')
     def test_blue_cloth_matches_ten_reviewed_grain_positions_without_false_boxes(self):
         rgb=load_rgb(ROOT/'data/local_20261120/originals/local_007.jpg',max_edge=1600)

@@ -1,0 +1,645 @@
+{
+  "format_version": 2,
+  "kaggle_split_signature": "f69d2c262fef258addf54fd7bd5c67cf8ab9eb705d1e4e3a43ea64729d6eb60b",
+  "local_reference_signature": "0d6f28b848f60f4c892d1c834b5d786d9449b470fcc21f6851402bcdf19b09e9",
+  "source_feature_table_sha256": "70fc5c9e118bbca6c13a7b9d43b06d28ba923f6d3b2a14910038c04f6542a04a",
+  "samples": [
+    {
+      "id": "kaggle-composite-mixed",
+      "title": "Kaggle \u00b7 mixed six-grain demo",
+      "source": "kaggle",
+      "label": "mixed",
+      "kind": "composite",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 3,
+      "expected_broken": 3,
+      "image": "images/kaggle-composite-mixed.png",
+      "thumbnail": "thumbnails/kaggle-composite-mixed.jpg",
+      "sha256": "b1c283402cd3bbb8497bf34e150771dc2c47f0adeae66563df228e84f454bc34",
+      "thumbnail_sha256": "df7192ea76581a077250f586fb803e7e439e83b3d4afd06a35abe0ca2151a18f",
+      "source_sha256": [
+        "0099a34cba82514a10ef36585f9eb1bdaf6aac73e77b8642d39b707838e589ab",
+        "018c18cb3477486d7710a07260b1ff14761455f75dad3c3949f9b449c98ec72a",
+        "03c1f1c8212d5ecae510ecbed7e3ab56773fd8f084efd83c26ac18eea9f40421",
+        "026596f12fa1b31943ee26b9d83a92be09cec2ecac6fdbf5e5120e2bc85b7e02",
+        "0342021325fbf1ade5e59af3e319e95e2d1155f2d2565a81f3be8b625eee0732",
+        "0aac8ec01c82067424b4c19fb135f4af948e8755b397de17f783589f0fe80a28"
+      ],
+      "note": "Composite assembled from six Kaggle development-test grains; not a captured multi-grain photograph."
+    },
+    {
+      "id": "kaggle-composite-whole",
+      "title": "Kaggle \u00b7 whole six-grain demo",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "composite",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 6,
+      "expected_broken": 0,
+      "image": "images/kaggle-composite-whole.png",
+      "thumbnail": "thumbnails/kaggle-composite-whole.jpg",
+      "sha256": "de7646519e7acf097d356531ae862d73bd18a8d7bd1f9504bdda4d3ae8d9a6f4",
+      "thumbnail_sha256": "473fa75976ba65243a2a13186a6c001b2790ea7a34ddf2504a1d524492e46ea9",
+      "source_sha256": [
+        "0099a34cba82514a10ef36585f9eb1bdaf6aac73e77b8642d39b707838e589ab",
+        "018c18cb3477486d7710a07260b1ff14761455f75dad3c3949f9b449c98ec72a",
+        "03c1f1c8212d5ecae510ecbed7e3ab56773fd8f084efd83c26ac18eea9f40421",
+        "044ef0e1b4011770e8071b3736544e9fdb74c0c8365853cdb747cd78886c6713",
+        "04b6584271a89b4965c9617ff0b6861374182d8f2f5c4f3b3ac8799eafbb5779",
+        "05f57f771309bfa888544f982bcd1f5044c5b50e84297efde4a42ca6c541a6f6"
+      ],
+      "note": "Composite assembled from six Kaggle development-test grains; not a captured multi-grain photograph."
+    },
+    {
+      "id": "kaggle-composite-broken",
+      "title": "Kaggle \u00b7 broken six-grain demo",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "composite",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 6,
+      "image": "images/kaggle-composite-broken.png",
+      "thumbnail": "thumbnails/kaggle-composite-broken.jpg",
+      "sha256": "0466a629b3f52b85be44e0411159a0e6dc05d7c155b1d359c6d47842e63cab6a",
+      "thumbnail_sha256": "20e95bc7d036530eaf02db7db3f12b13571eacbe76681c4e3114c53fb5e05b75",
+      "source_sha256": [
+        "026596f12fa1b31943ee26b9d83a92be09cec2ecac6fdbf5e5120e2bc85b7e02",
+        "0342021325fbf1ade5e59af3e319e95e2d1155f2d2565a81f3be8b625eee0732",
+        "0aac8ec01c82067424b4c19fb135f4af948e8755b397de17f783589f0fe80a28",
+        "11d9e7f4c067b16eceeba9ae84a755b9605717a1bac78645497edce9bb4afe67",
+        "123b6770f69df1fc4e8ea8b89b613da0098755c9e4155eeb94f5f9feb73e804a",
+        "12c970c28cf8b38663b8e2bdcdfc84a8f83a4865d6d2e429f8e11348aa18d324"
+      ],
+      "note": "Composite assembled from six Kaggle development-test grains; not a captured multi-grain photograph."
+    },
+    {
+      "id": "kaggle-0099a34cba82514a",
+      "title": "Kaggle \u00b7 whole grain 01",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-0099a34cba82514a.png",
+      "thumbnail": "thumbnails/kaggle-0099a34cba82514a.jpg",
+      "sha256": "0099a34cba82514a10ef36585f9eb1bdaf6aac73e77b8642d39b707838e589ab",
+      "thumbnail_sha256": "881ac1625609709f845797fe38837c2510e9072a2094d855ef2fd774cf12fd32",
+      "source_sha256": [
+        "0099a34cba82514a10ef36585f9eb1bdaf6aac73e77b8642d39b707838e589ab"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-026596f12fa1b319",
+      "title": "Kaggle \u00b7 broken grain 01",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-026596f12fa1b319.png",
+      "thumbnail": "thumbnails/kaggle-026596f12fa1b319.jpg",
+      "sha256": "026596f12fa1b31943ee26b9d83a92be09cec2ecac6fdbf5e5120e2bc85b7e02",
+      "thumbnail_sha256": "351d9fc5affd9a0e25554a04a4b7392ba8a93192067ec8feb4b8c8dd09839479",
+      "source_sha256": [
+        "026596f12fa1b31943ee26b9d83a92be09cec2ecac6fdbf5e5120e2bc85b7e02"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-018c18cb3477486d",
+      "title": "Kaggle \u00b7 whole grain 02",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-018c18cb3477486d.png",
+      "thumbnail": "thumbnails/kaggle-018c18cb3477486d.jpg",
+      "sha256": "018c18cb3477486d7710a07260b1ff14761455f75dad3c3949f9b449c98ec72a",
+      "thumbnail_sha256": "fa79df2d461998081db27beac0666bd95163766e4a0b7e1d9879104d3d59fe0c",
+      "source_sha256": [
+        "018c18cb3477486d7710a07260b1ff14761455f75dad3c3949f9b449c98ec72a"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-0342021325fbf1ad",
+      "title": "Kaggle \u00b7 broken grain 02",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-0342021325fbf1ad.png",
+      "thumbnail": "thumbnails/kaggle-0342021325fbf1ad.jpg",
+      "sha256": "0342021325fbf1ade5e59af3e319e95e2d1155f2d2565a81f3be8b625eee0732",
+      "thumbnail_sha256": "c0d8610c2bd8b5414b70ba3f30eb50f127bf0a1fa63d8cf540cccb426e633b46",
+      "source_sha256": [
+        "0342021325fbf1ade5e59af3e319e95e2d1155f2d2565a81f3be8b625eee0732"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-03c1f1c8212d5eca",
+      "title": "Kaggle \u00b7 whole grain 03",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-03c1f1c8212d5eca.png",
+      "thumbnail": "thumbnails/kaggle-03c1f1c8212d5eca.jpg",
+      "sha256": "03c1f1c8212d5ecae510ecbed7e3ab56773fd8f084efd83c26ac18eea9f40421",
+      "thumbnail_sha256": "e874ad13fa341dd55ac1f0c4e454debaba3451b49d373e24ffea33bca05972e1",
+      "source_sha256": [
+        "03c1f1c8212d5ecae510ecbed7e3ab56773fd8f084efd83c26ac18eea9f40421"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-0aac8ec01c820674",
+      "title": "Kaggle \u00b7 broken grain 03",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-0aac8ec01c820674.png",
+      "thumbnail": "thumbnails/kaggle-0aac8ec01c820674.jpg",
+      "sha256": "0aac8ec01c82067424b4c19fb135f4af948e8755b397de17f783589f0fe80a28",
+      "thumbnail_sha256": "3a4fbf700d9da51b41b4653976c3a9fad47180f54fcb4c6d31b9c3db1568906b",
+      "source_sha256": [
+        "0aac8ec01c82067424b4c19fb135f4af948e8755b397de17f783589f0fe80a28"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-044ef0e1b4011770",
+      "title": "Kaggle \u00b7 whole grain 04",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-044ef0e1b4011770.png",
+      "thumbnail": "thumbnails/kaggle-044ef0e1b4011770.jpg",
+      "sha256": "044ef0e1b4011770e8071b3736544e9fdb74c0c8365853cdb747cd78886c6713",
+      "thumbnail_sha256": "1aa2eee082a438fa180033673b17f1f821ab12135b3444a08a8919c5343c1876",
+      "source_sha256": [
+        "044ef0e1b4011770e8071b3736544e9fdb74c0c8365853cdb747cd78886c6713"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-11d9e7f4c067b16e",
+      "title": "Kaggle \u00b7 broken grain 04",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-11d9e7f4c067b16e.png",
+      "thumbnail": "thumbnails/kaggle-11d9e7f4c067b16e.jpg",
+      "sha256": "11d9e7f4c067b16eceeba9ae84a755b9605717a1bac78645497edce9bb4afe67",
+      "thumbnail_sha256": "07bcd7d5471039697aa69962c42e0d093b3a09dc79c40bade2b1094ac5846a3c",
+      "source_sha256": [
+        "11d9e7f4c067b16eceeba9ae84a755b9605717a1bac78645497edce9bb4afe67"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-04b6584271a89b49",
+      "title": "Kaggle \u00b7 whole grain 05",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-04b6584271a89b49.png",
+      "thumbnail": "thumbnails/kaggle-04b6584271a89b49.jpg",
+      "sha256": "04b6584271a89b4965c9617ff0b6861374182d8f2f5c4f3b3ac8799eafbb5779",
+      "thumbnail_sha256": "cf857eea2165198e6fa8d03893b2d7cc9e8b7bc9976e5b7c349e41ad78fbfe7d",
+      "source_sha256": [
+        "04b6584271a89b4965c9617ff0b6861374182d8f2f5c4f3b3ac8799eafbb5779"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-123b6770f69df1fc",
+      "title": "Kaggle \u00b7 broken grain 05",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-123b6770f69df1fc.png",
+      "thumbnail": "thumbnails/kaggle-123b6770f69df1fc.jpg",
+      "sha256": "123b6770f69df1fc4e8ea8b89b613da0098755c9e4155eeb94f5f9feb73e804a",
+      "thumbnail_sha256": "07c809142e6e931283e11bf7d31f9ef3e5d5ba12048ee93f3bc73fffccb1d136",
+      "source_sha256": [
+        "123b6770f69df1fc4e8ea8b89b613da0098755c9e4155eeb94f5f9feb73e804a"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-05f57f771309bfa8",
+      "title": "Kaggle \u00b7 whole grain 06",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-05f57f771309bfa8.png",
+      "thumbnail": "thumbnails/kaggle-05f57f771309bfa8.jpg",
+      "sha256": "05f57f771309bfa888544f982bcd1f5044c5b50e84297efde4a42ca6c541a6f6",
+      "thumbnail_sha256": "5b99802ed61211d01159054599664b01a2cf14051fb002c42c1ea0ef75b8d099",
+      "source_sha256": [
+        "05f57f771309bfa888544f982bcd1f5044c5b50e84297efde4a42ca6c541a6f6"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-12c970c28cf8b386",
+      "title": "Kaggle \u00b7 broken grain 06",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-12c970c28cf8b386.png",
+      "thumbnail": "thumbnails/kaggle-12c970c28cf8b386.jpg",
+      "sha256": "12c970c28cf8b38663b8e2bdcdfc84a8f83a4865d6d2e429f8e11348aa18d324",
+      "thumbnail_sha256": "9c92bf48d12588106b5baef2dedc5d0dd7c8c160eddd970986a3c62daccd0ff3",
+      "source_sha256": [
+        "12c970c28cf8b38663b8e2bdcdfc84a8f83a4865d6d2e429f8e11348aa18d324"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-08065209bceb946e",
+      "title": "Kaggle \u00b7 whole grain 07",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-08065209bceb946e.png",
+      "thumbnail": "thumbnails/kaggle-08065209bceb946e.jpg",
+      "sha256": "08065209bceb946e93378ac9f225771f1ebc124c8159f6ec35cc1fb16a9fcdca",
+      "thumbnail_sha256": "bdae45f41905d792e70b24549acaa91e0a322a60ba2964ae59bb78d4ac0e70fe",
+      "source_sha256": [
+        "08065209bceb946e93378ac9f225771f1ebc124c8159f6ec35cc1fb16a9fcdca"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-1483175bba7c9a96",
+      "title": "Kaggle \u00b7 broken grain 07",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-1483175bba7c9a96.png",
+      "thumbnail": "thumbnails/kaggle-1483175bba7c9a96.jpg",
+      "sha256": "1483175bba7c9a963cfa9c679c65959cef5011dde5075d69d8e2acace51e6046",
+      "thumbnail_sha256": "bf43c8542c3ab23454458127da5246931da599913cd23b89904f1ed86404feb0",
+      "source_sha256": [
+        "1483175bba7c9a963cfa9c679c65959cef5011dde5075d69d8e2acace51e6046"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-0842012b4199176f",
+      "title": "Kaggle \u00b7 whole grain 08",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-0842012b4199176f.png",
+      "thumbnail": "thumbnails/kaggle-0842012b4199176f.jpg",
+      "sha256": "0842012b4199176f31bb26a2bedc796f0e16c52ad939b16734af83b17ddc7df7",
+      "thumbnail_sha256": "92d74636c974ce399d240807ad7d4dc5eec59155bc87437e648d4793b0a00aa3",
+      "source_sha256": [
+        "0842012b4199176f31bb26a2bedc796f0e16c52ad939b16734af83b17ddc7df7"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-15845a8d915ee87a",
+      "title": "Kaggle \u00b7 broken grain 08",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-15845a8d915ee87a.png",
+      "thumbnail": "thumbnails/kaggle-15845a8d915ee87a.jpg",
+      "sha256": "15845a8d915ee87a6df58e93b0135eaf09a76157681e1f9e7b9811e0767e9120",
+      "thumbnail_sha256": "1fde54b1a0ee3f22c10c86461235e65196909a8a94121f9b995764c82cd358ea",
+      "source_sha256": [
+        "15845a8d915ee87a6df58e93b0135eaf09a76157681e1f9e7b9811e0767e9120"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-085be488feb39729",
+      "title": "Kaggle \u00b7 whole grain 09",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-085be488feb39729.png",
+      "thumbnail": "thumbnails/kaggle-085be488feb39729.jpg",
+      "sha256": "085be488feb39729a9cab7c9f6a07c4c8555ff68980a19ed6068b5898f8dbc80",
+      "thumbnail_sha256": "c193183edf403a8eb96d942baede92435358ec2a2dc6c69b69b3fbf4106137f8",
+      "source_sha256": [
+        "085be488feb39729a9cab7c9f6a07c4c8555ff68980a19ed6068b5898f8dbc80"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-16043a68982ca0f0",
+      "title": "Kaggle \u00b7 broken grain 09",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-16043a68982ca0f0.png",
+      "thumbnail": "thumbnails/kaggle-16043a68982ca0f0.jpg",
+      "sha256": "16043a68982ca0f038fc5c06e0f7a2fae8aea771773b516b33642e15d1b09567",
+      "thumbnail_sha256": "b1a76f2bdb7cf9cf1ca0f5e792e2bbfb0020546c489b8b6c8957640792481d62",
+      "source_sha256": [
+        "16043a68982ca0f038fc5c06e0f7a2fae8aea771773b516b33642e15d1b09567"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-0870c98d034751b8",
+      "title": "Kaggle \u00b7 whole grain 10",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-0870c98d034751b8.png",
+      "thumbnail": "thumbnails/kaggle-0870c98d034751b8.jpg",
+      "sha256": "0870c98d034751b8a810ebf1b72381cad354ba8f6fa1e74ee92682dfe90dd2b7",
+      "thumbnail_sha256": "0c91b975922d4c56968e00d5d9eef8ae460d3ef86e6c69e3c0b7ce75186e596e",
+      "source_sha256": [
+        "0870c98d034751b8a810ebf1b72381cad354ba8f6fa1e74ee92682dfe90dd2b7"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-196599ffcbada4cd",
+      "title": "Kaggle \u00b7 broken grain 10",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-196599ffcbada4cd.png",
+      "thumbnail": "thumbnails/kaggle-196599ffcbada4cd.jpg",
+      "sha256": "196599ffcbada4cd4378d59c519a3a933869e4b434624b8db08595d5c957ce82",
+      "thumbnail_sha256": "2b958a89c25bedba4592411e4d68b7fff05f0a8b43329fe596490cd04f0faa8a",
+      "source_sha256": [
+        "196599ffcbada4cd4378d59c519a3a933869e4b434624b8db08595d5c957ce82"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-09d2440f4eaf7ccf",
+      "title": "Kaggle \u00b7 whole grain 11",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-09d2440f4eaf7ccf.png",
+      "thumbnail": "thumbnails/kaggle-09d2440f4eaf7ccf.jpg",
+      "sha256": "09d2440f4eaf7ccf9974b33ac545e6cdd227caeff2a566534345cb60a2577354",
+      "thumbnail_sha256": "59d5980e2a82b5f991a1d04d61d49e2b696bfe5e2812b691a545de901ac69bf2",
+      "source_sha256": [
+        "09d2440f4eaf7ccf9974b33ac545e6cdd227caeff2a566534345cb60a2577354"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-19c92f28a4b3d569",
+      "title": "Kaggle \u00b7 broken grain 11",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-19c92f28a4b3d569.png",
+      "thumbnail": "thumbnails/kaggle-19c92f28a4b3d569.jpg",
+      "sha256": "19c92f28a4b3d5691b093c24efb9c7260cd625dacba5952fce3dc07c7a8c97fc",
+      "thumbnail_sha256": "02dd1349c8ba3ead231668df97fa02da833815461b51bad2b4c74ba1df70dd6a",
+      "source_sha256": [
+        "19c92f28a4b3d5691b093c24efb9c7260cd625dacba5952fce3dc07c7a8c97fc"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-0a5069e61711d1cd",
+      "title": "Kaggle \u00b7 whole grain 12",
+      "source": "kaggle",
+      "label": "whole",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/kaggle-0a5069e61711d1cd.png",
+      "thumbnail": "thumbnails/kaggle-0a5069e61711d1cd.jpg",
+      "sha256": "0a5069e61711d1cd6dee2911fd7fb70c86252e951ff1c7ded4e00e4a49e609d7",
+      "thumbnail_sha256": "a3eb17bef3d8ca4a16603ed98bd28c0c77650804c93a3c0d085d8cde478c867f",
+      "source_sha256": [
+        "0a5069e61711d1cd6dee2911fd7fb70c86252e951ff1c7ded4e00e4a49e609d7"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "kaggle-1b272f27c882b346",
+      "title": "Kaggle \u00b7 broken grain 12",
+      "source": "kaggle",
+      "label": "broken",
+      "kind": "single",
+      "split": "test",
+      "evaluation_role": "development_test_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/kaggle-1b272f27c882b346.png",
+      "thumbnail": "thumbnails/kaggle-1b272f27c882b346.jpg",
+      "sha256": "1b272f27c882b346d4f4eeff110383576fea967fff81e97647a44a0e70ff2903",
+      "thumbnail_sha256": "3b8dc5a9bafa872b88e57aeadd7d5fdb87075c37782096bab7738b4aa27466db",
+      "source_sha256": [
+        "1b272f27c882b346d4f4eeff110383576fea967fff81e97647a44a0e70ff2903"
+      ],
+      "note": "Original Kaggle reference label. This development-test image is available for demonstration; it is not new independent evaluation."
+    },
+    {
+      "id": "local2-040946b8a3225644",
+      "title": "Local 2 \u00b7 whole training demo 1",
+      "source": "local2",
+      "label": "whole",
+      "kind": "training_crop",
+      "split": "train",
+      "evaluation_role": "training_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/local2-040946b8a3225644.png",
+      "thumbnail": "thumbnails/local2-040946b8a3225644.jpg",
+      "sha256": "8c640ed7b60286b1c16b3e43500e11c6fec5cf3372b725ab5973cf01c43ec781",
+      "thumbnail_sha256": "e5b4c3cfed686e27f0acb682e299e26851a4fa0592f06583a568d8005b3c143b",
+      "source_sha256": [
+        "040946b8a3225644625189156443e56748e7edbc8f76765284b4b524976b709f"
+      ],
+      "note": "Reviewed crop from a user-labelled Local Dataset 2 TRAINING photo. Demonstration only; not an unseen test image.",
+      "reviewed_grain_id": "4",
+      "crop_box": [
+        622,
+        838,
+        773,
+        999
+      ]
+    },
+    {
+      "id": "local2-0bba62aeba8abc8d",
+      "title": "Local 2 \u00b7 whole training demo 2",
+      "source": "local2",
+      "label": "whole",
+      "kind": "training_crop",
+      "split": "train",
+      "evaluation_role": "training_demo",
+      "expected_whole": 1,
+      "expected_broken": 0,
+      "image": "images/local2-0bba62aeba8abc8d.png",
+      "thumbnail": "thumbnails/local2-0bba62aeba8abc8d.jpg",
+      "sha256": "68759900a76ac7cb7ae0ee58d0df0b0f6330515aa25528cdb49ca27e0119cdc9",
+      "thumbnail_sha256": "31b10cca0100719bbb3e565d207a7b40c21982e81994a178c81ae1bd01796e6a",
+      "source_sha256": [
+        "0bba62aeba8abc8d99f5e6259599535978f2b428b6f0084975c8e00839bab5c5"
+      ],
+      "note": "Reviewed crop from a user-labelled Local Dataset 2 TRAINING photo. Demonstration only; not an unseen test image.",
+      "reviewed_grain_id": "52",
+      "crop_box": [
+        908,
+        533,
+        1008,
+        671
+      ]
+    },
+    {
+      "id": "local2-2b09df95d467e072",
+      "title": "Local 2 \u00b7 broken training demo 1",
+      "source": "local2",
+      "label": "broken",
+      "kind": "training_crop",
+      "split": "train",
+      "evaluation_role": "training_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/local2-2b09df95d467e072.png",
+      "thumbnail": "thumbnails/local2-2b09df95d467e072.jpg",
+      "sha256": "c126c9e91792aa428c9e7e91e18d3ef8144f86842c01c535eeac20c311546ca1",
+      "thumbnail_sha256": "47ac36ea3b41c69b43dcdacf2407c4bd5baefdca00f4b623163fd5b55d631f85",
+      "source_sha256": [
+        "2b09df95d467e0726c894bc75f6166cf4fdd0637a3ec470d819d0836d19bdb54"
+      ],
+      "note": "Reviewed crop from a user-labelled Local Dataset 2 TRAINING photo. Demonstration only; not an unseen test image.",
+      "reviewed_grain_id": "23",
+      "crop_box": [
+        558,
+        843,
+        672,
+        968
+      ]
+    },
+    {
+      "id": "local2-31e372617383edc3",
+      "title": "Local 2 \u00b7 broken training demo 2",
+      "source": "local2",
+      "label": "broken",
+      "kind": "training_crop",
+      "split": "train",
+      "evaluation_role": "training_demo",
+      "expected_whole": 0,
+      "expected_broken": 1,
+      "image": "images/local2-31e372617383edc3.png",
+      "thumbnail": "thumbnails/local2-31e372617383edc3.jpg",
+      "sha256": "3f0fdf7f4391e05ca083db3bba66320f300524d5cf536b59ae9e9c019826c815",
+      "thumbnail_sha256": "0b3faaf39123f330b9925e709a4cb6cd86de2f43259da8847f2adceb68ea4ee2",
+      "source_sha256": [
+        "31e372617383edc3f310dc2b6416fb207e5cf7098b0b987d987fef7869c32a0f"
+      ],
+      "note": "Reviewed crop from a user-labelled Local Dataset 2 TRAINING photo. Demonstration only; not an unseen test image.",
+      "reviewed_grain_id": "20",
+      "crop_box": [
+        649,
+        565,
+        756,
+        668
+      ]
+    }
+  ],
+  "source_counts": {
+    "kaggle": 27,
+    "local2": 4
+  },
+  "note": "Kaggle-first demonstration gallery. Local Dataset 1 is excluded. Local 2 examples retain their training role."
+}

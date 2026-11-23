@@ -1,0 +1,96 @@
+[
+  {
+    "id": "TC01",
+    "condition": "Whole source image",
+    "sample_id": "test-718bc65cfcc89b79",
+    "count": 1,
+    "whole": 1,
+    "broken": 0
+  },
+  {
+    "id": "TC02",
+    "condition": "Broken source image",
+    "sample_id": "test-ebe1a0de83d8e048",
+    "count": 1,
+    "whole": 0,
+    "broken": 1
+  },
+  {
+    "id": "TC03",
+    "condition": "Mixed six-grain composite",
+    "sample_id": "example-1",
+    "count": 6,
+    "whole": 3,
+    "broken": 3
+  },
+  {
+    "id": "TC04",
+    "condition": "All-whole six-grain composite",
+    "sample_id": "example-2",
+    "count": 6,
+    "whole": 6,
+    "broken": 0
+  },
+  {
+    "id": "TC05",
+    "condition": "All-broken six-grain composite",
+    "sample_id": "example-3",
+    "count": 6,
+    "whole": 0,
+    "broken": 6
+  },
+  {
+    "id": "TC06",
+    "condition": "Blank dark image (edge case)",
+    "image": "outputs\\updates_20261123\\test_cases\\inputs\\TC06.png",
+    "count": 0,
+    "whole": null,
+    "broken": null
+  },
+  {
+    "id": "TC07",
+    "condition": "Half-resolution whole image (scale hard case)",
+    "image": "outputs\\updates_20261123\\test_cases\\inputs\\TC07.png",
+    "count": 1,
+    "whole": 1,
+    "broken": 0
+  },
+  {
+    "id": "TC08",
+    "condition": "Dim whole image (lighting hard case)",
+    "image": "outputs\\updates_20261123\\test_cases\\inputs\\TC08.png",
+    "count": 1,
+    "whole": 1,
+    "broken": 0
+  },
+  {
+    "id": "TC09",
+    "condition": "Grain cut by frame (edge case)",
+    "image": "outputs\\updates_20261123\\test_cases\\inputs\\TC09.png",
+    "count": 0,
+    "whole": null,
+    "broken": null
+  },
+  {
+    "id": "TC10",
+    "condition": "Invalid image upload (edge case)",
+    "invalid": true,
+    "status": 400
+  },
+  {
+    "id": "TC11",
+    "condition": "Pale-background composite (background hard case)",
+    "image": "outputs\\updates_20261123\\test_cases\\inputs\\TC11.png",
+    "count": 6,
+    "whole": 6,
+    "broken": 0
+  },
+  {
+    "id": "TC12",
+    "condition": "Touching ellipses (synthetic separation hard case)",
+    "image": "outputs\\updates_20261123\\test_cases\\inputs\\TC12.png",
+    "count": 3,
+    "whole": null,
+    "broken": null
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "warning": "All photos are development/training material already inspected. No independent final evaluation is claimed.",
+  "model_sha256": "6d6b524ca3261951b13f98a944450e68b63b82dd3c629e5b41533f8c85a3b23e",
+  "local1_manifest_sha256": "eb95fdbac3323d438f0b7fd95df4a8f71c8dee90e58f95e81087ec07949c234c",
+  "local2_manifest_sha256": "f4841ddb4d3d9f23cb32d7b7ef4914cfbd6a3bd6ef219070b3b0501d4692a135",
+  "settings": {
+    "background": "auto",
+    "min_area": 30,
+    "max_area_fraction": 0.6,
+    "morphology": 1,
+    "exclude_border": true,
+    "split_touching": true,
+    "detector": "adaptive"
+  },
+  "max_edge": 1600,
+  "warmups": 3,
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 190 Stepping 0, GenuineIntel",
+  "before_vision_sha256": "d8d17d3ae0ca2adac004ba43314ed5f0e0941b59ea025792b74047062d9870be",
+  "after_vision_sha256": "22fe88b01c99188d9017bbfa98c9b167630ef9f7e560febf7ff2ca650dbb6df4",
+  "speed_scope": "One loaded model, core analysis including segmentation/features/classification; excludes image loading/output rendering and HTTP."
+}

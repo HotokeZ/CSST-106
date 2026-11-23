@@ -8,6 +8,7 @@ let showMask = false;
 let selectedSample = null;
 let samplePage = 1;
 let sampleFilter = 'all';
+let sampleSource = 'all';
 let galleryRequest = 0;
 let uploadPreviewUrl = null;
 let previewVersion = 0;
@@ -116,7 +117,7 @@ async function loadSamples() {
   document.querySelector('#sample-prev').disabled = true;
   document.querySelector('#sample-next').disabled = true;
   try {
-    const response = await fetch(`/api/samples?label=${sampleFilter}&page=${samplePage}&page_size=6`);
+    const response = await fetch(`/api/samples?label=${sampleFilter}&source=${sampleSource}&page=${samplePage}&page_size=6`);
     if (!(response.headers.get('content-type') || '').includes('application/json')) throw new Error('Restart the app to load the test sample gallery.');
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || 'Test samples are unavailable.');
@@ -131,7 +132,7 @@ async function loadSamples() {
       image.src = '/api/samples/'+encodeURIComponent(sample.id)+'/image?thumbnail=1';
       const title = document.createElement('strong'); title.textContent = sample.title;
       const detail = document.createElement('span');
-      detail.textContent = sample.kind === 'photograph' ? `${sample.expected_whole + sample.expected_broken} grains · local demo photo` : sample.kind === 'composite' ? '6 grains · composite' : '1 grain · test image';
+      detail.textContent = sample.evaluation_role === 'training_demo' ? 'Local 2 · training example' : sample.kind === 'composite' ? '6 grains · Kaggle composite' : '1 grain · Kaggle reference';
       card.append(image, title, detail); card.addEventListener('click', () => selectSample(sample)); grid.append(card);
     }
     const pages = Math.max(1, Math.ceil(data.total/data.page_size));
@@ -148,6 +149,11 @@ document.querySelector('#sample-next').addEventListener('click', () => {samplePa
 for (const button of document.querySelectorAll('[data-sample-filter]')) button.addEventListener('click', () => {
   sampleFilter = button.dataset.sampleFilter; samplePage = 1;
   for (const filter of document.querySelectorAll('[data-sample-filter]')) filter.setAttribute('aria-pressed', String(filter === button));
+  loadSamples();
+});
+for (const button of document.querySelectorAll('[data-sample-source]')) button.addEventListener('click', () => {
+  sampleSource = button.dataset.sampleSource; samplePage = 1;
+  for (const filter of document.querySelectorAll('[data-sample-source]')) filter.setAttribute('aria-pressed', String(filter === button));
   loadSamples();
 });
 loadSamples();

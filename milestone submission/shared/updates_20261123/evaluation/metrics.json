@@ -1,0 +1,152 @@
+{
+  "local1_all": {
+    "before": {
+      "main": {
+        "images": 33,
+        "count_scored_images": 32,
+        "count_mae": 3.59375,
+        "whole_mae": 2.03125,
+        "broken_mae": 2.5625,
+        "percentage_mae_pp": 11.691427449182516,
+        "percentage_scored_images": 32,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1213.4623939393941
+      },
+      "baseline": {
+        "images": 33,
+        "count_scored_images": 32,
+        "count_mae": 3.59375,
+        "whole_mae": 2.4375,
+        "broken_mae": 2.71875,
+        "percentage_mae_pp": 13.51326997471556,
+        "percentage_scored_images": 32,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1213.4623939393941
+      }
+    },
+    "after": {
+      "main": {
+        "images": 33,
+        "count_scored_images": 32,
+        "count_mae": 3.34375,
+        "whole_mae": 1.84375,
+        "broken_mae": 2.5625,
+        "percentage_mae_pp": 10.649760782515848,
+        "percentage_scored_images": 32,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1275.6750606060607
+      },
+      "baseline": {
+        "images": 33,
+        "count_scored_images": 32,
+        "count_mae": 3.34375,
+        "whole_mae": 2.1875,
+        "broken_mae": 2.71875,
+        "percentage_mae_pp": 11.429936641382227,
+        "percentage_scored_images": 32,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1275.6750606060607
+      }
+    }
+  },
+  "local1_fixed_development_test": {
+    "before": {
+      "main": {
+        "images": 10,
+        "count_scored_images": 10,
+        "count_mae": 3.0,
+        "whole_mae": 1.5,
+        "broken_mae": 1.7,
+        "percentage_mae_pp": 2.917495681658243,
+        "percentage_scored_images": 10,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1186.1546
+      },
+      "baseline": {
+        "images": 10,
+        "count_scored_images": 10,
+        "count_mae": 3.0,
+        "whole_mae": 1.5,
+        "broken_mae": 1.9,
+        "percentage_mae_pp": 4.177747744865972,
+        "percentage_scored_images": 10,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1186.1546
+      }
+    },
+    "after": {
+      "main": {
+        "images": 10,
+        "count_scored_images": 10,
+        "count_mae": 3.0,
+        "whole_mae": 1.5,
+        "broken_mae": 1.7,
+        "percentage_mae_pp": 2.917495681658243,
+        "percentage_scored_images": 10,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1204.3734
+      },
+      "baseline": {
+        "images": 10,
+        "count_scored_images": 10,
+        "count_mae": 3.0,
+        "whole_mae": 1.5,
+        "broken_mae": 1.9,
+        "percentage_mae_pp": 4.177747744865972,
+        "percentage_scored_images": 10,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1204.3734
+      }
+    }
+  },
+  "local2_training_photos": {
+    "before": {
+      "main": {
+        "images": 17,
+        "count_scored_images": 17,
+        "count_mae": 29.235294117647058,
+        "whole_mae": 5.235294117647059,
+        "broken_mae": 24.0,
+        "percentage_mae_pp": 40.25975037880739,
+        "percentage_scored_images": 17,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1029.0107647058824
+      },
+      "baseline": {
+        "images": 17,
+        "count_scored_images": 17,
+        "count_mae": 29.235294117647058,
+        "whole_mae": 2.823529411764706,
+        "broken_mae": 26.41176470588235,
+        "percentage_mae_pp": 42.104575973356845,
+        "percentage_scored_images": 17,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1029.0107647058824
+      }
+    },
+    "after": {
+      "main": {
+        "images": 17,
+        "count_scored_images": 17,
+        "count_mae": 29.235294117647058,
+        "whole_mae": 5.235294117647059,
+        "broken_mae": 24.0,
+        "percentage_mae_pp": 40.25975037880739,
+        "percentage_scored_images": 17,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1001.8488235294118
+      },
+      "baseline": {
+        "images": 17,
+        "count_scored_images": 17,
+        "count_mae": 29.235294117647058,
+        "whole_mae": 2.823529411764706,
+        "broken_mae": 26.41176470588235,
+        "percentage_mae_pp": 42.104575973356845,
+        "percentage_scored_images": 17,
+        "zero_detection_images": 0,
+        "mean_processing_ms": 1001.8488235294118
+      }
+    }
+  }
+}

@@ -10,20 +10,20 @@ from PIL import Image, UnidentifiedImageError
 from bigascheck.model import analyze, load_model
 from bigascheck.vision import Settings, annotate, backend, load_rgb, png_bytes
 from bigascheck.samples import SampleCatalog, SampleError
-from bigascheck.local_training import LocalSampleCatalog
+from bigascheck.gallery import GalleryCatalog
 from bigascheck.cropping import crop_rgb
 
 
-def create_app(model_path=None, samples_root=None, feature_table=None):
+def create_app(model_path=None, samples_root=None, feature_table=None, gallery_root=None):
     app = Flask(__name__)
     app.config["MAX_CONTENT_LENGTH"] = 15 * 1024 * 1024
     path = Path(model_path or os.environ.get("BIGASCHECK_MODEL", "artifacts/model.joblib"))
     project = Path(__file__).resolve().parent
     samples = SampleCatalog(samples_root or project / "data/splits",
                             feature_table or project / "artifacts/features_and_splits.csv")
-    local_samples = project / "data/local_20261120/split_v1"
-    if samples_root is None and feature_table is None and (local_samples / "catalog.json").is_file():
-        samples = LocalSampleCatalog(local_samples)
+    curated = Path(gallery_root) if gallery_root is not None else project / "data/gallery"
+    if gallery_root is not None or (samples_root is None and feature_table is None and (curated / "catalog.json").is_file()):
+        samples = GalleryCatalog(curated, feature_table or project / "artifacts/features_and_splits.csv")
     bundle, model_error = None, None
     if path.is_file():
         try:
@@ -35,7 +35,7 @@ def create_app(model_path=None, samples_root=None, feature_table=None):
     def home():
         return render_template("index.html", trained=bundle is not None, backend=backend(),
                                settings=bundle["settings"] if bundle else None, model_error=model_error,
-                               local_samples=isinstance(samples, LocalSampleCatalog))
+                               gallery_curated=isinstance(samples, GalleryCatalog))
 
     @app.get("/api/status")
     def status():
@@ -48,9 +48,12 @@ def create_app(model_path=None, samples_root=None, feature_table=None):
             size = int(request.args.get("page_size", 6))
         except ValueError:
             return jsonify(error="Page and page size must be integers."), 400
-        if page < 1 or not 1 <= size <= 24 or request.args.get("label", "all") not in {"all", "whole", "broken", "mixed"}:
+        if (page < 1 or not 1 <= size <= 24 or request.args.get("label", "all") not in {"all", "whole", "broken", "mixed"}
+                or request.args.get("source", "all") not in {"all", "kaggle", "local2"}):
             return jsonify(error="Invalid sample filter or page."), 400
         try:
+            if isinstance(samples, GalleryCatalog):
+                return jsonify(samples.list(request.args.get("label", "all"), page, size, request.args.get("source", "all")))
             return jsonify(samples.list(request.args.get("label", "all"), page, size))
         except (SampleError, OSError) as exc:
             return jsonify(error=str(exc) if isinstance(exc, SampleError) else "Test samples are unavailable."), 503
