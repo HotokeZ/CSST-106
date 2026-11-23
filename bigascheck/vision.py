@@ -212,7 +212,16 @@ def _separate_touching(mask, min_area, typical_area=None, intensity=None):
             cores, core_count = ndimage.label(local & (light > .72 * np.percentile(light[local], 75)), np.ones((3, 3)))
             core_sizes = np.bincount(cores.ravel())
             large = [i for i in range(1, core_count + 1) if core_sizes[i] >= max(min_area, .15 * local.sum())]
-            if 2 <= len(large) <= 4 and sum(core_sizes[i] for i in large) >= .65 * local.sum():
+            def elongated_core(index):
+                points = np.column_stack(np.nonzero(cores == index))
+                if len(points) < 3:
+                    return False
+                eigen = np.linalg.eigvalsh(np.cov(points, rowvar=False, bias=True))
+                return eigen[-1] >= 4 * max(eigen[0], 1)
+            # A large highlight or shaded patch is not necessarily a grain.
+            # Every proposed interior must itself have a grain-like long axis.
+            if (2 <= len(large) <= 4 and all(elongated_core(i) for i in large)
+                    and sum(core_sizes[i] for i in large) >= .65 * local.sum()):
                 markers = np.zeros_like(cores)
                 for index, core in enumerate(large, 1):
                     markers[cores == core] = index

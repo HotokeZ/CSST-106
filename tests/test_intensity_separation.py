@@ -4,6 +4,14 @@ from bigascheck.vision import _separate_touching
 
 
 class IntensitySeparationTests(unittest.TestCase):
+    def test_two_compact_lit_patches_do_not_split_one_silhouette(self):
+        mask = np.zeros((70, 120), dtype=bool)
+        mask[15:55, 15:95] = True
+        intensity = np.zeros(mask.shape)
+        intensity[mask] = 100
+        intensity[15:55, 54:56] = 25
+        self.assertEqual(_separate_touching(mask, 100, intensity=intensity).max(), 1)
+
     def test_dark_seam_separates_two_large_bright_interiors(self):
         mask = np.zeros((70, 150), dtype=bool)
         mask[15:55, 15:135] = True
