@@ -191,7 +191,7 @@ def _merge_unconstricted_basins(basins, distance, local, seed_count, ratio_thres
     return new_basins, next_id - 1
 
 
-def _separate_touching(mask, min_area, typical_area=None):
+def _separate_touching(mask, min_area, typical_area=None, intensity=None):
     """Distance-transform markers with prominence suppression and watershed.
 
     Reconstruction suppresses small peaks along a single long grain so those
@@ -204,6 +204,25 @@ def _separate_touching(mask, min_area, typical_area=None):
         if box is None:
             continue
         local = components[box] == component
+        # A visible dark seam is stronger evidence than a geometric peak.
+        # Large disconnected bright interiors become markers; small highlights
+        # are excluded so they cannot carve one grain into tiny fragments.
+        if intensity is not None and local.sum() >= 2 * min_area:
+            light = ndimage.gaussian_filter(intensity[box].astype(float), .6)
+            cores, core_count = ndimage.label(local & (light > .72 * np.percentile(light[local], 75)), np.ones((3, 3)))
+            core_sizes = np.bincount(cores.ravel())
+            large = [i for i in range(1, core_count + 1) if core_sizes[i] >= max(min_area, .15 * local.sum())]
+            if 2 <= len(large) <= 4 and sum(core_sizes[i] for i in large) >= .65 * local.sum():
+                markers = np.zeros_like(cores)
+                for index, core in enumerate(large, 1):
+                    markers[cores == core] = index
+                padded = np.pad(local, 1)
+                distance = ndimage.distance_transform_edt(padded)
+                divided = _watershed_distance(distance, np.pad(markers, 1), padded)[1:-1, 1:-1]
+                for index in range(1, len(large) + 1):
+                    labels[box][local & (divided == index)] = next_label
+                    next_label += 1
+                continue
         # A nearly convex isolated silhouette should remain one grain. This
         # prevents small intensity/edge irregularities from splitting source
         # grains that already have a clear outer boundary.
@@ -336,7 +355,7 @@ def segment(rgb, settings=Settings(), *, _texture_recovery=False):
                 # have two distance maxima. It is still a single object;
                 # reserve watershed for components larger than a typical one.
                 typical_area = float(np.median(sizes))
-        labels = _separate_touching(labels > 0, settings.min_area, typical_area)
+        labels = _separate_touching(labels > 0, settings.min_area, typical_area, gray if adaptive else None)
     effective_min_area = settings.min_area
     if adaptive:
         region_sizes = np.bincount(labels.ravel())[1:]

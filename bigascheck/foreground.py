@@ -57,7 +57,10 @@ def adaptive_foreground(rgb):
         island = ndimage.white_tophat(smooth, size=(41, 41))
         mask &= island > max(8., threshold)
     mask = ndimage.binary_opening(mask, np.ones((3, 3)))
-    mask = ndimage.binary_closing(mask, np.ones((3, 3)))
+    # Closing must not paint across a genuinely dark gap between grains.
+    # Preserve foreground support from the illumination-corrected image so
+    # adjacent silhouettes do not become a single watershed component.
+    mask = ndimage.binary_closing(mask, np.ones((3, 3))) & (signal > threshold)
     if blue_surface:
         labels, count = ndimage.label(mask, np.ones((3, 3)))
         if count:
