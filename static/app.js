@@ -63,6 +63,7 @@ function setUploadPreview(source, description = 'Selected rice photograph') {
   zone.classList.add('has-preview');
 }
 function resetResults() {
+  window.dispatchEvent(new Event('bigascheck:reset'));
   sourceRevision++;
   result = null; showMask = false;
   for (const key of ['detected', 'whole', 'broken', 'percentage']) document.querySelector('#'+key).textContent = '—';
@@ -180,6 +181,7 @@ form.addEventListener('submit', async e => {
     const data = await response.json(); if(!response.ok) throw new Error(data.error || 'Analysis failed.');
     if (revision !== sourceRevision) return;
     result = data; showMask = false;
+    window.dispatchEvent(new CustomEvent('bigascheck:result', {detail:data}));
     showReference(result.sample);
     const s = result.summary;
     document.querySelector('#processing-time').textContent = Number.isFinite(s.processing_ms) ? s.processing_ms.toFixed(1)+' ms' : '';
@@ -210,7 +212,7 @@ document.querySelector('#mask-toggle').addEventListener('click', e => {
   e.target.textContent = showMask ? 'Show annotations' : 'Show mask';
 });
 document.querySelector('#download-json').addEventListener('click', () => {
-  if(!result) return; const {annotated_png, mask_png, ...report} = result;
+  if(!result) return; const {annotated_png, mask_png, original_png, ...report} = result;
   download('bigascheck_report.json', JSON.stringify(report, null, 2), 'application/json');
 });
 document.querySelector('#download-csv').addEventListener('click', () => {

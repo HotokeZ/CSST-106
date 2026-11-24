@@ -25,3 +25,5 @@ data/local_grains/
 # Incoming archives and plotting caches
 *.zip
 **/matplotlib_cache/
+.venv-instances/
+data/instances*/

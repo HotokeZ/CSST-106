@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script src="{{ url_for('static', filename='crop.js') }}" defer></script>
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='review-core.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='review.js') }}" defer></script>
 </head>
 <body>
 <header class="topbar"><a class="brand" href="/" aria-label="BigasCheck home"><span class="brand-icon">◒</span> BigasCheck<span class="tag">LAB</span></a><span class="prototype">Computer vision prototype <i></i> Local workspace</span></header>
@@ -68,6 +70,37 @@
       <div class="preview" id="preview"><div id="empty-preview"><span class="grain-art"><i></i><i></i><i></i><i></i><i></i></span><h3>Your sample, made measurable.</h3><p>Detected grains and their measurements<br>will appear here after analysis.</p></div><img id="result-image" alt="Rice sample with detected grain regions" hidden></div>
       <div class="result-tools"><div class="legend"><span><i class="whole-dot"></i>Whole</span><span><i class="broken-dot"></i>Broken</span><span><i class="unknown-dot"></i>Unclassified</span></div><span id="processing-time" class="processing-time" aria-live="polite"></span><button id="mask-toggle" type="button" disabled>Show mask</button></div>
       <div id="results-detail" hidden><div id="warnings" class="warnings"></div><div class="download-row"><button id="download-json" type="button">Download report ↓</button><button id="download-csv" type="button">Grain data CSV ↓</button><button id="download-image" type="button">Annotated image ↓</button></div><details><summary>Grain measurements</summary><div class="table-wrap"><table><thead><tr><th>Grain</th><th>Prediction</th><th title="Decision-tree leaf vote; not calibrated certainty">Model score</th><th>Area (px²)</th><th>Length (px)</th><th>Aspect ratio</th></tr></thead><tbody id="grain-rows"></tbody></table></div></details></div>
+  <section id="quality-panel" class="review-panel" aria-labelledby="quality-title" hidden>
+    <h2 id="quality-title">Rice visual quality</h2>
+    <p id="quality-automatic"></p><p id="quality-review" aria-live="polite">Manual quality: review incomplete.</p>
+    <p>Review whole/broken grains, discoloration and foreign objects below. Impurities are counted separately from rice. This is visual inspection, not an official grade or a food-safety assessment.</p>
+  </section>
+  <details id="review-panel" class="review-panel" hidden>
+    <summary>Review and correct grains</summary>
+    <p>Automatic results above stay unchanged. These corrections are manual review, not model predictions.</p>
+    <p>Select grain IDs, choose an action, then click around each grain's outline. Finish each outline and apply. Split: trace each child grain separately. Merge: trace one real grain around its selected fragments. Automatic boxes are proposals, not verified outlines.</p>
+    <strong id="review-counts" aria-live="polite"></strong>
+    <div class="review-controls">
+      <label>Grains (Ctrl / Cmd to select multiple)<select id="review-list" multiple size="6"></select></label>
+      <label>Action<select id="review-mode"><option value="replace">Trace / replace one grain</option><option value="merge">Merge selected fragments</option><option value="split">Split one merged region</option><option value="add">Add missed grain / impurity (clear selection)</option><option value="delete">Remove false detections</option><option value="label">Change selected labels</option><option value="quality">Set selected discoloration status</option></select></label>
+      <label>Label<select id="review-label"><option value="whole">Whole rice</option><option value="broken">Broken rice</option><option value="impurity">Impurity / foreign object</option><option value="unclassified">Unclassified</option></select></label>
+      <label>Rice discoloration<select id="review-discoloration"><option value="unassessed">Not assessed</option><option value="none">No visible discoloration</option><option value="present">Discolored</option></select></label>
+    </div>
+    <p>Click points around the outer edge without crossing outline edges. Different split-child labels can be assigned afterward with Change selected labels.</p>
+    <canvas id="review-canvas" aria-label="Click points to trace grain outlines on the photograph"></canvas>
+    <div class="download-row"><button type="button" id="review-point-undo">Undo point</button><button type="button" id="review-finish-outline">Finish outline</button><button type="button" id="review-clear-drawing">Clear drawing</button><button type="button" id="review-apply">Apply correction</button><button type="button" id="review-undo">Undo correction</button><button type="button" id="review-reset">Reset review</button></div>
+    <p id="review-pending"></p><p id="review-status" role="status"></p>
+    <button type="button" id="review-download">Download corrected report</button>
+    <button type="button" id="review-image">Download corrected image</button>
+    <label>Resume a saved review for this image<input type="file" id="review-resume" accept="application/json,.json"></label>
+    <details><summary>Prepare training annotations</summary>
+      <p>Trace and label every grain and impurity; assess discoloration for every rice grain. Add missed objects and remove false detections. Related photos and crops must share a capture group and partition. Previously inspected photos are development data, not untouched test images.</p>
+      <label>Capture group<input id="review-group" placeholder="session-01-sample-A"></label>
+      <label>Partition<select id="review-split"><option value="train">Training</option><option value="validation">Validation</option><option value="test">Independent test (new untouched captures only)</option></select></label>
+      <label><input type="checkbox" id="review-confirm"> I reviewed every grain, impurity, outline, label and discoloration status.</label>
+      <button type="button" id="review-annotations">Download labelled outlines + image</button>
+    </details>
+  </details>
     </section>
   </div>
   <footer><span>BIGASCHECK <b>/</b> Experimental rice inspection</span><span>Count-based estimates · Not an official rice grade</span></footer>

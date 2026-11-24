@@ -1,5 +1,7 @@
 # BigasCheck
 
+**Review and quality update (24 November 2026):** After analysis, open **Review and correct grains** to merge fragments, split merged regions by tracing each grain, add misses, remove false detections and correct labels. Automatic predictions stay separate from reviewed counts. Visual-quality review now includes discoloration and impurities; those fields remain **not assessed** automatically until suitable labelled data and a validated model exist. Download/resume reviews, corrected overlays, and reviewed training outlines. See [visual quality](docs/VISUAL_QUALITY.md) and [annotation/training workflow](docs/INSTANCE_TRAINING.md). No new instance/defect model has been trained yet.
+
 An initial local computer vision prototype following the supplied Week 11 proposal: segment rice grain regions, measure geometric/color features, compare a geometric baseline with a Decision Tree, and estimate broken grains **by count**.
 
 **Application update (23 November 2026):** The sample picker now ships with **27 Kaggle items and 4 Local Dataset 2 training crops**, with no Local Dataset 1 entries. Patterned-cloth recovery finds all 12 reviewed grains; whole/broken remains 9/3 against the 8/4 reference. Current software tests: 51 pass; an isolated fresh install and portable export also passed (47 tests plus 4 private-data skips). See [current changes and measured limits](docs/REQUESTED_UPDATES_20261123.md) and [milestone audit](docs/MILESTONE_CHECKLIST.md). The milestones still have pending hand-in requirements.

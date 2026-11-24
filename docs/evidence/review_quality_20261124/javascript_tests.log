@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: merge produces one reviewed object without changing automatic result
+ok 1 - merge produces one reviewed object without changing automatic result
+  ---
+  duration_ms: 7.0027
+  ...
+# Subtest: split labels are separate instances and cannot be applied with one outline
+ok 2 - split labels are separate instances and cannot be applied with one outline
+  ---
+  duration_ms: 2.2443
+  ...
+# Subtest: automatic boxes cannot be exported as instance masks; unknown labels withhold percentage
+ok 3 - automatic boxes cannot be exported as instance masks; unknown labels withhold percentage
+  ---
+  duration_ms: 1.3369
+  ...
+# Subtest: unassessed defects never imply clean quality; impurities are excluded from broken denominator
+ok 4 - unassessed defects never imply clean quality; impurities are excluded from broken denominator
+  ---
+  duration_ms: 0.9788
+  ...
+# Subtest: discoloration keeps whole/broken identity in the training export
+ok 5 - discoloration keeps whole/broken identity in the training export
+  ---
+  duration_ms: 0.6983
+  ...
+# Subtest: reject invalid geometry, stale selections and duplicate selections
+ok 6 - reject invalid geometry, stale selections and duplicate selections
+  ---
+  duration_ms: 0.8856
+  ...
+# Subtest: UI merge, manual quality, export and undo preserve automatic counts
+ok 7 - UI merge, manual quality, export and undo preserve automatic counts
+  ---
+  duration_ms: 19.7161
+  ...
+# Subtest: UI reset clears stale review and blocks mismatched imports
+ok 8 - UI reset clears stale review and blocks mismatched imports
+  ---
+  duration_ms: 7.5659
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 209.9498

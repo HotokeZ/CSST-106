@@ -109,6 +109,7 @@ def create_app(model_path=None, samples_root=None, feature_table=None, gallery_r
                 result["preprocessing"]["foreground_context"] = 'original_image' if foreground_mask is not None else 'crop'
                 result["warnings"].insert(0, "Only the selected crop was analyzed; counts refer to that area.")
             result["annotated_png"] = base64.b64encode(png_bytes(annotate(rgb, result["grains"]))).decode()
+            result["original_png"] = base64.b64encode(png_bytes(Image.fromarray(rgb))).decode()
             result["mask_png"] = base64.b64encode(png_bytes(Image.fromarray(mask))).decode()
             if sample is not None:
                 result["sample"] = samples.public(sample)

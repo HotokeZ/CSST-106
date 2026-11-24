@@ -216,6 +216,7 @@ def load_model(path):
 
 
 def analyze(rgb, bundle=None, settings=None, method="decision_tree", foreground_mask=None):
+    from .quality import automatic_quality
     started = perf_counter()
     if method not in {"decision_tree", "baseline"}:
         raise ValueError("Unknown classification method.")
@@ -256,7 +257,12 @@ def analyze(rgb, bundle=None, settings=None, method="decision_tree", foreground_
             for grain, score in zip(grains, model_scores):
                 grain["model_score"] = float(score)
     broken = sum(g.get("prediction") == "broken" for g in grains) if classification_enabled else None
-    return {"grains": grains, "summary": {"detected": len(grains), "broken": broken,
+    return {"grains": grains,
+            "quality": automatic_quality({'classified': classification_enabled,
+                        'whole': len(grains) - broken if broken is not None else None,
+                        'broken': broken,
+                        'broken_percentage': 100 * broken / len(grains) if broken is not None and grains else None}),
+            "summary": {"detected": len(grains), "broken": broken,
              "whole": len(grains) - broken if broken is not None else None,
              "broken_percentage": 100 * broken / len(grains) if broken is not None and grains else None,
              "classified": classification_enabled, "method": method if classification_enabled else None,
