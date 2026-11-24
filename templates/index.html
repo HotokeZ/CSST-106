@@ -72,6 +72,14 @@
       <div id="results-detail" hidden><div id="warnings" class="warnings"></div><div class="download-row"><button id="download-json" type="button">Download report ↓</button><button id="download-csv" type="button">Grain data CSV ↓</button><button id="download-image" type="button">Annotated image ↓</button></div><details><summary>Grain measurements</summary><div class="table-wrap"><table><thead><tr><th>Grain</th><th>Prediction</th><th title="Decision-tree leaf vote; not calibrated certainty">Model score</th><th>Area (px²)</th><th>Length (px)</th><th>Aspect ratio</th></tr></thead><tbody id="grain-rows"></tbody></table></div></details></div>
   <section id="quality-panel" class="review-panel" aria-labelledby="quality-title" hidden>
     <h2 id="quality-title">Rice visual quality</h2>
+    <p id="grade-count"></p><p id="grade-reviewed"></p>
+    <p>PNS/BAFS 290:2025 broken-kernel limits: Premium ≤5%, Grade 1 ≤10%, Grade 2 ≤15%, Grade 3 ≤25%, Grade 4 ≤35%, Grade 5 ≤45%, by weight. Count-based comparisons below are experimental and are not PNS grades. The current whole/broken classifier does not implement a calibrated 75%-of-reference-length rule.</p>
+    <details><summary>Compare measured weights with broken-kernel limits</summary>
+      <label>Total sample weight (g)<input id="grade-total" type="number" min="0" step="any"></label>
+      <label>Broken rice including brewers (g)<input id="grade-broken" type="number" min="0" step="any"></label>
+      <button id="grade-calculate" type="button">Compare measured weights</button><p id="grade-weight-result" role="status"></p>
+      <p>This compares the broken factor only. It does not check other grade factors, sampling, the brewers exception, or certify a grade.</p>
+    </details>
     <p id="quality-automatic"></p><p id="quality-review" aria-live="polite">Manual quality: review incomplete.</p>
     <p>Review whole/broken grains, discoloration and foreign objects below. Impurities are counted separately from rice. This is visual inspection, not an official grade or a food-safety assessment.</p>
   </section>

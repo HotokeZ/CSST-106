@@ -10,6 +10,9 @@
   window.addEventListener('bigascheck:result',event=>{
     reset();original=event.detail;items=BigasReview.initial(original);const version=revision;
     document.querySelector('#quality-panel').hidden=false;
+    const band=original.quality?.broken_factor_comparison?.band;
+    document.querySelector('#grade-count').textContent=band?`Automatic count-based comparison: ${band} broken-fraction band — not a PNS grade.`:'Automatic grade-band comparison unavailable.';
+    document.querySelector('#grade-weight-result').textContent='';
     document.querySelector('#quality-automatic').textContent='Automatic: whole/broken estimate only. Discoloration and impurities are not assessed by the installed model.';
     image=new Image();image.onload=()=>{if(version!==revision)return;canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;panel.hidden=false;render();};
     image.src='data:image/png;base64,'+original.original_png;
@@ -23,6 +26,8 @@
     outlines.forEach(p=>draw(p,'#00b8ff','staged'));draw(points,'#00b8ff','drawing');
     const s=BigasReview.summary(items);document.querySelector('#review-counts').textContent=`Review: ${s.rice_candidates} rice candidates · ${s.whole} whole · ${s.broken} broken · ${s.impurities} impurities · ${s.unclassified} unclassified · broken ${s.broken_percentage==null?'—':s.broken_percentage.toFixed(1)+'%'}`;
     const q=BigasReview.quality(items,document.querySelector('#review-confirm').checked);
+    const reviewedBand=BigasReview.gradeBand(s.broken_percentage);
+    document.querySelector('#grade-reviewed').textContent=reviewedBand?`Reviewed count-based comparison: ${reviewedBand} broken-fraction band — not a PNS grade.`:'Reviewed grade-band comparison unavailable.';
     const title={review_incomplete:'Review incomplete',visible_defects_reported:'Visible defects reported',broken_grains_present:'Broken grains present',no_reviewed_visible_defects:'No reviewed visible defects'};
     document.querySelector('#quality-review').textContent=`Manual quality: ${title[q.classification]}. Discolored grains: ${q.discolored_grains??'not assessed'}; discoloration unassessed: ${q.discoloration_unassessed}; marked impurities: ${q.impurities}.`;
     document.querySelector('#review-pending').textContent=`${outlines.length} completed outline(s), ${points.length} points in current outline. ${items.filter(i=>i.reviewed).length}/${items.length} grains traced.`;
@@ -42,6 +47,7 @@
   document.querySelector('#review-undo').onclick=()=>{const previous=history.pop();if(!previous)return;items=previous.items;actions=previous.actions;points=[];outlines=[];document.querySelector('#review-confirm').checked=false;render();};
   document.querySelector('#review-reset').onclick=()=>{if(!original)return;items=BigasReview.initial(original);actions=[];history=[];points=[];outlines=[];document.querySelector('#review-confirm').checked=false;render();};
   document.querySelector('#review-confirm').onchange=render;
+  document.querySelector('#grade-calculate').onclick=async()=>{const output=document.querySelector('#grade-weight-result'),version=revision;try{const total=document.querySelector('#grade-total').value,broken=document.querySelector('#grade-broken').value;if(!total||!broken)throw Error('Enter both weights; zero broken weight is allowed.');const response=await fetch('/api/grade-broken',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({total_weight_g:Number(total),broken_weight_g:Number(broken)})});const data=await response.json();if(version!==revision)return;if(!response.ok)throw Error(data.error);output.textContent=`Measured broken fraction: ${data.broken_percentage.toFixed(2)}% by weight. ${data.band} broken-factor band only; full PNS grade not assessed.`;}catch(e){if(version===revision)output.textContent=e.message;}};
   document.querySelector('#review-download').onclick=()=>{if(!original)return;const {annotated_png,mask_png,original_png,...automatic}=original;download('bigascheck_review.json',JSON.stringify({version:1,automatic,reviewed_summary:BigasReview.summary(items),reviewed_quality:BigasReview.quality(items,document.querySelector('#review-confirm').checked),reviewed_grains:items,actions,coordinate_frame:original.preprocessing,counts_source:'manual_review',imageData:original_png},null,2),'application/json');};
   document.querySelector('#review-image').onclick=()=>{if(!original)return;if(points.length||outlines.length){status.textContent='Apply or clear staged outlines before downloading the corrected image.';return;}const a=document.createElement('a');a.download='bigascheck_manually_corrected.png';a.href=canvas.toDataURL('image/png');a.click();};
   document.querySelector('#review-resume').onchange=async event=>{

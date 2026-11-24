@@ -3,6 +3,7 @@ const assert=require('node:assert/strict');
 const R=require('../static/review-core.js');
 const input={grains:[{grain_id:1,bbox:[2,2,12,8],prediction:'whole'},{grain_id:2,bbox:[12,2,12,8],prediction:'broken'}]};
 const outline=[[2,2],[24,2],[24,10],[2,10]];
+test('broken-factor comparison uses inclusive bands without claiming a grade',()=>{assert.equal(R.gradeBand(5),'Premium');assert.equal(R.gradeBand(5.01),'Grade no. 1');assert.equal(R.gradeBand(15),'Grade no. 2');assert.equal(R.gradeBand(null),null);assert.match(R.gradeBand(46),/Above/);});
 test('merge produces one reviewed object without changing automatic result',()=>{
  const initial=R.initial(input), before=R.clone(input);const merged=R.apply(initial,'merge',['1','2'],[outline],'whole',100,100);
  assert.equal(merged.length,1);assert.equal(merged[0].reviewed,true);assert.deepEqual(merged[0].source_ids,['1','2']);assert.deepEqual(input,before);assert.equal(initial.length,2);

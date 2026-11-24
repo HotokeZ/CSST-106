@@ -12,6 +12,7 @@ from bigascheck.vision import Settings, annotate, backend, load_rgb, png_bytes
 from bigascheck.samples import SampleCatalog, SampleError
 from bigascheck.gallery import GalleryCatalog
 from bigascheck.cropping import crop_rgb
+from bigascheck.quality import measured_broken_band
 
 
 def create_app(model_path=None, samples_root=None, feature_table=None, gallery_root=None):
@@ -40,6 +41,16 @@ def create_app(model_path=None, samples_root=None, feature_table=None, gallery_r
     @app.get("/api/status")
     def status():
         return jsonify(trained=bundle is not None, backend=backend(), model_error=model_error)
+
+    @app.post('/api/grade-broken')
+    def grade_broken():
+        data=request.get_json(silent=True)
+        try:
+            if not isinstance(data,dict):
+                raise ValueError('Enter sample and broken-rice weights.')
+            return jsonify(measured_broken_band(data.get('total_weight_g'),data.get('broken_weight_g')))
+        except ValueError as exc:
+            return jsonify(error=str(exc)),400
 
     @app.get("/api/samples")
     def list_samples():

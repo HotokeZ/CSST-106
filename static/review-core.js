@@ -64,7 +64,8 @@
     return {version:'5.0.0',flags:{},shapes:items.map(i=>({label:i.discoloration==='present' && i.label!=='impurity'?'discolored_'+i.label:i.label,points:polygon(i.points,width,height),group_id:null,shape_type:'polygon',flags:{manually_reviewed:true,discoloration_reviewed:i.label!=='impurity'}})),imagePath:'reviewed_rice.png',imageData,imageHeight:height,imageWidth:width,
       bigascheck:{capture_group:group.trim(),split,coordinate_frame:'processed_image_or_crop',reviewed_complete:true,evaluation_status:'User-reviewed annotation; independence must be established from capture history.'}};
   }
-  const api={clone,polygon,initial,summary,quality,apply,annotation};
+  function gradeBand(percent){if(!Number.isFinite(percent)||percent<0||percent>100)return null;return [['Premium',5],['Grade no. 1',10],['Grade no. 2',15],['Grade no. 3',25],['Grade no. 4',35],['Grade no. 5',45]].find(pair=>percent<=pair[1])?.[0]||'Above listed Grade no. 5 broken limit';}
+  const api={clone,polygon,initial,summary,quality,apply,annotation,gradeBand};
   if(typeof module!=='undefined' && module.exports) module.exports=api;
   root.BigasReview=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
